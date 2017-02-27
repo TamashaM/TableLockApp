@@ -1,0 +1,103 @@
+<head>
+  <style>
+    p {font-size:20px;
+      color: black}
+
+
+  </style>
+</head>
+<div id="login-page" class="row">
+  <div class="col s6 z-depth-4 card-panel offset-s3 " >
+    <form class="login-form  ">
+      <div class="row">
+      </div>
+      <div class="row">
+
+        <div class=" col s12 center-align ">
+          <%= image_tag("logo_new.png",:width=>"120", :height=>"120",:alt=>"logo", :align=>"middle") %>
+
+          <p class="center login-form-text center-align">Login</p>
+        </div>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-social-person-outline prefix large material-icons prefix">perm_identity</i>
+          <input id="username" type="text" class="validate">
+          <label for="username">Username</label>
+        </div>
+      </div>
+
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-action-lock-outline prefix large material-icons prefix">lock</i>
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12 ">
+          <i class="mdi-action-lock-outline prefix material-icons prefix">account_box</i>
+          <select>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Restaurant</option>
+            <option value="2">Diner</option>
+            <option value="3">Admin</option>
+          </select>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m12 l12  login-text">
+          <input type="checkbox" id="remember-me" />
+          <label for="remember-me">Remember me</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <a href="index.html" class="btn waves-effect waves-light col s12">Login</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 m6 l6">
+          <label for="sign_up">Not a user?</label>
+          <br>
+          <br>
+
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card teal lighten-2">
+            <div class="card-content white-text">
+              <span class="card-title center">Restaurateur</span>
+              <p>We love knowing about your unique business.Sign up with us to let us know about you and your restaurant below</p>
+            </div>
+            <div class="card-action center">
+              <a href="#">Sign Up </a>
+
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="card teal lighten-2">
+            <div class="card-content white-text">
+              <span class="card-title center">Diner</span>
+
+
+              <p>Make your next dining experience a better one. Sign up with us today to earn points on your visits and much more
+
+              </p>
+            </div>
+            <div class="card-action center">
+              <a href="#">Sign Up </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+</div>

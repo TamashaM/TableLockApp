@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TableLockApp</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <style>
+    div.content, main, footer {
+      padding-left: 264px;
+    }
+
+    @media only screen and (max-width : 992px) {
+      div.content, main, footer {
+        padding-left: 0;
+      }
+    }
+
+
+
+    login.index
+    {
+      display: none;
+    }
+    /*body {*/
+    /*background-image: url(logo.jpg);*/
+    /*background-color: black;*/
+    /*}*/
+
+  </style>
+  <script>
+      $(document).ready(function() {
+          $('select').material_select();
+      });
+      $( document ).ready(function() {
+          $('.datepicker').pickadate({
+              format: 'mm/dd/yyyy',
+              selectMonths: true, // Creates a dropdown to control month
+              selectYears: 15 // Creates a dropdown of 15 years to control year
+          });
+      });
+
+  </script>
+</head>
+<body >
+<div class="ex1">
+  <header>
+
+    <div class="navbar-fixed">
+      <nav class="nav-extended">
+        <div class="nav-wrapper">
+          <%= image_tag("logonew.png",:width=>"64", :height=>"64",:alt=>"logo", :align=>"middle") %>
+          <!--<a href="#" class="brand-logo">Logo</a>-->
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+
+
+            <li><a class="dropdown-button" data-beloworigin=true href="#!" data-activates="dropdown1">User<i class="material-icons right">arrow_drop_down</i></a></li>
+            <ul id='dropdown1' class='dropdown-content'>
+              <li ><a href="#!">Logout</a></li>
+
+            </ul>
+          </ul>
+        </div>
+
+      </nav>
+    </div>
+    <ul id= "slide-out"  style="width:240px; margin-top:70px;" class="side-nav fixed">
+      <li><a href="#">Icon 1</a></li>
+      <li><a href="#">Icon 2</a></li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+
+  </header>
+</div>
+<div class ="content">
+
+
+  <%= yield %>
+</div>
+</body>
+
+</html>
