@@ -2,12 +2,21 @@
   <style>
     p {font-size:20px;
       color: black}
+    body{
+      background-repeat: no-repeat;
+      background-image: url(<%= asset_path 'cover.jpg' %>);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
 
 
   </style>
 </head>
 <div id="login-page" class="row">
-  <div class="col s6 z-depth-4 card-panel offset-s3 " >
+  <div class="col s6 z-depth-4 card-panel offset-s3 transparent" >
     <form class="login-form  ">
       <div class="row">
       </div>
@@ -22,34 +31,37 @@
       <div class="row margin">
         <div class="input-field col s12">
           <i class="mdi-social-person-outline prefix large material-icons prefix">perm_identity</i>
-          <input id="username" type="text" class="validate">
-          <label for="username">Username</label>
+
+          <input id="username" type="text" class="validate ">
+
+          <label for="username" >Username</label>
         </div>
       </div>
 
       <div class="row margin">
         <div class="input-field col s12">
           <i class="mdi-action-lock-outline prefix large material-icons prefix">lock</i>
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
+          <input id="password" type="password" class="validate ">
+          <label for="password" >Password</label>
         </div>
       </div>
       <div class="row margin">
         <div class="input-field col s12 ">
           <i class="mdi-action-lock-outline prefix material-icons prefix">account_box</i>
-          <select>
+          <select id="user_type">
             <option value="" disabled selected>Choose your option</option>
             <option value="1">Restaurant</option>
             <option value="2">Diner</option>
             <option value="3">Admin</option>
           </select>
 
+          <label for="user_type" >Choose option</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m12 l12  login-text">
           <input type="checkbox" id="remember-me" />
-          <label for="remember-me">Remember me</label>
+          <label for="remember-me" >Remember me</label>
         </div>
       </div>
       <div class="row">

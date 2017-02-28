@@ -1,18 +1,68 @@
-<div class="col s12 m7">
-  <div class="card horizontal">
+<head>
+  <style>
+    p {font-size:20px;
+      color: black}
+    body{
+      background-repeat: no-repeat;
+      background-image: url(<%= asset_path 'cover.jpg' %>);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
 
-    <div class="card-stacked">
-      <div class="card-content">
-        <label>About</label>
-        <p></p>
+
+  </style>
+</head>
+<div id="login-page" class="row">
+  <div class="col s6 z-depth-4 card-panel offset-s3 transparent" >
+    <form class="login-form  ">
+      <div class="row">
+        <div class="input-field col s12 center-align">
+          <%= image_tag("logo_new.png",:width=>"120", :height=>"120",:alt=>"logo", :align=>"middle") %>
+          <p class="center login-form-text center-align">Where would you like to dine in?</p>
+        </div>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-social-person-outline prefix large material-icons prefix">location_on</i>
+          <input id="location" type="text" class="validate">
+          <label for="location">Location</label>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">today</i>
+          <input id="date" type="date" class="datepicker">
+          <label for="date">Date</label>
+        </div>
+        <div class="input-field col s6">
+            <i class="material-icons prefix">access_time</i>
+          <input id="time" type="time" class="datepicker">
+          <label for="time">Time</label>
+        </div>
+      </div>
+
+      <div class="row margin">
+        <div class="input-field col s12 ">
+          <i class="mdi-action-lock-outline prefix material-icons prefix">people</i>
+          <input id="adult" type="number" class="validate">
+          <label for="adult">Adult</label>
+
+        </div>
 
       </div>
-      <div class="card-action">
-        <a class="waves-effect waves-light btn-medium">Modify</a>
-        <a class="waves-effect waves-light btn-medium">Cancel</a>
-
+      <div class="row">
+        <div class="input-field col s12">
+          <a href="index.html" class="btn waves-effect waves-light col s12">Search Restaurant</a>
+        </div>
       </div>
 
-    </div>
+
+
+
+    </form>
   </div>
 </div>
