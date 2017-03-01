@@ -9,6 +9,7 @@
   <style>
     div.content, main, footer {
       padding-left: 264px;
+      padding-right:24px;
     }
 
     @media only screen and (max-width : 992px) {
@@ -16,13 +17,17 @@
         padding-left: 0;
       }
     }
+    p {font-size:20px;
+      color: black}
+    body{
+      background-repeat: no-repeat;
+      background-image: url(<%= asset_path 'cover.jpg' %>);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: 110%;
 
-
-
-    /*body {*/
-    /*background-image: url(logo.jpg);*/
-    /*background-color: black;*/
-    /*}*/
+    }
 
   </style>
   <script>
