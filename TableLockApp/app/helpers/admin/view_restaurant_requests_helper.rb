@@ -1,0 +1,2 @@
+module Admin::ViewRestaurantRequestsHelper
+end
