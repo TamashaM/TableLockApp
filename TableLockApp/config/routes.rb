@@ -20,10 +20,16 @@ Rails.application.routes.draw do
   post 'login'=>'auth/login#create'
 
   get '/signup_restaurant'=>'auth/signup#signup_restaurant'
-  post '/restaurant_requests/add'=>'restaurant_requests#create'
+  get '/restaurant_requests/add'=>'restaurant_requests#create'
 
-  get '/admin/view_requests'=>'admin#view_requests'
+  get '/admin/view_requests'=>'admin/restaurant_requests#view_requests'
+  get '/admin/accept'=>'admin/restaurant_requests#accept'
+  get '/admin/reject'=>'admin/restaurant_requests#reject'
 
+  get 'diner/home'=>'diner#home'
+  get 'diner/profile'=>'diner#profile'
+  get 'diner/reservation_history'=>'diner#past_reservations'
+  get 'diner/reservations'=>'diner#reservations'
 
   get 'signup_diner' => 'auth/signup#signup_diner'
   get 'signup_restaurant' => 'auth/signup#signup_restaurant'

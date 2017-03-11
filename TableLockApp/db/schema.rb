@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170308154752) do
   end
 
   create_table "restaurant_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "position"
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170308154752) do
     t.string   "city"
     t.string   "province"
     t.integer  "status"
+    t.string   "email"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

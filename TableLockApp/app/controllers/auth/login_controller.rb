@@ -4,10 +4,15 @@ class Auth::LoginController < ApplicationController
   end
   def create
     @user=User.find_by_email(params[:session][:email])
-    if @user && @user.authenticate(params[:session][:password])
+    if @user && @user.authenticate(params[:session][:password]) && @user.user_type==params[:session][:user_type].to_i
       session[:user_id]=@user.id
+      #checking the use type and redirect to their home page with the id
+      if @user.user_type==1
+        redirect_to controller:'/diner',
+                    action:'home',
+                    id: @user.id
+      end
 
-      redirect_to '/'
     else
       redirect_to '/login'
 

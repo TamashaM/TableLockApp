@@ -1,0 +1,31 @@
+<form method="get" action="/admin/view_requests2">
+<div class=" col s12" >
+  <table class="responsive-table highlight centered">
+    <thead>
+    <tr>
+      <th data-field="restaurant">Restaurant</th>
+      <th data-field="status" >Status</th>
+      <th data-field="action">Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @restaurant_request.each do |req| %>
+    <tr>
+      <td><%=req.restaurant_name %></td>
+      <% if req.status==2 %>
+          <td>Rejected</td>
+      <% elsif req.status==1 %>
+          <td>Accepted</td>
+      <%else %>
+          <td>Pending</td>
+      <% end%>
+      <td><a class="waves-effect waves-light btn green" href="/admin/accept?id=<%=req.id%>" >Accept</a>
+        <a class="waves-effect waves-light btn red" href="/admin/reject?id=<%=req.id%>">Reject</a></td>
+    </tr>
+        <%end%>
+
+    </tbody>
+  </table>
+</div>
+</form>

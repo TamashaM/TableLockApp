@@ -1,35 +1,35 @@
 <div id="signup-restaurant-page" class="row">
   <div class="col s6 z-depth-4 card-panel offset-s3" >
-    <form method="post" action="/restaurant_requests/add" class="col s12">
+    <form method="post" action="/users" class="col s12">
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">person</i>
-          <input  id="first_name" name="rr[first_name]" type="text" class="validate">
+          <input  id="first_name" name="user[first_name]" type="text" class="validate">
           <label for="first_name">First Name</label>
         </div>
         <div class="input-field col s6">
 
-          <input id="last_name" name="rr[last_name]" type="text" class="validate">
+          <input id="last_name" name="user[last_name]" type="text" class="validate">
           <label for="last_name">Last Name</label>
         </div>
       </div>
       <div class="row margin">
         <div class="input-field col s12 ">
           <i class="mdi-action-lock-outline prefix material-icons prefix">account_box</i>
-          <select id="position" value="rr[position]">
-            <option value="" disabled selected>Choose your position</option>
+          <select id="position" name="user[position]">
+            <option value="" disabled selected></option>
             <option value="1">Owner</option>
             <option value="2">Manager</option>
             <option value="3">General Staff</option>
           </select>
-          <label for="position" ></label>
+          <label for="position" >Choose your position</label>
 
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">restaurant </i>
-          <input  id="restaurant_name" name="rr[restaurant_name]" type="text" class="validate">
+          <input  id="restaurant_name" name="user[restaurant_name]" type="text" class="validate">
           <label for="restaurant_name">Restaurant Name</label>
         </div>
       </div>
@@ -37,27 +37,34 @@
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">email</i>
-          <input id="email" name="rr[email]" type="email" class="validate">
+          <input id="email" name="user[email]" type="email" class="validate">
           <label for="email" data-error="wrong" data-success="right">Email</label>
 
+        </div>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-action-lock-outline prefix large material-icons prefix">lock</i>
+          <input id="password" name="user[password]" type="password" class="validate ">
+          <label for="password" >Password</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">phone</i>
-          <input id="telephone" name="rr[telephone]" type="tel" class="validate">
+          <input id="telephone" name="user[telephone]" type="tel" class="validate">
           <label for="icon_telephone">Telephone</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">location_on</i>
-          <input  id="city" type="text" name="rr[city]" class="validate">
+          <input  id="city" type="text" name="user[city]" class="validate">
           <label for="city">City</label>
         </div>
         <div class="input-field col s6">
-          <input id="user_type" name="rr[user_type]" type="hidden" value ="1" class="validate">
-          <input id="province" name="rr[province]" type="text" class="validate">
+          <input id="user_type" name="user[user_type]" type="hidden" value ="1" class="validate">
+          <input id="province" name="user[province]" type="text" class="validate">
           <label for="province">Province</label>
         </div>
       </div>
