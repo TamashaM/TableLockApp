@@ -1,0 +1,2 @@
+module Diner::ProfileHelper
+end

@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
 #when you have a model
   get 'login/signup_diner'  => 'admin/users#new'
-  resources :users
+
+  get '/users'=>'auth/login#login'
+  post '/users'=>'auth/users#create'
+
 #when you dont have a model
   get '/login' => 'auth/login#login'
   post 'login'=>'auth/login#create'
@@ -27,12 +30,14 @@ Rails.application.routes.draw do
   get '/admin/reject'=>'admin/restaurant_requests#reject'
 
   get 'diner/home'=>'diner/home#home'
-  get 'diner/profile'=>'diner#profile'
-  get 'diner/reservation_history'=>'diner#past_reservations'
-  get 'diner/reservations'=>'diner#reservations'
+  get 'diner/profile'=>'diner/profile#profile'
+  get 'diner/reservation_history'=>'diner/past_reservations#past_reservations'
+  get 'diner/reservations'=>'diner/reservations#reservations'
+  post 'diner/profile/update'=>'diner/profile#update'
 
   get 'signup_diner' => 'auth/signup#signup_diner'
   get 'signup_restaurant' => 'auth/signup#signup_restaurant'
+
   delete 'logout'=>'sessions#destroy'
 
 

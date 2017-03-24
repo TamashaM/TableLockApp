@@ -9,7 +9,7 @@ class Restaurant::RestaurantRequestsController < ApplicationController
     @restaurant_request.restaurant_name=params[:restaurant_name]
     @restaurant_request.city=params[:city]
     @restaurant_request.province=params[:province]
-    @restaurant_request.user_id=params[:user_id]
+    @restaurant_request.restaurant_id=params[:restaurant_id]
     if @restaurant_request.save!
 
       redirect_to '/welcome/index'

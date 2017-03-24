@@ -1,0 +1,2 @@
+module Diner::PastReservationsHelper
+end

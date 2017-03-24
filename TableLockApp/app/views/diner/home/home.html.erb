@@ -1,5 +1,18 @@
 <head>
   <style>
+
+    .input-field label {
+         color: #000;
+      font-weight: bold;
+      font-size: larger;
+       }
+       /* label focus color */
+       .input-field input[type=text]:focus + label {
+         color: #000;
+         font-weight: bold;
+         font-size: larger;
+       }
+
     p {font-size:20px;
       color: black}
     body{
@@ -13,6 +26,9 @@
 
 
   </style>
+
+
+
 </head>
 <%= render :partial=>"diner/side_bar" %>
 

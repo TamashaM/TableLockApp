@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class Auth::UsersController < ApplicationController
   protect_from_forgery
   def new
     @user=User.new
@@ -17,6 +17,7 @@ class Admin::UsersController < ApplicationController
           @diner.telephone=params[:user][:telephone]
           if @diner.save!
                 session[:user_id]=@user.id
+                session[:diner_id]=@diner.id
                 redirect_to '/welcome/index'
           else
                 redirect_to '/login/signup_diner'
@@ -35,6 +36,7 @@ class Admin::UsersController < ApplicationController
         @restaurant.position=params[:user][:position]
         if @restaurant.save!
           session[:user_id]=@user.id
+          session[:restaurant_id]=@restaurant.id
           redirect_to controller:'restaurant/restaurant_requests',
                       action:'create',
                       first_name: @restaurant.first_name,
@@ -44,7 +46,7 @@ class Admin::UsersController < ApplicationController
                       province:@restaurant.province,
                       position:params[:user][:position],
                       restaurant_name:@restaurant.restaurant_name,
-                      user_id:@user.id,
+                      restaurant_id:@restaurant.id,
                       email:@user.email
         else
           redirect_to '/login/signup_diner'
