@@ -11,6 +11,7 @@ class CreateRestaurantRequests < ActiveRecord::Migration[5.0]
       t.string :province
       t.integer :status
       t.string :email
+
       t.timestamps
     end
   end

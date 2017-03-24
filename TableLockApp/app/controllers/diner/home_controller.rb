@@ -1,4 +1,4 @@
-class DinerController < ApplicationController
+class Diner::HomeController < ApplicationController
   def index
   end
   def home

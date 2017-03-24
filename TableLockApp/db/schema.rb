@@ -10,15 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308154752) do
+ActiveRecord::Schema.define(version: 20170323221651) do
 
   create_table "diners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "telephone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.date     "dob"
+    t.string   "add_line1"
+    t.string   "add_line2"
+    t.string   "city"
+    t.string   "province"
+    t.string   "postal_code"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "restaurant_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

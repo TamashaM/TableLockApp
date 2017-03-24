@@ -1,4 +1,4 @@
-class RestaurantRequestsController < ApplicationController
+class Restaurant::RestaurantRequestsController < ApplicationController
   protect_from_forgery
   def create
     @restaurant_request=RestaurantRequest.new
@@ -9,7 +9,6 @@ class RestaurantRequestsController < ApplicationController
     @restaurant_request.restaurant_name=params[:restaurant_name]
     @restaurant_request.city=params[:city]
     @restaurant_request.province=params[:province]
-    @restaurant_request.email=params[:email]
     @restaurant_request.user_id=params[:user_id]
     if @restaurant_request.save!
 

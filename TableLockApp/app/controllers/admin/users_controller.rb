@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   protect_from_forgery
   def new
     @user=User.new
@@ -22,8 +22,9 @@ class UsersController < ApplicationController
                 redirect_to '/login/signup_diner'
           end
       else
-
+        #creating  restaurant request object and sending them rr controller
         @restaurant=Restaurant.new
+        #@restaurant=Restaurant.new(params[:user])
         @restaurant.user_id=@user.id
         @restaurant.first_name=params[:user][:first_name]
         @restaurant.last_name=params[:user][:last_name]
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
         @restaurant.position=params[:user][:position]
         if @restaurant.save!
           session[:user_id]=@user.id
-          redirect_to controller:'restaurant_requests',
+          redirect_to controller:'restaurant/restaurant_requests',
                       action:'create',
                       first_name: @restaurant.first_name,
                       last_name:@restaurant.last_name,

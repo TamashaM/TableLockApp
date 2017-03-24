@@ -7,8 +7,8 @@ class Auth::LoginController < ApplicationController
     if @user && @user.authenticate(params[:session][:password]) && @user.user_type==params[:session][:user_type].to_i
       session[:user_id]=@user.id
       #checking the use type and redirect to their home page with the id
-      if @user.user_type==1
-        redirect_to controller:'/diner',
+      if @user.user_type==0
+        redirect_to controller:'/diner/home',
                     action:'home',
                     id: @user.id
       end
