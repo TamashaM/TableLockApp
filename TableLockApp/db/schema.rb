@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324171937) do
+ActiveRecord::Schema.define(version: 20170326091604) do
 
   create_table "diners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -27,6 +27,30 @@ ActiveRecord::Schema.define(version: 20170324171937) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "dining_informations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "restaurant_id"
+    t.string   "dining_style"
+    t.string   "phone_number"
+    t.integer  "cuisines"
+    t.string   "website"
+    t.string   "add_info"
+    t.string   "dress_code"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "offers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "restaurant_id"
+    t.string   "name"
+    t.string   "description"
+    t.date     "start_date"
+    t.time     "start_time"
+    t.date     "end_date"
+    t.time     "end_time"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "restaurant_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -40,6 +64,8 @@ ActiveRecord::Schema.define(version: 20170324171937) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "restaurant_id"
+    t.string   "add_line1"
+    t.string   "add_line2"
   end
 
   create_table "restaurants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -53,6 +79,9 @@ ActiveRecord::Schema.define(version: 20170324171937) do
     t.string   "province"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "about"
+    t.string   "add_line1"
+    t.string   "add_line2"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

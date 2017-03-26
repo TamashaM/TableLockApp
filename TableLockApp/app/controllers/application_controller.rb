@@ -10,7 +10,9 @@ class ApplicationController < ActionController::Base
   def require_user
     redirect_to '/login' unless current_user
   end
-    #below part is from the tutorial remove this incase it doesnt work
+
+  #this part is from tutorial remove if needed
+
   private
   def confirmed_logged_in
     unless session[:user_id]

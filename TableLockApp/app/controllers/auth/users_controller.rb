@@ -34,6 +34,8 @@ class Auth::UsersController < ApplicationController
         @restaurant.city=params[:user][:city]
         @restaurant.province=params[:user][:province]
         @restaurant.position=params[:user][:position]
+        @restaurant.add_line1=params[:user][:add_line1]
+        @restaurant.add_line2=params[:user][:add_line2]
         if @restaurant.save!
           session[:user_id]=@user.id
           session[:restaurant_id]=@restaurant.id
@@ -47,6 +49,8 @@ class Auth::UsersController < ApplicationController
                       position:params[:user][:position],
                       restaurant_name:@restaurant.restaurant_name,
                       restaurant_id:@restaurant.id,
+                      add_line1:@restaurant.add_line1,
+                      add_line2:@restaurant.add_line2,
                       email:@user.email
         else
           redirect_to '/login/signup_diner'

@@ -1,0 +1,29 @@
+
+<%= render :partial=>"restaurant/side_bar" %>
+<form method="get" action="">
+  <div class=" col s12" >
+    <table class="responsive-table highlight centered">
+      <thead>
+      <tr>
+        <th data-field="name">Name</th>
+        <th data-field="description" >Description</th>
+        <th data-field="from">From</th>
+        <th data-field="from">To</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @offers.each do |off| %>
+          <tr>
+            <td><%= off.name %></td>
+            <td><%= off.description %></td>
+            <td><%= off.start_date %><p>  </p> <%= off.start_time%> </td>
+            <td><%= off.end_date %><p>  </p> <%= off.end_time%> </td>
+          </tr>
+      <%end%>
+
+      </tbody>
+    </table>
+    <a class="waves-effect waves-light btn green right" href="/restaurant/offer/new" >Add Offer</a>
+  </div>
+</form>

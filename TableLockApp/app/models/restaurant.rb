@@ -1,4 +1,6 @@
 class Restaurant < ApplicationRecord
-  has_many :restaurant_requests
+  has_one :restaurant_request
   belongs_to :user
+  has_one :dining_information
+  has_many :offers
 end

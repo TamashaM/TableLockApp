@@ -1,0 +1,86 @@
+<head>
+  <style>
+
+    .input-field label {
+      color: #000;
+      font-weight: bold;
+      font-size: larger;
+    }
+    /* label focus color */
+    .input-field input[type=text]:focus + label {
+      color: #000;
+      font-weight: bold;
+      font-size: larger;
+    }
+
+  </style>
+  <script>
+    $( document ).ready(function() {
+    $('.datepicker').pickadate({
+    format: 'mm/dd/yyyy',
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+    });
+  </script>
+</head>
+<%= render :partial=>"restaurant/side_bar" %>
+<div id="offer-page" class="row">
+
+
+  <div class="col s6 z-depth-4 card-panel offset-s3 transparent  hoverable" >
+    <form  method="post" action="/restaurant/offer/add" >
+
+      <div class="row">
+
+      </div>
+      <div class="row">
+
+
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-social-person-outline prefix large material-icons prefix">local_offer</i>
+
+          <input id="name" name="offer[name]" type="text" class="validate ">
+
+          <label for="name" >Name</label>
+        </div>
+      </div>
+
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-action-lock-outline prefix large material-icons prefix">description</i>
+          <input id="description" name="offer[description]" type="text" class="validate ">
+          <label for="description" >Description</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">today</i>
+          <input id="start_date" name="offer[start_date]" type="date" class="datepicker" >
+          <label for="start_date" >From</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">today</i>
+          <input id="end_date" name="offer[end_date]" type="date" class="datepicker" >
+          <label for="end_date" >To</label>
+        </div>
+      </div>
+    <!-- have to include the time as well -->
+      <div class="row center-align">
+        <button class="btn waves-effect waves-light right-align" type="submit" name="create"  >Create
+          <i class="material-icons ">save</i>
+        </button>
+
+      </div>
+
+
+
+
+
+    </form>
+  </div>
+</div>

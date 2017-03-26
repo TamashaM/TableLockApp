@@ -9,6 +9,8 @@ class Restaurant::RestaurantRequestsController < ApplicationController
     @restaurant_request.restaurant_name=params[:restaurant_name]
     @restaurant_request.city=params[:city]
     @restaurant_request.province=params[:province]
+    @restaurant_request.add_line1=params[:add_line1]
+    @restaurant_request.add_line2=params[:add_line2]
     @restaurant_request.restaurant_id=params[:restaurant_id]
     if @restaurant_request.save!
 

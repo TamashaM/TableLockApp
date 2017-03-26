@@ -1,0 +1,104 @@
+<head>
+  <style>
+    label {font-size:20px;
+      color: black}
+    .input-field label {
+      color: #000;
+
+    }
+
+
+  </style>
+</head>
+<%= render :partial=>"restaurant/side_bar" %>
+<form class="form " method="post" action="/restaurant/profile/update">
+
+  <ul class="collapsible white" data-collapsible="expandable">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">info</i>About</div>
+      <div class="collapsible-body"><input  name=profile[about] id="about" type="text" ></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">restaurant_menu</i>Dining Information</div>
+      <div class="collapsible-body">
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="dining_style"  name=profile[dining_style] type="text" class="validate">
+            <label for="dining_style">Dining Style</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="phone_number" name=profile[phone_number] type="tel" class="validate">
+            <label for="phone_number">Phone Number</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="cuisines" name=profile[cuisines] type="text" class="validate">
+            <label for="cuisines">Cuisines</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="website" name=profile[website] type="url" class="validate">
+            <label for="website">Web Site</label>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="operation_hours"  name=profile[operation_hours] type="text" class="validate">
+            <label for="operation_hours">Hours of Operation</label>
+          </div>
+
+
+            <div class="input-field col s6">
+              <input id="dress_code"  name=profile[dress_code]type="text" class="validate">
+              <label for="dress_code">Dress Code</label>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="input-field col s6">
+            <input id="add_info" type="text" name=profile[add_info] class="validate">
+            <label for="add_info">Additional</label>
+          </div>
+        </div>
+
+        <!--<div class="row">-->
+
+          <!--<div class="input-field col s6">-->
+            <!--<input id="capacity" type="number" class="validate">-->
+            <!--<label for="capacity">Capacity per seating</label>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+
+          <!--<div class="input-field col s6">-->
+            <!--<input id="time" type="number" class="validate">-->
+            <!--<label for="time">Time per seating</label>-->
+          <!--</div>-->
+        <!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </li>
+    <!--<li>-->
+      <!--<div class="collapsible-header"><i class="material-icons">local_offer</i>Offers</div>-->
+      <!--<div class="collapsible-body"> <input id="offers" type="text" class="validate"></div>-->
+    <!--</li>-->
+  </ul>
+
+  <button class="btn waves-effect waves-light  right" type="submit" name="action">Save
+    <i class="material-icons right">save</i>
+  </button>
+
+</form>

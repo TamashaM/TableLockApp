@@ -15,17 +15,19 @@
 
     p {font-size:20px;
       color: black}
-    body{
-      background-repeat: no-repeat;
-      background-image: url(<%= asset_path 'cover.jpg' %>);
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-    }
+
 
 
   </style>
+  <script>
+      $( document ).ready(function() {
+          $('.datepicker').pickadate({
+              format: 'mm/dd/yyyy',
+              selectMonths: true, // Creates a dropdown to control month
+              selectYears: 15 // Creates a dropdown of 15 years to control year
+          });
+      });
+  </script>
 
 
 
@@ -35,6 +37,7 @@
 
 <div id="welcome-page" class="row">
   <div class="col s6 z-depth-4 card-panel offset-s3 transparent" >
+
     <form class="login-form  ">
       <div class="row">
         <div class="input-field col s12 center-align">

@@ -65,15 +65,34 @@
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">location_on</i>
-          <input  id="city" type="text" name="user[city]" class="validate">
-          <label for="city">City</label>
+        <div class="input-field col s12">
+      <i class="material-icons prefix ">location_on</i>
+
+      <label for="address" >Address</label>
+        </div>
+      </div>
+      <div class="row">
+      </div>
+      <div class="row">
+        <div class="input-field col s6 ">
+          <i class="material-icons prefix"></i>
+          <input id="add_line1"  name=user[add_line1] type="text" class="validate" >
+          <label for="add_line1" >Line 1 address</label>
         </div>
         <div class="input-field col s6">
-          <input id="user_type" name="user[user_type]" type="hidden" value ="1" class="validate">
-          <input id="province" name="user[province]" type="text" class="validate">
-          <label for="province">Province</label>
+          <input id="add_line2" name="user[add_line2]" type="text" class="validate" >
+          <label for="add_line2" >Line 2 address</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix"></i>
+          <input id="city" type="text" name="user[city]" class="validate"  >
+          <label for="city" >City</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="province" type="text" name="user[province]"  class="validate" >
+          <label for="province" >State/Province/Region</label>
         </div>
       </div>
 
@@ -82,6 +101,10 @@
           <i class="material-icons ">send</i>
         </button>
       </div>
+
+
+
+      <input id="user_type" name="user[user_type]" type="hidden" value =1 class="validate">
     </form>
   </div>
 </div>

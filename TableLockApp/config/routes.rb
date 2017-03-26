@@ -30,13 +30,24 @@ Rails.application.routes.draw do
   get '/admin/reject'=>'admin/restaurant_requests#reject'
 
   get 'diner/home'=>'diner/home#home'
-  get 'diner/profile'=>'diner/profile#profile'
+  get 'diner/profile'=>'diner/profile#view'
   get 'diner/reservation_history'=>'diner/past_reservations#past_reservations'
   get 'diner/reservations'=>'diner/reservations#reservations'
   post 'diner/profile/update'=>'diner/profile#update'
 
+  get 'restaurant/home'=>'restaurant/home#home'
+  get 'restaurant/profile'=>'restaurant/profile#profile'
+  get 'restaurant/reservations'=>'restaurant/reservations#search_reservation'
+  get 'restaurant/table_management'=>'restaurant/table_management'
+  get 'restaurant/offers'=>'restaurant/offers#show'
+  get 'restaurant/offer/new'=>'restaurant/offers#new'
+  post '/restaurant/offer/add'=>'restaurant/offers#create'
+  post '/restaurant/profile/update'=>'restaurant/profile#update'
+
   get 'signup_diner' => 'auth/signup#signup_diner'
   get 'signup_restaurant' => 'auth/signup#signup_restaurant'
+
+  get 'reapply'=>'restaurant/home#reapply'
 
   delete 'logout'=>'sessions#destroy'
 
