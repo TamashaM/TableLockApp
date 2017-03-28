@@ -1,0 +1,49 @@
+<head>
+  <style>
+    body{
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'cover.jpg' %>);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
+</head>
+<%= render :partial=>"diner/side_bar" %>
+
+<!-- Page Layout here -->
+<div class="row">
+
+
+  <!-- Cards container -->
+  <div class="col s12 m12 ">
+
+    <div class="row">
+      <div class="col s4">
+        <div class="card small">
+          <div class="card-image">
+            <%= image_tag("rest1.jpg", :align=>"middle") %>
+            <span class="card-title">Restaurant Name</span>
+          </div>
+
+          <div class="card-action">
+            <a href="#">Visit Restaurant</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s4">
+      <div class="card small">
+        <div class="card-image">
+          <%= image_tag("res2.jpg",  :height=>"240", :align=>"middle") %>
+          <span class="card-title">Restaurant Name</span>
+        </div>
+
+        <div class="card-action">
+          <a href="#">Visit Restaurant</a>
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

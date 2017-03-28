@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326091604) do
+ActiveRecord::Schema.define(version: 20170328045848) do
+
+  create_table "diner_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "diner_id"
+    t.integer  "delay_count"
+    t.integer  "on_time_count"
+    t.integer  "no_show_count"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "diners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -31,10 +40,19 @@ ActiveRecord::Schema.define(version: 20170326091604) do
     t.integer  "restaurant_id"
     t.string   "dining_style"
     t.string   "phone_number"
-    t.integer  "cuisines"
     t.string   "website"
     t.string   "add_info"
     t.string   "dress_code"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "capacity_seating"
+    t.integer  "time_seating"
+    t.string   "cuisines"
+  end
+
+  create_table "favourites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "restaurant_id"
+    t.integer  "diner_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -84,12 +102,27 @@ ActiveRecord::Schema.define(version: 20170326091604) do
     t.string   "add_line2"
   end
 
+  create_table "time_periods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "restaurant_id"
+    t.integer  "week_day"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email"
     t.string   "password_digest"
     t.integer  "user_type"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "week_days", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

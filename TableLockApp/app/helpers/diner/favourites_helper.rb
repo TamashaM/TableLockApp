@@ -1,0 +1,2 @@
+module Diner::FavouritesHelper
+end

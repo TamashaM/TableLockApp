@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :diners
   get 'restaurant/index'
   root 'restaurant#index'
 
@@ -34,15 +35,22 @@ Rails.application.routes.draw do
   get 'diner/reservation_history'=>'diner/past_reservations#past_reservations'
   get 'diner/reservations'=>'diner/reservations#reservations'
   post 'diner/profile/update'=>'diner/profile#update'
+  get 'diner/favourites'=>'diner/favourites#view'
+  get 'diner/history'=>'diner/history#view'
+  get 'diner/public_profile'=>'diner/public_profile#view'
 
   get 'restaurant/home'=>'restaurant/home#home'
-  get 'restaurant/profile'=>'restaurant/profile#profile'
+  get 'restaurant/profile'=>'restaurant/profile#view'
+  post 'restaurant/profile/update'=>'restaurant/profile#update'
+  get 'restaurant/dining_information'=>'restaurant/dining_information#view'
   get 'restaurant/reservations'=>'restaurant/reservations#search_reservation'
-  get 'restaurant/table_management'=>'restaurant/table_management'
+  get 'restaurant/table_management/edit'=>'restaurant/table_management#edit'
+  post 'restaurant/table_management/add'=>'restaurant/table_management#add'
+
   get 'restaurant/offers'=>'restaurant/offers#show'
   get 'restaurant/offer/new'=>'restaurant/offers#new'
   post '/restaurant/offer/add'=>'restaurant/offers#create'
-  post '/restaurant/profile/update'=>'restaurant/profile#update'
+  post '/restaurant/dining_information/update'=>'restaurant/dining_information#update'
 
   get 'signup_diner' => 'auth/signup#signup_diner'
   get 'signup_restaurant' => 'auth/signup#signup_restaurant'

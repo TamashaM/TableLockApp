@@ -1,0 +1,212 @@
+<head>
+
+  <script>
+      var chip = {
+          tag: 'chip content',
+          image: '', //optional
+          id: 1, //optional
+      };
+
+      $(document).ready(function() {
+      $('.chips').material_chip();
+      });
+
+      $(document).ready(function() {
+      $('.chips-initial').material_chip({
+          data: [{
+              tag: 'Apple',
+          }, {
+              tag: 'Microsoft',
+          }, {
+              tag: 'Google',
+          }],
+      });
+      });
+      $(document).ready(function() {
+          $('.chips-placeholder').material_chip({
+              placeholder: 'Enter a tag',
+              secondaryPlaceholder: '+Tag',
+          });
+      });
+      $(document).ready(function() {
+        $('.chips-autocomplete').material_chip({
+            autocompleteOptions: {
+                data: {
+                    'Apple': null,
+                    'Microsoft': null,
+                    'Google': null
+                },
+                limit: Infinity,
+                minLength: 0
+            }
+        });
+      });
+      $(document).ready(function(){
+          // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+          $('.modal').modal();
+      });
+
+      $(document).ready(function() {
+          $('select').material_select();
+      });
+
+
+
+
+  </script>
+</head>
+<%= render :partial=>"restaurant/side_bar" %>
+<form method="get" action="">
+  <div class=" col s12 white" >
+    <div class="row">
+
+      <div class="input-field col s3 right">
+      <button data-target="addPeriod" class="btn">Add Period</button>
+      </div>
+    </div>
+
+    <table class="responsive-table highlight centered white">
+      <thead>
+      <tr>
+        <th data-field="day">Day</th>
+        <th data-field="tp1">Time Periods</th>
+
+
+
+      </tr>
+      </thead>
+
+      <tbody>
+
+
+          <tr>
+            <td>Monday</td>
+            <td>
+            <% @monday.each do |tp| %>
+             <span>From</span>
+               <%=tp.start_time.strftime("%H:%M") %>
+             <span>To</span>
+               <%=tp.end_time.strftime("%H:%M") %>
+                  <span>    &nbsp;               </span>
+
+            <% end%>
+            </td>
+
+          <tr>
+            <td>Tuesday</td>
+            <td>
+              <% @tuesday.each do |tp| %>
+                  <span>From</span>
+                  <%=tp.start_time.strftime("%H:%M") %>
+                  <span>To</span>
+                  <%=tp.end_time.strftime("%H:%M") %>
+                  <span>    &nbsp;               </span>
+
+              <% end%>
+            </td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td>
+              <% @wednesday.each do |tp| %>
+                  <span>From</span>
+                  <%=tp.start_time.strftime("%H:%M") %>
+                  <span>To</span>
+                  <%=tp.end_time.strftime("%H:%M") %>
+                  <span>    &nbsp;               </span>
+
+              <% end%>
+            </td>
+
+          </tr><tr>
+            <td>Thursday</td>
+            <td>
+              <% @thursday.each do |tp| %>
+                  <span>From</span>
+                  <%=tp.start_time.strftime("%H:%M") %>
+                  <span>To</span>
+                  <%=tp.end_time.strftime("%H:%M") %>
+                  <span>    &nbsp;               </span>
+
+              <% end%>
+            </td>
+
+          </tr>
+          <tr>
+            <td>Friday</td>
+
+            <td>
+              <% @friday.each do |tp| %>
+                  <span>From</span>
+                  <%=tp.start_time.strftime("%H:%M") %>
+                  <span>To</span>
+                  <%=tp.end_time.strftime("%H:%M") %>
+                  <span>    &nbsp;               </span>
+
+              <% end%>
+            </td>
+          </tr>
+          <tr>
+            <td>Saturday</td>
+            <td>
+              <% @saturday.each do |tp| %>
+                  <span>From</span>
+                  <%=tp.start_time.strftime("%H:%M") %>
+                  <span>To</span>
+                  <%=tp.end_time.strftime("%H:%M") %>
+                  <span>    &nbsp;               </span>
+
+              <% end%>
+            </td>
+
+
+          </tr>
+          <tr>
+            <td>Sunday</td>
+            <td>
+              <% @sunday.each do |tp| %>
+                  <span>From</span>
+                  <%=tp.start_time.strftime("%H:%M") %>
+                  <span>To</span>
+                  <%=tp.end_time.strftime("%H:%M") %>
+                  <span>    &nbsp;               </span>
+
+              <% end%>
+            </td>
+
+
+          </tr>
+
+      </tbody>
+    </table>
+  </div>
+</form>
+<form method="post" action="/restaurant/table_management/add">
+<div id="addPeriod" class="modal ">
+  <div class="modal-content">
+
+    <p>Please select a time period </p>
+
+
+    <select multiple id="days" name="days[]">
+
+      <%= options_from_collection_for_select(@weekdays, :id, :day) %>
+    </select>
+
+<div class="row">
+  <label>From </label>
+    <input type='time' name="tp[start_time]" min='00:00' max='24:00'  step='1800' />
+
+</div>
+    <div class="row">
+      <label>To</label>
+    <input type='time' name="tp[end_time]" min='00:00' max='24:00'  step='1800' />
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn waves-effect waves-light" type="submit" name="action">Save
+      <i class="material-icons ">send</i>
+    </button>
+  </div>
+</div>
+</form>
