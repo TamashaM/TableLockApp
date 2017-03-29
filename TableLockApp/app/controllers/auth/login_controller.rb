@@ -24,10 +24,10 @@ class Auth::LoginController < ApplicationController
         elsif @user.user_type==1
           @restaurant=Restaurant.find_by_user_id(@user.id)
           @restaurant_request=RestaurantRequest.find_by_restaurant_id(@restaurant.id)
-          if @restaurant_request.status==0
+          if @restaurant_request.status==nil
             session[:status]=0
             redirect_to controller:'/restaurant/home',
-            action:'reapply'
+            action:'pending'
 
           elsif @restaurant_request.status==1
             session[:status]=1

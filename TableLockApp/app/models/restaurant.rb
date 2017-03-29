@@ -5,4 +5,5 @@ class Restaurant < ApplicationRecord
   has_many :offers
   has_many :time_periods
   has_many :favourites
+  validates :first_name,:last_name,:position,:restaurant_name, :telephone,:city,:province,:add_line1,:add_line2, presence: true
 end

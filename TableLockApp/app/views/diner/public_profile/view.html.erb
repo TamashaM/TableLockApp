@@ -1,8 +1,53 @@
+<head>
+  <style>
+    h4 {
+      color: #4db6ac;
 
-<body>
+    }
+     tap{
+        padding-left:5em;
+        margin-left:5em
+      }
+    body{
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
+</head>
+<div>
+<%= render :partial=> "restaurant/side_bar" %>
+<div class="container ">
+  <div class="col s6  card-panel offset-s3 " >
 
-<h1>My First Heading</h1>
+<form class="col s12  " >
+  <div class="row">
 
-<p>My first paragraph.</p>
+  </div>
+  <h4><%=@diner.first_name%> &nbsp; <%=@diner.last_name%></h4>
+  <hr>
+  <br>
 
+<span>Contact Number : <%=@diner.telephone%></span>
+  <br>
+  <br>
+  <br>
+  <span>  Email : <%=@user.email%></span>
+
+ <br>
+  <br>
+  <br>
+  <span>  Date of Birth : <%=@diner.dob%></span>
+
+</span>
+
+
+</form>
+
+</div>
+</div>
+  <%= render :partial=>"diner/pie_chart" %>
+</div>
 </body>

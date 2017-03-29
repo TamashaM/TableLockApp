@@ -18,7 +18,7 @@ class Auth::UsersController < ApplicationController
           if @diner.save!
                 session[:user_id]=@user.id
                 session[:diner_id]=@diner.id
-                redirect_to '/welcome/index'
+                redirect_to '/login'
           else
                 redirect_to '/login/signup_diner'
           end

@@ -1,0 +1,195 @@
+<head>
+  <style>
+    h4 {
+      color: #4db6ac;
+
+    }
+    tap{
+      padding-left:5em;
+      margin-left:5em
+    }
+    h5{
+      font-size:14pt;
+      font-weight :bold
+    }
+
+     body{
+       background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+       -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;
+     }
+
+  </style>
+</head>
+<div>
+  <%= render :partial=> "diner/side_bar" %>
+  <div class="container  ">
+    <div class="  card-panel offset-s3 " >
+
+      <form class="col s12  " >
+        <div class="row">
+
+        </div>
+        <h4><%=@restaurant.restaurant_name%> &nbsp; </h4>
+        <hr>
+
+        <h5> About</h5>
+        <span><%=@restaurant.about%></span>
+
+        <br>
+        <br>
+        <hr>
+
+        <h5> Restaurant Photos</h5>
+        <span></span>
+
+        <br>
+        <br>
+        <hr>
+        <h5> Dining Information</h5>
+        <div class="row">
+          <div class="col s6">
+            <span>Dining Style:</span>&nbsp;<span><%=@dining_info.dining_style%></span>
+          </div>
+          <div class="col s6">
+            <span>Dress Code:</span>&nbsp;<span><%=@dining_info.dress_code%></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <span>Cuisines:</span>&nbsp;<span><%=@dining_info.cuisines%></span>
+          </div>
+          <div class="col s6">
+            <span>Website:</span>&nbsp;<span><%=@dining_info.website%></span>
+          </div>
+        </div>
+        <br>
+        <br>
+        <hr>
+        <h5> Operation Hours</h5>
+        <div class="row">
+
+        <div class="row col s12 ">
+
+          <span>Monday:</span>
+          <span>
+            <% @monday.each do |tp| %>
+
+                <%=tp.start_time.strftime("%H:%M") %>
+                <span>To</span>
+                <%=tp.end_time.strftime("%H:%M") %>
+                <span>    &nbsp;               </span>
+
+            <% end%>
+          </span>
+        </div>
+        <div class="row col s12">
+          <span>Tuesday:</span>
+          <span>
+            <% @tuesday.each do |tp| %>
+
+                <%=tp.start_time.strftime("%H:%M") %>
+                <span>To</span>
+                <%=tp.end_time.strftime("%H:%M") %>
+                <span>    &nbsp;               </span>
+
+            <% end%>
+          </span>
+        </div>
+        <div class="row col s12">
+          <span>Wednesday:</span>
+          <span>
+            <% @wednesday.each do |tp| %>
+
+                <%=tp.start_time.strftime("%H:%M") %>
+                <span>To</span>
+                <%=tp.end_time.strftime("%H:%M") %>
+                <span>    &nbsp;               </span>
+
+            <% end%>
+          </span>
+        </div>
+        <div class="row col s12">
+          <span>Thursday:</span>
+          <span>
+            <% @thursday.each do |tp| %>
+
+                <%=tp.start_time.strftime("%H:%M") %>
+                <span>To</span>
+                <%=tp.end_time.strftime("%H:%M") %>
+                <span>    &nbsp;               </span>
+
+            <% end%>
+          </span>
+        </div>
+        <div class="row col s12">
+          <span>Friday:</span>
+          <span>
+            <% @friday.each do |tp| %>
+
+                <%=tp.start_time.strftime("%H:%M") %>
+                <span>To</span>
+                <%=tp.end_time.strftime("%H:%M") %>
+                <span>    &nbsp;               </span>
+
+            <% end%>
+          </span>
+        </div>
+        <div class="row col s12">
+          <span>Saturday:</span>
+          <span>
+            <% @saturday.each do |tp| %>
+
+                <%=tp.start_time.strftime("%H:%M") %>
+                <span>To</span>
+                <%=tp.end_time.strftime("%H:%M") %>
+                <span>    &nbsp;               </span>
+
+            <% end%>
+          </span>
+        </div>
+        <div class="row col s12">
+          <span>Sunday:</span>
+          <span>
+            <% @sunday.each do |tp| %>
+
+                <%=tp.start_time.strftime("%H:%M") %>
+                <span>To</span>
+                <%=tp.end_time.strftime("%H:%M") %>
+                <span>    &nbsp;               </span>
+
+            <% end%>
+          </span>
+        </div>
+
+
+        </div>
+        <br>
+        <hr>
+        <h5> Contact</h5>
+        <div class="row">
+        <div class=" col s6">
+          <span>Address:</span><br>
+          <span><%=@restaurant.add_line1%></span><br>
+          <span><%=@restaurant.add_line2%></span><br>
+          <span><%=@restaurant.city%></span><br>
+          <span><%=@restaurant.province%></span>
+        </div>
+        <div class="col s6">
+          <span>Phone Number:</span> &nbsp;<span><%=@dining_info.phone_number%></span><br>
+          <span>Email:</span> &nbsp;<span><%=@dining_info.phone_number%></span>
+        </div>
+        </div>
+      </form>
+        </div>
+
+
+
+
+    </div>
+  </div>
+
+
+</body>

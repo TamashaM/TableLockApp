@@ -11,6 +11,8 @@ class Restaurant::OffersController < ApplicationController
   end
   def create
     @offer = Offer.new(offer_params)
+    puts @offer.start_date
+    puts @offer.end_date
     #should be changed to session[:restaurant_id]
     @restaurant=Restaurant.find(3)
 

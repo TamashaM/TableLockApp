@@ -20,14 +20,14 @@
 
           var data = google.visualization.arrayToDataTable([
               ['Arrival', 'Count'],
-              ['On Time',     10],
-              ['Delay',      2],
-              ['No Show',  1],
+              ['On Time',     <%=@history.on_time_count%>],
+              ['Delay',      <%=@history.delay_count%>],
+              ['No Show',  <%=@history.no_show_count%>],
 
           ]);
 
           var options = {
-              title: 'My Arrival Statistics'
+              title: 'Arrival Statistics'
           };
 
           var chart = new google.visualization.PieChart(document.getElementById('piechart'));

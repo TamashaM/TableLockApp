@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :diners
+
   get 'restaurant/index'
   root 'restaurant#index'
 
@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   get 'restaurant/reservations'=>'restaurant/reservations#search_reservation'
   get 'restaurant/table_management/edit'=>'restaurant/table_management#edit'
   post 'restaurant/table_management/add'=>'restaurant/table_management#add'
+  get 'restaurant/public_profile'=>'restaurant/public_profile#view'
 
   get 'restaurant/offers'=>'restaurant/offers#show'
   get 'restaurant/offer/new'=>'restaurant/offers#new'
@@ -56,6 +57,7 @@ Rails.application.routes.draw do
   get 'signup_restaurant' => 'auth/signup#signup_restaurant'
 
   get 'reapply'=>'restaurant/home#reapply'
+  get 'pending'=>'restaurant/home#pending'
 
   delete 'logout'=>'sessions#destroy'
 

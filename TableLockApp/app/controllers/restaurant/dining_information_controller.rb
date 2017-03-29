@@ -14,7 +14,7 @@ class Restaurant::DiningInformationController < ApplicationController
     @restaurant.save
     if @restaurant.dining_information
       if @restaurant.dining_information.update_attributes(profile_params)
-        redirect_to '/restaurant/reservations'
+        redirect_to (:back)
       else
         render('view')
       end
@@ -23,7 +23,7 @@ class Restaurant::DiningInformationController < ApplicationController
     else
       @dining_info=DiningInformation.new(profile_params)
       if @restaurant.dining_information=@dining_info
-        redirect_to '/restaurant/reservations'
+        redirect_to (:back)
       else
         render('view')
       end

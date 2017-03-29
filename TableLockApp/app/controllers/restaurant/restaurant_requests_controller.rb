@@ -14,7 +14,7 @@ class Restaurant::RestaurantRequestsController < ApplicationController
     @restaurant_request.restaurant_id=params[:restaurant_id]
     if @restaurant_request.save!
 
-      redirect_to '/welcome/index'
+      redirect_to '/login'
     else
       redirect_to '/signup_restaurant'
     end
