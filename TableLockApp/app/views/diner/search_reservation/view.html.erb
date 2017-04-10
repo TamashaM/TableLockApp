@@ -1,0 +1,42 @@
+<head>
+  <style>
+    h6 {
+      color: #4db6ac;
+
+    }
+    body{
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
+</head>
+<%= render :partial=> "diner/search_bar" %>
+<%= render :partial=> "diner/side_bar" %>
+<% @restaurants.each do |rest| %>
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src=<%= asset_path 'logo.jpg' %> width="60" height="200">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <h6><%=rest.restaurant_name%> </h6>
+          <span><%=rest.dining_information.cuisines %></span><br>
+          <span><%=rest.add_line1%></span>&nbsp;
+          <span><%=rest.add_line2%></span>&nbsp;
+          <span><%=rest.city%></span>&nbsp;
+          <span><%=rest.province%></span>
+        </div>
+        <div class="card-action">
+          <% @tss[rest.id].each do |ts| %>
+              <a class="waves-effect waves-light btn " href="/diner/make_reservation?id=<%=rest.id%>&ts=<%=ts%>&date=<%=@date%>&packs=<%=@packs%>"><%=ts%></a>
+          <% end %>
+
+        </div>
+
+      </div>
+    </div>
+    <% end %>
+

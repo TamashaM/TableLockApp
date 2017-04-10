@@ -1,5 +1,17 @@
 <head>
+  <style>
+  h4 {
+  color: #4db6ac;
 
+  }
+  body{
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  </style>
   <script>
       $(document).ready(function() {
 
@@ -9,9 +21,14 @@
 </head>
 <%= render :partial=>"restaurant/side_bar" %>
 <div class="row">
-     <form class="form white " method="post" action="/restaurant/profile/update">
+     <form class="col s12 white " method="post" action="/restaurant/profile/update">
+       <div class="row">
+       </div>
+      <h4>Profile</h4>
 
-
+       <hr>
+       <div class="row">
+       </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">restaurant </i>

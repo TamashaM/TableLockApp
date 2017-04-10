@@ -1,0 +1,2 @@
+module Diner::SearchReservationHelper
+end

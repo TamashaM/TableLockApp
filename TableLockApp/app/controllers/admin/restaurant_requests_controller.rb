@@ -10,7 +10,7 @@ class Admin::RestaurantRequestsController < ApplicationController
     @restaurant_request.status=1
     @restaurant_request.save!
 
-    #creating the user object
+
 
 
     redirect_to '/admin/view_requests'

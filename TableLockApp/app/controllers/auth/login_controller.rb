@@ -18,6 +18,7 @@ class Auth::LoginController < ApplicationController
         if @user.user_type==0
           @diner=Diner.find_by_user_id(@user.id)
           session[:diner_id]=@diner.id
+          flash[:notice]="You are now logged in"
           redirect_to controller:'/diner/home',
                       action:'home',
                       id: @user.id
@@ -25,17 +26,20 @@ class Auth::LoginController < ApplicationController
           @restaurant=Restaurant.find_by_user_id(@user.id)
           @restaurant_request=RestaurantRequest.find_by_restaurant_id(@restaurant.id)
           if @restaurant_request.status==nil
+            #restaurant req is still pending
             session[:status]=0
             redirect_to controller:'/restaurant/home',
             action:'pending'
 
           elsif @restaurant_request.status==1
+            #restaurant req accepted
             session[:status]=1
 
             session[:restaurant_id]=@restaurant.id
             redirect_to controller:'/restaurant/home',
                         action:'home'
           else
+            #restaurant req rejected
             session[:status]=2
             redirect_to controller:'/restaurant/home',
                         action:'reapply'

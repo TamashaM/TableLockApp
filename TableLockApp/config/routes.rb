@@ -38,6 +38,9 @@ Rails.application.routes.draw do
   get 'diner/favourites'=>'diner/favourites#view'
   get 'diner/history'=>'diner/history#view'
   get 'diner/public_profile'=>'diner/public_profile#view'
+  get 'diner/search_reservations'=>'diner/search_reservation#view'
+  post 'diner/search_reservations'=>'diner/search_reservation#view'
+  get 'diner/make_reservation'=>'diner/search_reservation#add'
 
   get 'restaurant/home'=>'restaurant/home#home'
   get 'restaurant/profile'=>'restaurant/profile#view'

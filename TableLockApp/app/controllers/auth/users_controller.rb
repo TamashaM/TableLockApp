@@ -6,10 +6,11 @@ class Auth::UsersController < ApplicationController
   end
   def create
     @user = User.new(user_params)
+    #create user
     if @user.save!
       @user_id=@user.id
       if params[:user][:user_type].to_i==0
-
+          #create diner
           @diner=Diner.new
           @diner.user_id=@user.id
           @diner.first_name=params[:user][:first_name]

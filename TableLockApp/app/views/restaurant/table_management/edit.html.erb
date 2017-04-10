@@ -56,6 +56,13 @@
   </script>
 </head>
 <%= render :partial=>"restaurant/side_bar" %>
+<% if !flash[:notice].blank? %>
+    <div class="notice">
+      <%= flash[:notice]%>
+      <%= puts flash[:notice] %>
+    </div>
+<% end %>
+
 <form method="get" action="">
   <div class=" col s12 white" >
     <div class="row">

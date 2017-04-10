@@ -8,6 +8,7 @@ class Diner::ProfileController < ApplicationController
     @user=User.find(session[:user_id])
   end
   def update
+    #diner profile update
     @diner=Diner.find(params[:diner][:id])
     if @diner.update_attributes(diner_params)
       redirect_to '/diner/reservations'

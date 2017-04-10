@@ -1,9 +1,7 @@
 require 'test_helper'
 
-class Auth::SignupControllerTest < ActionDispatch::IntegrationTest
+class TimeSlotTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
-
-
 end

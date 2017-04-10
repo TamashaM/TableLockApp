@@ -1,0 +1,104 @@
+<head>
+  <style>
+    body{
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+  </style>
+  <script>
+      $(document).ready(function() {
+
+          $('select').material_select();
+      });
+  </script>
+</head>
+<%= render :partial=> "diner/side_bar" %>
+<div class="container">
+<div class="col s6 z-depth-4 card-panel offset-s3" >
+  <form class="col s12 ">
+    <div class="row ">
+      <div class="col s3">
+
+      </div>
+      <div class="input-field col s6 ">
+      <i class="material-icons prefix ">person</i>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <span >First Name</span>&nbsp;
+      <span>Last Name</span>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col s3">
+
+      </div>
+      <div class="input-field col s6 ">
+        <i class="material-icons prefix ">restaurant</i>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <span ><%= @restaurant.restaurant_name%></span>&nbsp;
+
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col s3">
+
+      </div>
+      <div class="input-field col s6 ">
+        <i class="material-icons prefix ">schedule</i>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <span ><%=@date%> &nbsp;<%=@time_slot%></span>&nbsp;
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=" col s3">
+      </div>
+      <div class="input-field col s6 ">
+        <i class="material-icons prefix ">people</i>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <span ><%=@packs%></span>&nbsp;<span>packs</span>
+
+      </div>
+
+    </div>
+
+    <div class="row ">
+      <div class="col s3">
+
+      </div>
+        <div class="input-field col s6 ">
+          <i class="mdi-action-lock-outline prefix material-icons prefix">restaurant_menu</i>
+          <select id="meal_type" name="">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">A la Carte</option>
+            <option value="2">Buffet</option>
+            <option value="3">High Tea</option>
+          </select>
+
+          <label for="user_type" class="active" ></label>
+        </div>
+
+
+
+      <div class="col s3">
+
+      </div>
+    </div>
+
+
+
+    <div class="row center-align">
+      <button class="btn waves-effect waves-light" type="submit" name="action">Pay and Reserve
+
+      </button>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Pay
+
+      </button>
+    </div>
+  </form>
+</div>
+</div>

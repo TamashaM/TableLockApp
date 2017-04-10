@@ -9,6 +9,6 @@ class Restaurant::PublicProfileController < ApplicationController
     @thursday=@restaurant.time_periods.where(week_day: '4')
     @friday=@restaurant.time_periods.where(week_day: '5')
     @saturday=@restaurant.time_periods.where(week_day: '6')
-    @sunday=@restaurant.time_periods.where(week_day: '7')
+    @sunday=@restaurant.time_periods.where(week_day: '0')
   end
 end
