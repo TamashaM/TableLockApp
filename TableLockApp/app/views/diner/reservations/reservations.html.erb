@@ -3,6 +3,7 @@
 
     select{  font-size:20px;
       color: black}
+
     body{
       background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
       -webkit-background-size: cover;
@@ -10,51 +11,79 @@
       -o-background-size: cover;
       background-size: cover;
     }
+    p {font-size:18px;
+      color: black}
+
 
   </style>
+
+  <script>
+      $(document).ready(function() {
+
+          $('select').material_select();
+      });
+      function optionCheck(that) {
+          if (that.value == "1") {
+
+              document.getElementById("restaurant_search").style.display = "block";
+              document.getElementById("date_search").style.display = "none";
+          } else {
+              document.getElementById("date_search").style.display = "block";
+              document.getElementById("restaurant_search").style.display = "none";
+          }
+      }
+
+  </script>
 </head>
 
 <%= render :partial=>"diner/side_bar" %>
-
+<form method="post" action="/diner/reservations/search">
 <div class="row">
   <div class=" col s3" >
-    <select>
+    <select name="search_by" onchange="optionCheck(this);">
       <option value="" disabled selected>Search by</option>
-      <option value="1">Date</option>
-      <option value="2">Restaurant</option>
+      <option value="1">Restaurant</option>
+      <option value="2">Date</option>
 
     </select>
 
   </div>
-  <div class=" col s3" >
-    <input  id="search" type="text" class="validate">
+  <div id="restaurant_search" class=" col s3"  style="display: none;" >
+    <input  name="restaurant_search" type="text" class="validate" >
   </div>
+  <div id="date_search" class=" col s3" style="display: none;" >
+    <input name="date_search" name="date" type="date" class="datepicker" >
+  </div>
+
   <div class=" col s3 ">
 
-    <a class="waves-effect waves-light btn">Search </a>
+    <button type="submit" name="action" class="waves-effect waves-light btn">Search </button>
 
   </div>
 </div>
-
+</form>
 <div class="col s12 m7">
+  <% @past_reservations.each  do |fr|%>
+
   <div class="card horizontal">
     <div class="card-image">
-      <img src=<%= asset_path 'logo.jpg' %> width="60" height="240">
+      <img src=<%= asset_path 'logo.jpg' %> width="60" height="220">
     </div>
     <div class="card-stacked">
       <div class="card-content">
-        <p>Restaurant:</p>
-        <p>Date:</p>
-        <p>Time Slot:</p>
-        <p>Number of people:</p>
+        <p>Restaurant:&nbsp;<%= fr.restaurant.restaurant_name %></p>
+        <p>Date:&nbsp;<%= fr.time_slot.date %></p>
+        <p>Time:&nbsp;<%=fr.time_slot.time.strftime("%H:%M") %></p>
+        <p>Number of packs:&nbsp;<%= fr.packs %></p>
       </div>
       <div class="card-action">
-        <a class="waves-effect waves-light btn-medium">Modify</a>
-        <a class="waves-effect waves-light btn-medium">Cancel</a>
+
+        <a href="/diner/reservations/cancel?id=<%=fr.id %>" class="waves-effect waves-light btn-medium">Cancel</a>
 
       </div>
 
     </div>
   </div>
+      <% end %>
 </div>
 

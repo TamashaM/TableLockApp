@@ -1,3 +1,4 @@
 class TimeSlot < ApplicationRecord
-  has_one :restaurant
+  belongs_to :restaurant
+  has_many :reservations
 end

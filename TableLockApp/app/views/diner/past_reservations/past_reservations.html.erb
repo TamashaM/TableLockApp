@@ -1,6 +1,8 @@
 <head>
   <style>
-    label {font-size:20px;
+    p {font-size:18px;
+      color: black}
+    label {font-size:18px;
       color: black}
     select{  font-size:20px;
       color: black}
@@ -13,48 +15,80 @@
       background-size: cover;
     }
   </style>
+
+  <script>
+      function optionCheck(that) {
+          if (that.value == "1") {
+
+              document.getElementById("restaurant_search").style.display = "block";
+              document.getElementById("date_search").style.display = "none";
+          } else {
+              document.getElementById("date_search").style.display = "block";
+              document.getElementById("restaurant_search").style.display = "none";
+          }
+      }
+      $(document).ready(function() {
+
+          $('select').material_select();
+      });
+  </script>
 </head>
 <%= render :partial=> "diner/side_bar" %>
-<div class="row">
+<form method="post" action="/diner/reservation_history/search">
+  <div class="row">
+    <div class=" col s3" >
+      <select name="search_by" onchange="optionCheck(this);">
+        <option value="" disabled selected>Search by</option>
+        <option value="1">Restaurant</option>
+        <option value="2">Date</option>
 
+      </select>
 
-  <div class=" col s3" >
-    <select>
-      <option value="" disabled selected>Search by</option>
-      <option value="1">Date</option>
-      <option value="2">Restaurant</option>
+    </div>
+    <div id="restaurant_search" class=" col s3"  style="display: none;" >
+      <input  name="restaurant_search" type="text" class="validate" >
+    </div>
+    <div id="date_search" class=" col s3" style="display: none;" >
+      <input name="date_search" name="date" type="date" class="datepicker" >
+    </div>
 
-    </select>
+    <div class=" col s3 ">
 
+      <button type="submit" name="action" class="waves-effect waves-light btn">Search </button>
+
+    </div>
   </div>
-  <div class=" col s3" >
-    <input  id="search" type="text" class="validate">
-  </div>
-  <div class=" col s3 ">
-
-    <a class="waves-effect waves-light btn">Search </a>
-
-  </div>
-</div>
+</form>
 
 
 <div class="col s12 m7">
+  <% @past_reservations.each do |pr| %>
   <div class="card horizontal">
     <div class="card-image">
       <img src=<%= asset_path 'logo.jpg' %> width="60" height="240">
     </div>
     <div class="card-stacked">
       <div class="card-content">
-        <p>Restaurant:</p>
-        <p>Date:</p>
-        <p>Time Slot:</p>
-        <p>Arrival Status:</p>
+        <p>Restaurant: &nbsp;<%= pr.restaurant.restaurant_name %></p>
+        <p>Date: &nbsp; <%=pr.time_slot.date %></p>
+        <p>Time Slot: &nbsp; <%=pr.time_slot.time.strftime("%H:%M") %> </p>
+        <% if pr.customer_status.to_i==0 %>
+          <p>Arrival Status: On Time </p>
+        <% elsif pr.customer_status.to_i==0 %>
+            <p>Arrival Status: Delayed </p>
+        <% elsif pr.customer_status==2 %>
+            <p>Arrival Status: No show </p>
+        <% else %>
+            <p>Arrival Status: Not Marked</p>
+        <% end %>
+
       </div>
       <div class="card-action">
-        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">favorite</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red" href="/diner/add_to_favourites?id=<%=pr.restaurant.id%>'"><i class="material-icons">favorite</i></a>
         <label>Add to favourites</label>
       </div>
     </div>
   </div>
+      <% end %>
 </div>
 

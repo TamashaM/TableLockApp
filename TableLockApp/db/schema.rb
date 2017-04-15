@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410133907) do
+ActiveRecord::Schema.define(version: 20170413120940) do
 
   create_table "diner_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "diner_id"
@@ -69,6 +69,19 @@ ActiveRecord::Schema.define(version: 20170410133907) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "reservations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "diner_id"
+    t.integer  "restaurant_id"
+    t.integer  "time_slot_id"
+    t.integer  "packs"
+    t.integer  "meal_type_id"
+    t.integer  "payment_status"
+    t.integer  "reservation_status"
+    t.integer  "customer_status"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
   create_table "restaurant_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -100,6 +113,7 @@ ActiveRecord::Schema.define(version: 20170410133907) do
     t.string   "about"
     t.string   "add_line1"
     t.string   "add_line2"
+    t.string   "email"
   end
 
   create_table "time_periods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -115,10 +129,10 @@ ActiveRecord::Schema.define(version: 20170410133907) do
     t.integer  "restaurant_id"
     t.date     "date"
     t.time     "time"
-    t.integer  "reservations"
+    t.integer  "reservation_count"
     t.integer  "waiting_list_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

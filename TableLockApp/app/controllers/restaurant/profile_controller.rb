@@ -8,7 +8,7 @@ class Restaurant::ProfileController < ApplicationController
   def update
     @restaurant=Restaurant.find(3)
 
-
+      puts @restaurant.attributes
       if @restaurant.update_attributes(restaurant_params)
         redirect_to '/restaurant/reservations'
       else

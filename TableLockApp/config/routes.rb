@@ -33,11 +33,17 @@ Rails.application.routes.draw do
   get 'diner/home'=>'diner/home#home'
   get 'diner/profile'=>'diner/profile#view'
   get 'diner/reservation_history'=>'diner/past_reservations#past_reservations'
+  get 'diner/reservation_history/search'=>'diner/past_reservations#past_reservations'
+  post 'diner/reservation_history/search'=>'diner/past_reservations#search'
+  get '/diner/add_to_favourites'=>'diner/past_reservations#add_to_favourites'
   get 'diner/reservations'=>'diner/reservations#reservations'
+  get '/diner/reservations/search'=>'diner/reservations#reservations'
+  post '/diner/reservations/search'=>'diner/reservations#search'
+  get '/diner/reservations/cancel'=>'diner/reservations#cancel'
   post 'diner/profile/update'=>'diner/profile#update'
   get 'diner/favourites'=>'diner/favourites#view'
   get 'diner/history'=>'diner/history#view'
-  get 'diner/public_profile'=>'diner/public_profile#view'
+  get '/diner/public_profile'=>'diner/public_profile#view'
   get 'diner/search_reservations'=>'diner/search_reservation#view'
   post 'diner/search_reservations'=>'diner/search_reservation#view'
   get 'diner/make_reservation'=>'diner/search_reservation#add'
@@ -46,10 +52,15 @@ Rails.application.routes.draw do
   get 'restaurant/profile'=>'restaurant/profile#view'
   post 'restaurant/profile/update'=>'restaurant/profile#update'
   get 'restaurant/dining_information'=>'restaurant/dining_information#view'
-  get 'restaurant/reservations'=>'restaurant/reservations#search_reservation'
+  get 'restaurant/reservations/search'=>'restaurant/reservations#view_reservations'
+  post 'restaurant/reservations/search'=>'restaurant/reservations#view_reservations'
   get 'restaurant/table_management/edit'=>'restaurant/table_management#edit'
   post 'restaurant/table_management/add'=>'restaurant/table_management#add'
-  get 'restaurant/public_profile'=>'restaurant/public_profile#view'
+  get '/restaurant/public_profile'=>'restaurant/public_profile#view'
+  get '/restaurant/mark_status'=>'restaurant/reservations#mark_status'
+  get '/restaurant/reservations/cancel'=>'restaurant/reservations#cancel'
+
+  post '/reservation/create'=>'reservations#add'
 
   get 'restaurant/offers'=>'restaurant/offers#show'
   get 'restaurant/offer/new'=>'restaurant/offers#new'
@@ -58,6 +69,8 @@ Rails.application.routes.draw do
 
   get 'signup_diner' => 'auth/signup#signup_diner'
   get 'signup_restaurant' => 'auth/signup#signup_restaurant'
+
+
 
   get 'reapply'=>'restaurant/home#reapply'
   get 'pending'=>'restaurant/home#pending'

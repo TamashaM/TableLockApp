@@ -17,33 +17,30 @@
 
   <!-- Cards container -->
   <div class="col s12 m12 ">
+    <% if !@favourites.nil? %>
+    <% @favourites.each do |fav| %>
 
-    <div class="row">
+
       <div class="col s4">
         <div class="card small">
           <div class="card-image">
             <%= image_tag("rest1.jpg", :align=>"middle") %>
-            <span class="card-title">Restaurant Name</span>
+            <span class="card-title"><%=fav.restaurant.restaurant_name %></span>
           </div>
 
           <div class="card-action">
-            <a href="#">Visit Restaurant</a>
+            <a href="/restaurant/public_profile?restaurant_id=<%= fav.restaurant_id %>">Visit Restaurant</a>
           </div>
         </div>
       </div>
-      <div class="col s4">
-      <div class="card small">
-        <div class="card-image">
-          <%= image_tag("res2.jpg",  :height=>"240", :align=>"middle") %>
-          <span class="card-title">Restaurant Name</span>
-        </div>
 
-        <div class="card-action">
-          <a href="#">Visit Restaurant</a>
+
+
+        <% end %>
+    <% end %>
+
+
+
         </div>
-      </div>
-      </div>
-    </div>
-    </div>
   </div>
 </div>

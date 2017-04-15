@@ -4,7 +4,8 @@ class CreateTimeSlots < ActiveRecord::Migration[5.0]
       t.integer :restaurant_id
       t.date :date
       t.time :time
-      t.integer :reservations
+      #changed reservations to reservation_count and change the db by hand
+      t.integer :reservation_count
       t.integer :waiting_list_id
       t.timestamps
 

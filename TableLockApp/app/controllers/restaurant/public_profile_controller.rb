@@ -1,6 +1,6 @@
 class Restaurant::PublicProfileController < ApplicationController
   def view
-    @restaurant=Restaurant.find(3)
+    @restaurant=Restaurant.find(params[:restaurant_id])
     @dining_info=@restaurant.dining_information
 
     @monday=@restaurant.time_periods.where(week_day: '1')

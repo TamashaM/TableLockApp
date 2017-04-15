@@ -16,13 +16,16 @@
 <%= render :partial=> "diner/search_bar" %>
 <%= render :partial=> "diner/side_bar" %>
 <% @restaurants.each do |rest| %>
+    <% if @tss[rest.id].empty? %>
+        <% next %>
+    <% end %>
     <div class="card horizontal">
       <div class="card-image">
         <img src=<%= asset_path 'logo.jpg' %> width="60" height="200">
       </div>
       <div class="card-stacked">
         <div class="card-content">
-          <h6><%=rest.restaurant_name%> </h6>
+          <h6><a href="/restaurant/public_profile?restaurant_id=<%=rest.id %>"><%=rest.restaurant_name%></a> </h6>
           <span><%=rest.dining_information.cuisines %></span><br>
           <span><%=rest.add_line1%></span>&nbsp;
           <span><%=rest.add_line2%></span>&nbsp;

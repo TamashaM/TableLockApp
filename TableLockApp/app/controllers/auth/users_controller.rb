@@ -8,6 +8,7 @@ class Auth::UsersController < ApplicationController
     @user = User.new(user_params)
     #create user
     if @user.save!
+
       @user_id=@user.id
       if params[:user][:user_type].to_i==0
           #create diner
@@ -17,6 +18,7 @@ class Auth::UsersController < ApplicationController
           @diner.last_name=params[:user][:last_name]
           @diner.telephone=params[:user][:telephone]
           if @diner.save!
+                SignUpMailer.welcome_email(@user).deliver_now
                 session[:user_id]=@user.id
                 session[:diner_id]=@diner.id
                 redirect_to '/login'
