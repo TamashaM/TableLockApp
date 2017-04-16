@@ -1,0 +1,67 @@
+<head>
+
+  <style>
+    h4 {
+      color: #4db6ac;
+
+    }
+  </style>
+  <script>
+      $(document).ready(function() {
+
+          $('select').material_select();
+      });
+  </script>
+</head>
+<div id="signup-admin-page" class="row">
+  <div class="form col s6 z-depth-4 card-panel offset-s3" >
+    <form method="post" action="/users">
+      <div class="row center">
+        <h4>Sign Up</h4>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">person</i>
+          <input  id="first_name" name="user[first_name]" type="text" class="validate">
+          <label for="first_name" class="active">First Name</label>
+        </div>
+        <div class="input-field col s6">
+
+          <input id="last_name" name="user[last_name]" type="text" class="validate">
+          <label for="last_name"class="active">Last Name</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
+          <input id="email" name="user[email]" type="email" class="validate">
+          <label for="email" data-error="wrong" data-success="right" class="active">Email</label>
+
+        </div>
+      </div>
+
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-action-lock-outline prefix large material-icons prefix">lock</i>
+          <input id="password" name="user[password]" type="password" class="validate ">
+          <label for="password" class="active">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">phone</i>
+          <input id="telephone" name="user[telephone]" type="tel" class="validate">
+          <label for="telephone"class="active">Telephone</label>
+        </div>
+      </div>
+      <input id="user_type" name="user[user_type]" type="hidden" value =2 class="validate">
+      <div class="row center-align">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Sign Up
+          <i class="material-icons ">send</i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

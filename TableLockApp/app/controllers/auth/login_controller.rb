@@ -45,6 +45,15 @@ class Auth::LoginController < ApplicationController
                         action:'reapply'
           end
           @restaurant=Restaurant.find_by_user_id(@user.id)
+        elsif @user.user_type==2
+          @admin=Admin.find_by_user_id(@user.id)
+          session[:admin_id]=@admin.id
+          flash[:notice]="You are now logged in"
+          redirect_to controller:'/admin/home',
+                      action:'home',
+                      id: @user.id
+
+
         end
 
       else

@@ -25,7 +25,7 @@ class Auth::UsersController < ApplicationController
           else
                 redirect_to '/login/signup_diner'
           end
-      else
+      elsif params[:user][:user_type].to_i==1
         #creating  restaurant request object and sending them rr controller
         @restaurant=Restaurant.new
         #@restaurant=Restaurant.new(params[:user])
@@ -57,6 +57,20 @@ class Auth::UsersController < ApplicationController
                       email:@user.email
         else
           redirect_to '/login/signup_diner'
+        end
+      elsif params[:user][:user_type].to_i==2
+        @admin=Admin.new
+        @admin.user_id=@user.id
+        @admin.first_name=params[:user][:first_name]
+        @admin.last_name=params[:user][:last_name]
+        @admin.telephone=params[:user][:telephone]
+        if @admin.save!
+          session[:user_id]=@user.id
+          session[:admin_id]=@admin.id
+          redirect_to '/login'
+        else
+          redirect_to '/admin/signup'
+
         end
       end
 

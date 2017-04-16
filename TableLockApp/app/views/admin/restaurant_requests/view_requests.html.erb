@@ -1,3 +1,4 @@
+<%= render :partial=>"admin/side_bar" %>
 <form method="get" action="/admin/view_requests2">
 <div class=" col s12" >
   <table class="responsive-table highlight centered">
@@ -20,8 +21,19 @@
       <%else %>
           <td>Pending</td>
       <% end%>
-      <td><a class="waves-effect waves-light btn green" href="/admin/accept?id=<%=req.id%>" >Accept</a>
-        <a class="waves-effect waves-light btn red" href="/admin/reject?id=<%=req.id%>">Reject</a></td>
+      <td>
+        <% if req.status==2 %>
+        <a class="waves-effect waves-light btn green" href="/admin/accept?id=<%=req.id%>" >Accept</a>
+        <a disabled class="waves-effect waves-light btn red" href="/admin/reject?id=<%=req.id%>">Reject</a>
+        <% elsif req.status==1 %>
+
+            <a disabled class="waves-effect waves-light btn green" href="/admin/accept?id=<%=req.id%>" >Accept</a>
+            <a class="waves-effect waves-light btn red" href="/admin/reject?id=<%=req.id%>">Reject</a>
+        <% else %>
+            <a class="waves-effect waves-light btn green" href="/admin/accept?id=<%=req.id%>" >Accept</a>
+            <a class="waves-effect waves-light btn red" href="/admin/reject?id=<%=req.id%>">Reject</a>
+            <% end %>
+            </td>
     </tr>
         <%end%>
 

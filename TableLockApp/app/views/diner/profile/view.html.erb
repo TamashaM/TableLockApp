@@ -51,12 +51,12 @@
       <div class="input-field col s6">
 <input type="hidden" name="diner[id]" value=<%= @diner.id %>>
         <i class="material-icons prefix">person</i>
-        <input  id="first_name" name="diner[first_name]" type="text" class="validate" value=<%=@diner.first_name %>>
+        <input  id="first_name" name="diner[first_name]" type="text" class="validate" value="<%=@diner.first_name %>">
         <label for="first_name" class="active">First Name</label>
       </div>
       <div class="input-field col s6">
 
-        <input id="last_name" name="diner[last_name]" type="text" class="validate" value=<%=@diner.last_name %>>
+        <input id="last_name" name="diner[last_name]" type="text" class="validate" value="<%=@diner.last_name %>">
         <label for="last_name" class="active">Last Name</label>
       </div>
     </div>
@@ -64,7 +64,7 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">email</i>
-        <input id="email" name="diner[email]" type="email" class="validate" value=<%=@user.email %>>
+        <input id="email" name="diner[email]" type="email" class="validate" value="<%=@user.email %>">
         <label for="email" class="active" data-error="wrong" data-success="right">Email</label>
 
       </div>
@@ -72,7 +72,7 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">today</i>
-        <input id="dob" name="diner[dob]" type="date" class="datepicker" value=<%=@diner.dob %>>
+        <input id="dob" name="diner[dob]" type="date" class="datepicker" value="<%=@diner.dob %>">
         <label for="dob" class="active">Date of Birth</label>
       </div>
     </div>
@@ -82,7 +82,7 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">phone</i>
-          <input id="telephone" name="diner[telephone]" type="tel" class="validate" value=<%=@diner.telephone %>>
+          <input id="telephone" name="diner[telephone]" type="tel" class="validate" value="<%=@diner.telephone %>">
           <label for="telephone" class="active">Mobile</label>
         </div>
 
@@ -102,29 +102,29 @@
       <div class="row">
         <div class="input-field col s6 ">
           <i class="material-icons prefix"></i>
-          <input id="add_line1"  name=diner[add_line1] type="text" class="validate" value=<%=@diner.add_line1 %>>
+          <input id="add_line1"  name=diner[add_line1] type="text" class="validate" value="<%=@diner.add_line1 %>">
           <label for="add_line1" class="active">Line 1 address</label>
         </div>
         <div class="input-field col s6">
-          <input id="add_line2" name="diner[add_line2]" type="text" class="validate" value=<%=@diner.add_line2 %>>
+          <input id="add_line2" name="diner[add_line2]" type="text" class="validate" value="<%=@diner.add_line2 %>">
           <label for="add_line2" class="active">Line 2 address</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix"></i>
-          <input id="city" type="text" name="diner[city]" class="validate" value=<%=@diner.city %>>
+          <input id="city" type="text" name="diner[city]" class="validate" value="<%=@diner.city %>">
           <label for="city" class="active">City</label>
         </div>
         <div class="input-field col s6">
-          <input id="province" type="text" name="diner[province]"  class="validate" value=<%=@diner.province %>>
+          <input id="province" type="text" name="diner[province]"  class="validate" value="<%=@diner.province %>">
           <label for="province" class="active">State/Province/Region</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix"></i>
-          <input id="postal_code" type="text" name="diner[postal_code]"  class="validate" value=<%=@diner.postal_code %>>
+          <input id="postal_code" type="text" name="diner[postal_code]"  class="validate" value="<%=@diner.postal_code %>">
           <label for="postal_code" class="active" >ZIP/Postal Code</label>
 
         </div>

@@ -1,0 +1,93 @@
+<head>
+  <style>
+
+    select{  font-size:20px;
+      color: black}
+
+    body{
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    p {font-size:18px;
+      color: black}
+
+
+  </style>
+
+  <script>
+      $(document).ready(function() {
+
+          $('select').material_select();
+      });
+      function optionCheck(that) {
+          if (that.value == "1") {
+
+              document.getElementById("restaurant_search").style.display = "block";
+              document.getElementById("diner_search").style.display = "none";
+          } else {
+              document.getElementById("diner_search").style.display = "block";
+              document.getElementById("restaurant_search").style.display = "none";
+          }
+      }
+
+  </script>
+</head>
+<%= render :partial=>"admin/side_bar" %>
+<form method="post" action="/admin/search">
+  <div class="row">
+    <div class=" col s3" >
+      <select name="search_by" onchange="optionCheck(this);">
+        <option value="" disabled selected>Search by</option>
+        <option value="1">Restaurant</option>
+        <option value="2">Diner</option>
+
+      </select>
+
+    </div>
+    <div id="restaurant_search" class=" col s3"  style="display: none;" >
+      <input  name="restaurant_search" type="text" class="validate" >
+    </div>
+    <div id="diner_search" class=" col s3" style="display: none;" >
+      <input  name="diner_search" type="text" class="validate" >
+    </div>
+
+    <div class=" col s3 ">
+
+      <button type="submit" name="action" class="waves-effect waves-light btn">Search </button>
+
+    </div>
+  </div>
+</form>
+<table>
+  <thead>
+  <tr>
+    <th>Results</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% if !@restaurants.nil? %>
+      <%=puts "in res" %>
+      <% @restaurants.each do |r| %>
+  <tr>
+
+    <td><a href="/restaurant/public_profile?restaurant_id=<%=r.id %>"><%= r.restaurant_name %></a></td>
+
+  </tr>
+      <% end %>
+
+  <% elsif !@diners.nil? %>
+  <% @diners.each do |r| %>
+      <tr>
+
+        <td><a href="/diner/public_profile?diner_id=<%=r.id %>"><%= r.first_name %> &nbsp;<%= r.last_name %> </a></td>
+
+      </tr>
+  <% end %>
+  <% end %>
+
+  </tbody>
+</table>

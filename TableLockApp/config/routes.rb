@@ -29,6 +29,11 @@ Rails.application.routes.draw do
   get '/admin/view_requests'=>'admin/restaurant_requests#view_requests'
   get '/admin/accept'=>'admin/restaurant_requests#accept'
   get '/admin/reject'=>'admin/restaurant_requests#reject'
+  get '/admin/signup'=>'admin/profile#create'
+  get 'admin/home'=>'admin/home#home'
+  get '/admin/profile'=>'admin/profile#view'
+  post '/admin/profile'=>'admin/profile#update'
+  post '/admin/search'=>'admin/home#search'
 
   get 'diner/home'=>'diner/home#home'
   get 'diner/profile'=>'diner/profile#view'
