@@ -68,6 +68,12 @@ class Diner::ReservationsController < ApplicationController
     @reservation=Reservation.find(params[:id])
     @reservation.reservation_status=1
     @reservation.save!
+
+    @notification=Notification.new
+    @notification.user_id=@reservation.restaurant.user.id
+    @notification.message="Reservation cancellation at "+@reservation.time_slot.time.strftime("%H:%M") + " on " + @reservation.time_slot.date.strftime('%d %m %Y')
+    @notification.checked=false
+    @notification.save!
     redirect_to :controller=>'diner/reservations',:action=>'reservations'
 
   end

@@ -61,6 +61,8 @@ Rails.application.routes.draw do
   post 'restaurant/reservations/search'=>'restaurant/reservations#view_reservations'
   get 'restaurant/table_management/edit'=>'restaurant/table_management#edit'
   post 'restaurant/table_management/add'=>'restaurant/table_management#add'
+  get 'restaurant/holidays/view'=>'restaurant/holidays#view'
+  post 'restaurant/holidays/add'=>'restaurant/holidays#add'
   get '/restaurant/public_profile'=>'restaurant/public_profile#view'
   get '/restaurant/mark_status'=>'restaurant/reservations#mark_status'
   get '/restaurant/reservations/cancel'=>'restaurant/reservations#cancel'

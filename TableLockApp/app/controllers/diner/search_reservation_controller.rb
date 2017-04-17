@@ -20,6 +20,10 @@ def view
         @restts=[]
         # puts r.restaurant_name
         @time_slots = Array.new(20)
+         if r.holidays.any? {|h| h.date == @date}
+           puts "found a holiday"
+           next
+         end
         @day=@date.wday
          puts @day
         # @restaurants.reject!{ |r| r.dining_information.nil? }

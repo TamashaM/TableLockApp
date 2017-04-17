@@ -4,6 +4,7 @@ class User < ApplicationRecord
   #bcrypt
   has_one :restaurant
   has_one :diner
+  has_many :notifications
   validates :email,:password_digest, presence: true
   validates :email, uniqueness: true
 

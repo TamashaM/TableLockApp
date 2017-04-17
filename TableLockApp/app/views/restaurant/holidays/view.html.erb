@@ -1,0 +1,50 @@
+<head>
+  <script>
+      $(document).ready(function(){
+          // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+          $('.modal').modal();
+      });
+  </script>
+</head>
+<%= render :partial=>"restaurant/side_bar" %>
+<div class=" col s12 white" >
+  <div class="row">
+
+
+  </div>
+
+  <table class="responsive-table highlight centered white">
+    <thead>
+    <tr>
+      <th data-field="day">Dates</th>
+      <th>
+        <button data-target="addHoliday" class="btn right">Add Holiday</button>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if !@holidays.nil? %>
+    <% @holidays.each do |h| %>
+    <tr>
+      <td> <%=h.date %></td>
+    </tr>
+        <% end %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<form method="post" action="/restaurant/holidays/add">
+<div id="addHoliday" class="modal">
+  <div class="modal-content">
+
+    <p>Please select a date you want to add as a holiday </p>
+    <input id="holiday" name="holiday" type="date" class="datepicker" >
+  </div>
+    <div class="modal-footer">
+      <button class="btn waves-effect modal-close waves-light" type="submit" name="action">Save
+        <i class="material-icons ">send</i>
+      </button>
+    </div>
+
+</div>
+</form>

@@ -75,13 +75,25 @@
           <!--<a href="#" class="brand-logo">Logo</a>-->
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
+            <% count=Notification.where(:user_id=>session[:user_id]).where(:checked =>false).count %>
 
+            <li><a class="dropdown-button" data-beloworigin=true onclick=getElementById("check").innerHTML=0; data-activates="dropdown2"><span id ="check" class="new badge"><%= count %></span><i class="material-icons right">notifications</i></a></li>
+            <ul id='dropdown2' class='dropdown-content'>
+              <% notifications=Notification.where(:user_id=>session[:user_id]).where(:checked=>false) %>
+              <% notifications.each do |n| %>
 
+                  <li ><span><%=n.message %></span></li>
+                  <% n.checked=true %>
+                  <% n.save %>
+                  <% end %>
+
+            </ul>
             <li><a class="dropdown-button" data-beloworigin=true href="#!" data-activates="dropdown1">User<i class="material-icons right">arrow_drop_down</i></a></li>
             <ul id='dropdown1' class='dropdown-content'>
               <li ><a href="/login">Logout</a></li>
 
             </ul>
+
           </ul>
         </div>
 

@@ -17,6 +17,13 @@ class ReservationsController < ApplicationController
     @reservation.packs=params[:packs]
     @reservation.meal_type_id=params[:meal_type]
     @reservation.reservation_status=0
+
+    @notification=Notification.new
+    @notification.user_id=@reservation.restaurant.user.id
+    @notification.message="You have a new reservation at "+@reservation.time_slot.time.strftime("%H:%M") + " on " + params[:date]
+    @notification.checked=false
+    @notification.save!
+
     if @reservation.save!
       redirect_to '/diner/reservations'
     else

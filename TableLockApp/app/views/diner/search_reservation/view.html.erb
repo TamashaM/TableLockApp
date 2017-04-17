@@ -16,7 +16,7 @@
 <%= render :partial=> "diner/search_bar" %>
 <%= render :partial=> "diner/side_bar" %>
 <% @restaurants.each do |rest| %>
-    <% if @tss[rest.id].empty? %>
+    <% if @tss[rest.id].nil? %>
         <% next %>
     <% end %>
     <div class="card horizontal">
