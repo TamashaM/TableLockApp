@@ -1,0 +1,71 @@
+<%= render :partial=> "diner/side_bar" %>
+<div class="container" >
+  <div class="col s6 z-depth-4 card-panel offset-s3" >
+    <form class="col s12" method="POST" action="/diner/add_to_waiting_list ">
+      <span> This time slot is already reserved. We can add you to the waiting list for now and let you know if a change comes up</span>
+      <div class="row ">
+        <div class="col s3">
+
+        </div>
+
+        <div class="input-field col s6 ">
+          <i class="material-icons prefix ">person</i>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <span >First Name</span>&nbsp;
+          <span>Last Name</span>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col s3">
+
+        </div>
+        <div class="input-field col s6 ">
+          <i class="material-icons prefix ">restaurant</i>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <span ><%= @restaurant.restaurant_name%></span>&nbsp;
+          <input id="restaurant_id" name="restaurant_id" type="hidden" value="<%= @restaurant.id%>" class="validate">
+
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col s3">
+
+        </div>
+        <div class="input-field col s6 ">
+          <i class="material-icons prefix ">schedule</i>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <span ><%=@date%> &nbsp;<%=@time_slot%></span>&nbsp;
+          <input id="date" name="date" type="hidden" value="<%=@date%>" class="validate">
+          <input id="time" name="time" type="hidden" value="<%=@time_slot%>" class="validate">
+
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=" col s3">
+        </div>
+        <div class="input-field col s6 ">
+          <i class="material-icons prefix ">people</i>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <span ><%=@packs%></span>&nbsp;<span>packs</span>
+          <input id="packs" name="packs" type="hidden" value="<%=@packs%>" class="validate">
+
+
+        </div>
+
+
+      </div>
+      <div class="row center-align">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Add to waiting list
+
+        </button>
+      </div>
+      <div class="row center-align">
+        <a class="btn waves-effect waves-light" href="/diner/home" name="action">Do not add to waiting list
+
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

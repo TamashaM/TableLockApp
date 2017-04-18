@@ -17,7 +17,7 @@ def view
     if !@restaurants.empty?
       @restaurants.each do |r|
          puts r.restaurant_name
-        @restts=[]
+        @restts=[[],[]]
         # puts r.restaurant_name
         @time_slots = Array.new(20)
          if r.holidays.any? {|h| h.date == @date}
@@ -78,19 +78,29 @@ def view
               @max=@point+2
             end
             #change this
+            puts @min
+
+            puts @max
+
 
             for j in @min..@max
 
               @db_ts=r.time_slots.where("date=? and time=?","#{@date}","#{@time_slots[j].strftime("%H:%M:%S")}" )
               if @db_ts.empty?
                 if r.dining_information.capacity_seating>=@packs.to_i
-                  @restts<<@time_slots[j].strftime("%H:%M")
+                  puts @time_slots[j].strftime("%H:%M")
+                  @restts.push([@time_slots[j].strftime("%H:%M"),0])
                 end
               else
                 @count=@db_ts.first.reservation_count + @packs.to_i
 
                 if @count<=r.dining_information.capacity_seating
-                  @restts<<@time_slots[j].strftime("%H:%M")
+                  puts @time_slots[j].strftime("%H:%M")
+                  @restts.push([@time_slots[j].strftime("%H:%M"),0])
+                else
+                  puts @time_slots[j].strftime("%H:%M")
+                  @restts.push([@time_slots[j].strftime("%H:%M"),1])
+
                 end
               end
 
@@ -116,6 +126,27 @@ end
     @time_slot=params[:ts]
     @date=params[:date]
     @packs=params[:packs]
+  end
+
+  def add_to_waiting_list
+
+
+    if request.post?
+      @tss=TimeSlot.where("date=? and time=? and restaurant_id=?","#{params[:date]}","#{params[:time].to_time.strftime("%H:%M:%S")}","#{params[:restaurant_id]}" )
+      @ts=@tss.first
+      @entry=Waiting.new
+      @entry.time_slot_id=@ts.id
+      #change to session
+      @entry.diner_id=1
+      @entry.save!
+      redirect_to '/diner/home'
+    else
+      @id=params[:id]
+      @restaurant=Restaurant.find(@id)
+      @time_slot=params[:ts]
+      @date=params[:date]
+      @packs=params[:packs]
+    end
   end
 
 end

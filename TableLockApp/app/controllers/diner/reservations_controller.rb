@@ -74,6 +74,17 @@ class Diner::ReservationsController < ApplicationController
     @notification.message="Reservation cancellation at "+@reservation.time_slot.time.strftime("%H:%M") + " on " + @reservation.time_slot.date.strftime('%d %m %Y')
     @notification.checked=false
     @notification.save!
+
+    waitings=@reservation.time_slot.waitings
+    if !waitings.empty?
+        waitings.each do |w|
+          @notification=Notification.new
+          @notification.user_id=w.diner.user_id
+          @notification.message="You can now make your reservation for "+ @reservation.restaurant.restaurant_name+ " on "+ @reservation.time_slot.time.strftime("%H:%M") + " at " + @reservation.time_slot.date.strftime('%d %m %Y')
+          @notification.checked=false
+          @notification.save!
+        end
+    end
     redirect_to :controller=>'diner/reservations',:action=>'reservations'
 
   end
