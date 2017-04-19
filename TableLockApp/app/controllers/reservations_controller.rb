@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  protect_from_forgery
+  protect_from_forgery except: [:hook]
 
   def add
     @restaurant=Restaurant.find(params[:restaurant_id])
@@ -25,7 +25,13 @@ class ReservationsController < ApplicationController
     @notification.save!
 
     if @reservation.save!
-      redirect_to '/diner/reservations'
+      if params[:reserve_type]=="0"
+        redirect_to @reservation.paypal_url
+      elsif params[:reserve_type]=="1"
+        redirect_to '/diner/reservations'
+      end
+
+
     else
       redirect_to(:back)
     end
@@ -42,6 +48,19 @@ class ReservationsController < ApplicationController
 
       @ts.save!
     end
+  end
+
+
+  def hook
+    params.permit! # Permit all Paypal input params
+    status = params[:payment_status]
+    puts "here1"
+    if status == "Completed"
+      puts "here2"
+      @reservation = Reservation.find params[:invoice]
+      @reservation.update_attributes notification_params: params.to_h, status: status, transaction_id: params[:txn_id], purchased_at: Time.now,payment_status:1
+    end
+    redirect_to '/diner/reservations'
   end
 
   private

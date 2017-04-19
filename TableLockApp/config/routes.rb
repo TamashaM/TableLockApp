@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'restaurant/index'
-  root 'restaurant#index'
+  root 'diner/home#home'
 
   get 'admin/index'
   root 'admin#index'
@@ -79,6 +79,8 @@ Rails.application.routes.draw do
   get 'signup_diner' => 'auth/signup#signup_diner'
   get 'signup_restaurant' => 'auth/signup#signup_restaurant'
 
+  post '/reservations/:id' => "registrations#show"
+  post '/hook' => 'reservations#hook'
 
 
   get 'reapply'=>'restaurant/home#reapply'
