@@ -59,6 +59,8 @@ Rails.application.routes.draw do
   get 'restaurant/profile'=>'restaurant/profile#view'
   post 'restaurant/profile/update'=>'restaurant/profile#update'
   get 'restaurant/dining_information'=>'restaurant/dining_information#view'
+  post 'restaurant/dining_information/add_meal_type'=>'restaurant/dining_information#add_meal_type'
+  get 'restaurant/dining_information/remove_meal_type'=>'restaurant/dining_information#remove_meal_type'
   get 'restaurant/reservations/search'=>'restaurant/reservations#view_reservations'
   post 'restaurant/reservations/search'=>'restaurant/reservations#view_reservations'
   get 'restaurant/table_management/edit'=>'restaurant/table_management#edit'

@@ -14,83 +14,109 @@
 
           $('select').material_select();
       });
-      function showDiv(elem){
-          if(elem.value == 2)
+      function showDiv(){
+          var sel = document.getElementById('meal_type');
+          var selected = sel.options[sel.selectedIndex];
+          var price = selected.getAttribute('data-price');
+          var packs = selected.getAttribute('data-packs');
+          if(price) {
               document.getElementById('pay_reserve').style.display = "block";
-          else if(elem.value == 3)
-              document.getElementById('pay_reserve').style.display = "block";
-          else
+              document.getElementById("price").innerHTML=(parseFloat(price)*parseInt(packs)).toString()
+
+          }
+          else {
+
               document.getElementById('pay_reserve').style.display = "none";
+          }
       }
   </script>
 </head>
 <%= render :partial=> "diner/side_bar" %>
 <div class="container" >
-<div class="col s6 z-depth-4 card-panel offset-s3" >
-  <form class="col s12" method="POST" action="/reservation/create ">
-    <div class="row ">
-      <div class="col s3">
+  <div class="col s6 z-depth-4 card-panel offset-s3" >
+    <form class="col s12" method="POST" action="/reservation/create ">
+      <div class="row ">
+        <div class="col s3">
 
+        </div>
+        <div class="input-field col s6 ">
+          <i class="material-icons prefix ">person</i>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <span >First Name</span>&nbsp;
+          <span>Last Name</span>
+        </div>
       </div>
-      <div class="input-field col s6 ">
-      <i class="material-icons prefix ">person</i>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      <span >First Name</span>&nbsp;
-      <span>Last Name</span>
+      <div class="row ">
+        <div class="col s3">
+
+        </div>
+        <div class="input-field col s6 ">
+          <i class="material-icons prefix ">restaurant</i>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <span ><%= @restaurant.restaurant_name%></span>&nbsp;
+          <input id="restaurant_id" name="restaurant_id" type="hidden" value="<%= @restaurant.id%>" class="validate">
+
+        </div>
       </div>
-    </div>
-    <div class="row ">
-      <div class="col s3">
+      <div class="row ">
+        <div class="col s3">
 
-      </div>
-      <div class="input-field col s6 ">
-        <i class="material-icons prefix ">restaurant</i>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <span ><%= @restaurant.restaurant_name%></span>&nbsp;
-        <input id="restaurant_id" name="restaurant_id" type="hidden" value="<%= @restaurant.id%>" class="validate">
-
-      </div>
-    </div>
-    <div class="row ">
-      <div class="col s3">
-
-      </div>
-      <div class="input-field col s6 ">
-        <i class="material-icons prefix ">schedule</i>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <span ><%=@date%> &nbsp;<%=@time_slot%></span>&nbsp;
-        <input id="date" name="date" type="hidden" value="<%=@date%>" class="validate">
-        <input id="time" name="time" type="hidden" value="<%=@time_slot%>" class="validate">
+        </div>
+        <div class="input-field col s6 ">
+          <i class="material-icons prefix ">schedule</i>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <span ><%=@date%> &nbsp;<%=@time_slot%></span>&nbsp;
+          <input id="date" name="date" type="hidden" value="<%=@date%>" class="validate">
+          <input id="time" name="time" type="hidden" value="<%=@time_slot%>" class="validate">
 
 
-      </div>
-    </div>
-
-    <div class="row">
-      <div class=" col s3">
-      </div>
-      <div class="input-field col s6 ">
-        <i class="material-icons prefix ">people</i>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <span ><%=@packs%></span>&nbsp;<span>packs</span>
-        <input id="packs" name="packs" type="hidden" value="<%=@packs%>" class="validate">
-
-
+        </div>
       </div>
 
-    </div>
+      <div class="row">
+        <div class=" col s3">
+        </div>
+        <div class="input-field col s6 ">
+          <i class="material-icons prefix ">people</i>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <span ><%=@packs%></span>&nbsp;<span>packs</span>
+          <input id="packs" name="packs" type="hidden" value="<%=@packs%>" class="validate">
 
-    <div class="row ">
-      <div class="col s3">
+
+        </div>
 
       </div>
+      <div class="row ">
+        <div class="col s3">
+
+        </div>
+        <div class="input-field col s6 ">
+          <i class="material-icons prefix ">attach_money</i>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <span></span><span id= "price">0</span>&nbsp;
+
+
+
+        </div>
+        <div class="col s3">
+
+        </div>
+      </div>
+
+      <div class="row ">
+        <div class="col s3">
+
+        </div>
         <div class="input-field col s6 " >
           <i class="mdi-action-lock-outline prefix material-icons prefix">restaurant_menu</i>
-          <select id="meal_type" name="meal_type" onchange="showDiv(this)">
+          <select id="meal_type" name="meal_type" onchange="showDiv()">
             <option value="" disabled selected>Choose your option</option>
-            <option value="1">A la Carte</option>
-            <option value="2">Buffet</option>
-            <option value="3">High Tea</option>
+            <% if !@mts.nil? %>
+                <% @mts.each do |m| %>
+
+                    <option data-packs="<%=@packs %>"data-price="<%=m.price %>"value="<%=m.id %>"><%= m.title %></option>
+                <%end %>
+            <%end %>
           </select>
 
 
@@ -99,23 +125,26 @@
 
 
 
-      <div class="col s3">
 
+        <div class="col s3">
+
+        </div>
       </div>
-    </div>
 
 
 
-    <div id ="pay_reserve" style="display: none;" class="row center-align">
-      <button   class="btn waves-effect waves-light" name="reserve_type" value="0"  type="submit" name="action">Pay and Reserve
 
-      </button>
-    </div>
-    <div class="row center-align">
-      <button class="btn waves-effect waves-light"  name="reserve_type" value="1" type="submit" name="action">Reserve Only
+      <div id ="pay_reserve" style="display: none;" class="row center-align">
 
-      </button>
-    </div>
-  </form>
-</div>
+        <button   class="btn waves-effect waves-light" name="reserve_type" value="0"  type="submit" name="action">Pay and Reserve
+
+        </button>
+      </div>
+      <div class="row center-align">
+        <button class="btn waves-effect waves-light"  name="reserve_type" value="1" type="submit" name="action">Reserve Only
+
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

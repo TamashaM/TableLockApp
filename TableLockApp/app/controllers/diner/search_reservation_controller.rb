@@ -121,11 +121,27 @@ def view
 end
 
   def add
+    @mts=[]
     @id=params[:id]
     @restaurant=Restaurant.find(@id)
     @time_slot=params[:ts]
     @date=params[:date]
     @packs=params[:packs]
+    meal_types=@restaurant.meal_types
+    if !meal_types.nil?
+      puts "here1"
+      meal_types.each do |m|
+
+        @start=m.start_time.strftime("%H:%M")
+        @end=m.end_time.strftime("%H:%M")
+        puts @start
+        puts @end
+        if (@start..@end).cover? @time_slot
+          @mts<<m
+        end
+
+      end
+    end
   end
 
   def add_to_waiting_list

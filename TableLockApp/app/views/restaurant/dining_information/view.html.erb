@@ -28,6 +28,13 @@
               document.getElementById("price2").style.display = "none";
           }
       }
+      $(document).ready(function(){
+          // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+          $('.modal').modal();
+      });
+
+
+
   </script>
 </head>
 <%= render :partial=>"restaurant/side_bar" %>
@@ -114,51 +121,76 @@
     <li>
     <div class="collapsible-header"><i class="material-icons">local_offer</i>Meal Types</div>
     <div class="collapsible-body">
+      <button data-target="addMealType" class="btn right">Add Meal Type</button>
+      <table>
+        <thead>
+          <th>Title</th>
+          <th>Price($)</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+        <% if !@meal_types.empty? %>
+        <% @meal_types.each do |m| %>
+        <tr>
+          <td><%= m.title %></td>
+          <td><%= m.price %></td>
+          <td><%= m.start_time.strftime("%H:%M") %></td>
+          <td><%= m.end_time.strftime("%H:%M") %>
 
-      <div class="row">
-        <div class="col s6">
-      <p>
-        <input type="checkbox" name="buffet" id="buffet" onchange="price1(this)"  />
-        <label for="buffet">Buffet</label>
-      </p>
-        </div>
-        <div class="col s6">
-      <div id="price1" style="display: none;" class="input-field col s6">
+          </td>
+         <td> <a type="button" href="/restaurant/dining_information/remove_meal_type?id= <%=m.id %>">Remove</a></td>
+        </tr>
+        </tbody>
+            <% end %>
+        <% end %>
+      </table>
+      <!--<div class="row">-->
+        <!--<div class="col s6">-->
+      <!--<p>-->
+        <!--<input type="checkbox" name="buffet" id="buffet" onchange="price1(this)"  />-->
+        <!--<label for="buffet">Buffet</label>-->
+      <!--</p>-->
+        <!--</div>-->
+        <!--<div class="col s6">-->
+      <!--<div id="price1" style="display: none;" class="input-field col s6">-->
 
-        <input id="buffet" name="buffet_price" type="number" class="validate">
-        <label for="buffet" class="active">Price($)</label>
+        <!--<input id="buffet" name="buffet_price" type="number" class="validate">-->
+        <!--<label for="buffet" class="active">Price($)</label>-->
 
-      </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s6">
-      <p>
-        <input type="checkbox"  name="high_tea" id="high_tea" onchange="price2(this)" />
+      <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row">-->
+        <!--<div class="col s6">-->
+      <!--<p>-->
+        <!--<input type="checkbox"  name="high_tea" id="high_tea" onchange="price2(this)" />-->
 
-        <label for="high_tea">High Tea</label>
-      </p>
-        </div>
-        <div class="col s6">
-      <div id= "price2" style="display: none;" class="input-field col s6">
+        <!--<label for="high_tea">High Tea</label>-->
+      <!--</p>-->
+        <!--</div>-->
+        <!--<div class="col s6">-->
+      <!--<div id= "price2" style="display: none;" class="input-field col s6">-->
 
-        <input id="buffet" name="buffet_price" type="number" class="validate">
-        <label for="buffet" class="active">Price($)</label>
+        <!--<input id="buffet" name="buffet_price" type="number" class="validate">-->
+        <!--<label for="buffet" class="active">Price($)</label>-->
 
-      </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s6">
-          <p>
-            <input type="checkbox" name="other" id="other"  />
+      <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row">-->
+        <!--<div class="col s6">-->
+          <!--<p>-->
+            <!--<input type="checkbox" name="other" id="other"  />-->
 
-            <label for="other">other</label>
-          </p>
-        </div>
-      </div>
+            <!--<label for="other">other</label>-->
+          <!--</p>-->
+        <!--</div>-->
+      <!--</div>-->
 
     </div>
+
     </li>
   </ul>
 
@@ -166,4 +198,37 @@
     <i class="material-icons right">save</i>
   </button>
 
+</form>
+<form method="post" action="/restaurant/dining_information/add_meal_type">
+  <div id="addMealType" class="modal ">
+    <div class="modal-content">
+
+      <div class="row">
+        <label>Title </label>
+        <input type='text' name="mt[title]"  />
+
+      </div>
+      <div class="row">
+        <label>Price($)</label>
+        <input type='number' name="mt[price]" min='0'   step='0.01' />
+
+      </div>
+
+
+      <div class="row">
+        <label>From </label>
+        <input type='time' name="mt[start_time]" min='00:00' max='24:00'  step='1800' />
+
+      </div>
+      <div class="row">
+        <label>To</label>
+        <input type='time' name="mt[end_time]" min='00:00' max='24:00'  step='1800' />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn waves-effect waves-light" type="submit" name="action">Save
+        <i class="material-icons ">send</i>
+      </button>
+    </div>
+  </div>
 </form>
