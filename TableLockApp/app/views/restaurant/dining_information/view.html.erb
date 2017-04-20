@@ -9,6 +9,26 @@
 
 
   </style>
+  <script>
+      function price1(checkboxElem) {
+          if (checkboxElem.checked) {
+
+              document.getElementById("price1").style.display = "block";
+
+          } else {
+              document.getElementById("price1").style.display = "none";
+          }
+      }
+      function price2(checkboxElem) {
+          if (checkboxElem.checked) {
+
+              document.getElementById("price2").style.display = "block";
+
+          } else {
+              document.getElementById("price2").style.display = "none";
+          }
+      }
+  </script>
 </head>
 <%= render :partial=>"restaurant/side_bar" %>
 <form class="form " method="post" action="/restaurant/dining_information/update">
@@ -91,10 +111,55 @@
 
       </div>
     </li>
-    <!--<li>-->
-    <!--<div class="collapsible-header"><i class="material-icons">local_offer</i>Offers</div>-->
-    <!--<div class="collapsible-body"> <input id="offers" type="text" class="validate"></div>-->
-    <!--</li>-->
+    <li>
+    <div class="collapsible-header"><i class="material-icons">local_offer</i>Meal Types</div>
+    <div class="collapsible-body">
+
+      <div class="row">
+        <div class="col s6">
+      <p>
+        <input type="checkbox" name="buffet" id="buffet" onchange="price1(this)"  />
+        <label for="buffet">Buffet</label>
+      </p>
+        </div>
+        <div class="col s6">
+      <div id="price1" style="display: none;" class="input-field col s6">
+
+        <input id="buffet" name="buffet_price" type="number" class="validate">
+        <label for="buffet" class="active">Price($)</label>
+
+      </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6">
+      <p>
+        <input type="checkbox"  name="high_tea" id="high_tea" onchange="price2(this)" />
+
+        <label for="high_tea">High Tea</label>
+      </p>
+        </div>
+        <div class="col s6">
+      <div id= "price2" style="display: none;" class="input-field col s6">
+
+        <input id="buffet" name="buffet_price" type="number" class="validate">
+        <label for="buffet" class="active">Price($)</label>
+
+      </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <p>
+            <input type="checkbox" name="other" id="other"  />
+
+            <label for="other">other</label>
+          </p>
+        </div>
+      </div>
+
+    </div>
+    </li>
   </ul>
 
   <button class="btn waves-effect waves-light  right" type="submit" name="action">Save
