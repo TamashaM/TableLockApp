@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get '/admin/profile'=>'admin/profile#view'
   post '/admin/profile'=>'admin/profile#update'
   post '/admin/search'=>'admin/home#search'
+  get '/admin/payments'=>'admin/payments#view'
+  post '/admin/payments'=>'admin/payments#view'
 
   get 'diner/home'=>'diner/home#home'
   get 'diner/profile'=>'diner/profile#view'

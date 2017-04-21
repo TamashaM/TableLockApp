@@ -13,11 +13,11 @@ class Reservation < ApplicationRecord
         upload: 1,
         return: "#{Rails.application.secrets.app_host}",
         invoice: id,
-        amount: 1,
+        amount: self.meal_type.price,
         item_name: self.meal_type.title,
         item_number: self.meal_type.id,
         quantity: packs,
-        notify_url: "http://540d38d3.ngrok.io/hook"
+        notify_url: "#{Rails.application.secrets.app_host}/hook"
     }
     "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end

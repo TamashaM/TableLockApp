@@ -58,7 +58,7 @@ class ReservationsController < ApplicationController
     if status == "Completed"
       puts "here2"
       @reservation = Reservation.find params[:invoice]
-      @reservation.update_attributes notification_params: params.to_h, status: status, transaction_id: params[:txn_id], purchased_at: Time.now,payment_status:1
+      @reservation.update_attributes notification_params: params.to_h, status: status, transaction_id: params[:txn_id], purchased_at: Time.now,payment_status:1,payment_amount: params[:payment_gross]
     end
     redirect_to '/diner/reservations'
   end
