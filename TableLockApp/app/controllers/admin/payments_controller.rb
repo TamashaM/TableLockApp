@@ -2,10 +2,10 @@ class Admin::PaymentsController < ApplicationController
   protect_from_forgery
   def view
 
-    if req.post?
+    if request.post?
       require 'set'
       month=params[:month]
-      time_slots=TimeSlot.where('extract(month from date) = ?', "#{04}")
+      time_slots=TimeSlot.where('extract(month from date) = ?', "#{month}")
      # payments=Reservation.select(("restaurant_id , sum(payment_amount) as total_payment").where('extract(day   from date_column) = ?', desired_day_of_month).group("restaurant_id"))
       @records=[]
       @restaurants=Set.new
