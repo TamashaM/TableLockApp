@@ -24,7 +24,12 @@
   </style>
 </head>
 <div>
-  <%= render :partial=> "diner/side_bar" %>
+  <% if session[:diner_id].nil? %>
+
+  <%= render :partial=> "admin/side_bar" %>
+      <% else %>
+      <%= render :partial=> "diner/side_bar" %>
+      <% end %>
   <div class="container  ">
     <div class="  card-panel offset-s3 " >
 

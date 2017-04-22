@@ -1,5 +1,24 @@
+<head>
+  <style>
+    body{
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
+  <script>
+      $(document).ready(function() {
+
+          $('select').material_select();
+      });
+  </script>
+</head>
 <%= render :partial=>"admin/side_bar" %>
 <form method="post" action="/admin/payments">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
   <div class="row">
     <div class=" col s3" >
 

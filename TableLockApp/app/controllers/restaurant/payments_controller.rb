@@ -6,7 +6,7 @@ class Restaurant::PaymentsController < ApplicationController
       require 'set'
       @month=params[:month]
       #replace with session[:restaurant_id]
-      time_slots=TimeSlot.where('extract(month from date) = ?', "#{@month}").where("restaurant_id = ?","#{3}")
+      time_slots=TimeSlot.where('extract(month from date) = ?', "#{@month}").where("restaurant_id = ?","#{session[:restaurant_id]}")
       # payments=Reservation.select(("restaurant_id , sum(payment_amount) as total_payment").where('extract(day   from date_column) = ?', desired_day_of_month).group("restaurant_id"))
       @transactions=[]
 
@@ -26,7 +26,7 @@ class Restaurant::PaymentsController < ApplicationController
   def print_report
     @month=params[:month]
     #replace with session[:restaurant_id]
-    time_slots=TimeSlot.where('extract(month from date) = ?', "#{@month}").where("restaurant_id = ?","#{3}")
+    time_slots=TimeSlot.where('extract(month from date) = ?', "#{@month}").where("restaurant_id = ?","#{session[:restaurant_id]}")
     # payments=Reservation.select(("restaurant_id , sum(payment_amount) as total_payment").where('extract(day   from date_column) = ?', desired_day_of_month).group("restaurant_id"))
     @transactions=[]
 

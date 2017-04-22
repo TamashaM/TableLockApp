@@ -75,7 +75,6 @@
 
 <div class="ex1">
   <header>
-
     <div class="navbar-fixed">
       <nav class="nav-extended">
         <div class="nav-wrapper">
@@ -96,8 +95,23 @@
                   <% end %>
 
             </ul>
-            <li><a class="dropdown-button" data-beloworigin=true href="#!" data-activates="dropdown1">User<i class="material-icons right">arrow_drop_down</i></a></li>
-            <ul id='dropdown1' class='dropdown-content'>
+            <% if !session[:user_id].nil? %>
+            <% @user=User.find(session[:user_id]) %>
+            <% if @user.user_type==0 %>
+                <% @name=@user.diner.first_name %>
+            <%elsif @user.user_type==1 %>
+                <% @name=@user.restaurant.restaurant_name %>
+            <%else %>
+                <% @name=@user.admin.first_name %>
+            <% end %>
+
+
+
+            <li><a class="dropdown-button" data-beloworigin=true href="#!" data-activates="dropdown1"><%=@name %><i class="material-icons right">arrow_drop_down</i></a></li>
+            <% else %>
+                <li><a class="dropdown-button" data-beloworigin=true href="#!" data-activates="dropdown1">User<i class="material-icons right">arrow_drop_down</i></a></li>
+            <% end %>
+                <ul id='dropdown1' class='dropdown-content'>
               <li ><a href="/logout">Logout</a></li>
 
             </ul>

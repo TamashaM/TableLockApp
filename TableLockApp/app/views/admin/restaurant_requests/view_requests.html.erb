@@ -1,7 +1,18 @@
+<head>
+  <style>
+    body{
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
+</head>
 <%= render :partial=>"admin/side_bar" %>
 <form method="get" action="/admin/view_requests2">
 <div class=" col s12" >
-  <table class="responsive-table highlight centered">
+  <table class="responsive-table highlight white centered">
     <thead>
     <tr>
       <th data-field="restaurant">Restaurant</th>

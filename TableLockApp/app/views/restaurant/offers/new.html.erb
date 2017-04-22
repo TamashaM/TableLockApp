@@ -1,16 +1,6 @@
 <head>
 
-    /*.input-field label {*/
-      /*color: #000;*/
-      /*font-weight: bold;*/
-      /*font-size: larger;*/
-    /*}*/
-    /*!* label focus color *!*/
-    /*.input-field input[type=text]:focus + label {*/
-      /*color: #000;*/
-      /*font-weight: bold;*/
-      /*font-size: larger;*/
-    /*}*/
+
     <style>
       body{
         background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
@@ -38,6 +28,7 @@
 
   <div class="col s6 z-depth-4 card-panel offset-s3  hoverable" >
     <form  method="post" action="/restaurant/offer/add" >
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
       <div class="row">
 
@@ -64,17 +55,29 @@
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <i class="material-icons prefix">today</i>
           <input id="start_date" name="offer[start_date]" type="date" class="datepicker" >
           <label for="start_date" >From</label>
         </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix">query_builder</i>
+          <input type='time' class="active" name="offer[start_time]" min='00:00' max='24:00'  step='1800' />
+
+          <label for="start_time"></label>
+        </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <i class="material-icons prefix">today</i>
           <input id="end_date" name="offer[end_date]" type="date" class="datepicker" >
           <label for="end_date" >To</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">query_builder</i>
+          <input type='time' class="active" name="offer[end_time]" min='00:00' max='24:00'  step='1800' />
+
+          <label for="end_time"></label>
         </div>
       </div>
     <!-- have to include the time as well -->

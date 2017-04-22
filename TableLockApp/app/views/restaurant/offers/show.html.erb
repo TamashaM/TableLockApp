@@ -28,8 +28,8 @@
           <tr>
             <td><%= off.name %></td>
             <td><%= off.description %></td>
-            <td><%= off.start_date %><p>  </p> <%= off.start_time%> </td>
-            <td><%= off.end_date %><p>  </p> <%= off.end_time%> </td>
+            <td><%= off.start_date %><p>  </p> <%= off.start_time.strftime("%H:%M")%> </td>
+            <td><%= off.end_date %><p>  </p> <%= off.end_time.strftime("%H:%M")%> </td>
           </tr>
       <%end%>
 
