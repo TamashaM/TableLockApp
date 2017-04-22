@@ -2,7 +2,7 @@ class Diner::PastReservationsController < ApplicationController
   protect_from_forgery
   def past_reservations
       #change to session
-      @diner_id=1
+      @diner_id=session[:diner_id]
       @past_reservations=[]
 
       @reservations=Reservation.where("diner_id =? and reservation_status=0","#{@diner_id}")
@@ -30,8 +30,8 @@ class Diner::PastReservationsController < ApplicationController
 
   end
   def search
-    #change to session
-    @diner_id=1
+
+    @diner_id=session[:diner_id]
     @past_reservations=[]
     if params[:search_by].to_i==1
       @reservations=Reservation.where("diner_id =? and reservation_status=0","#{@diner_id}")
@@ -71,8 +71,8 @@ class Diner::PastReservationsController < ApplicationController
   end
 
   def add_to_favourites
-    #change to session
-    @id=1
+
+    @id=session[:diner_id]
     Favourite.where(diner_id: @id, restaurant_id: params[:id]).first_or_create
     redirect_to '/diner/favourites'
   end

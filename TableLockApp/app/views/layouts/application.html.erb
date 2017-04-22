@@ -23,6 +23,12 @@
       color:black;
 
     }
+    #toast-container {
+      top: auto !important;
+      right: auto !important;
+
+
+    }
 
 
 
@@ -51,9 +57,11 @@
           $('.datepicker').pickadate({
               format: 'mm/dd/yyyy',
               selectMonths: true, // Creates a dropdown to control month
-              selectYears: 15 // Creates a dropdown of 15 years to control year
+              selectYears: 100 // Creates a dropdown of 15 years to control year
           });
       });
+
+
 
       $(document).ready(function(){
           $('.collapsible').collapsible();
@@ -90,7 +98,7 @@
             </ul>
             <li><a class="dropdown-button" data-beloworigin=true href="#!" data-activates="dropdown1">User<i class="material-icons right">arrow_drop_down</i></a></li>
             <ul id='dropdown1' class='dropdown-content'>
-              <li ><a href="/login">Logout</a></li>
+              <li ><a href="/logout">Logout</a></li>
 
             </ul>
 
@@ -110,7 +118,33 @@
 <div class ="content">
 
 
+    <% flash.each do |key, value| %>
+      <div id="toast-container"></div>
+      <% if key=="success" %>
+      <script>
+          $(function() {
+              Materialize.toast("<%= value %>", 4000,'green');
+          });
+      </script>
+      <% elsif key=="error"%>
+          <script>
+              $(function() {
+                  Materialize.toast("<%= value %>", 8000,'red');
+              });
+          </script>
+      <% else %>
+          <script>
+              $(function() {
+                  Materialize.toast("<%= value %>", 6000,'yellow');
+              });
+          </script>
+
+      <% end %>
+
+    <% end %>
+
   <%= yield %>
+</div>
 </div>
 </body>
 

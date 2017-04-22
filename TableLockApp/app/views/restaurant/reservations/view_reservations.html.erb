@@ -1,10 +1,19 @@
 <head>
+  <style>
+    body{
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
   <script>
       $( document ).ready(function() {
           $('.datepicker').pickadate({
               format: 'mm/dd/yyyy',
               selectMonths: true, // Creates a dropdown to control month
-              selectYears: 15 // Creates a dropdown of 15 years to control year
+              selectYears: 100 // Creates a dropdown of 15 years to control year
           });
       });
 
@@ -13,6 +22,7 @@
 </head>
 <%= render :partial=>"restaurant/side_bar" %>
 <form method="post" action="/restaurant/reservations/search">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 <div class="row">
 
 
@@ -36,7 +46,7 @@
 </div>
 </form>
 <div class=" col s12" >
-  <table class="responsive-table highlight centered">
+  <table class="responsive-table highlight white centered">
     <thead>
     <tr>
       <th data-field="name">Name</th>
@@ -66,7 +76,7 @@
                     <a id="delay" class="waves-effect waves-light btn yellow" href="/restaurant/mark_status/?id=<%=res.id%>&value=1">Delay</a>
                 <% end %>
                 <% if res.customer_status==2 %>
-                    <a id="no_show" disbaled class="waves-effect waves-light btn black" href="/restaurant/mark_status/?id=<%=res.id%>&value=2">No show</a></td>
+                    <a id="no_show" disabled class="waves-effect waves-light btn black" href="/restaurant/mark_status/?id=<%=res.id%>&value=2">No show</a></td>
                 <% else %>
                     <a id="no_show"  class="waves-effect waves-light btn black" href="/restaurant/mark_status/?id=<%=res.id%>&value=2">No show</a></td>
                 <% end %>

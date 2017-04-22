@@ -35,16 +35,12 @@
 </head>
 <%= render :partial=>"diner/side_bar" %>
 
-<% if !flash[:notice].blank? %>
-    <div class="container row white">
-      <span><%=flash[:notice]%></span>
-      <%= puts flash[:notice] %>
-    </div>
-<% end %>
+
 <div id="welcome-page" class="row">
   <div class="col s6 z-depth-4 card-panel offset-s3 transparent" >
 
     <form class="login-form " method="post" action="/diner/search_reservations" >
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <div class="row">
         <div class="input-field col s12 center-align">
           <%= image_tag("logo_new.png",:width=>"120", :height=>"120",:alt=>"logo", :align=>"middle") %>

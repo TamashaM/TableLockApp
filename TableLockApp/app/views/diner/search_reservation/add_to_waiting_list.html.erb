@@ -2,6 +2,7 @@
 <div class="container" >
   <div class="col s6 z-depth-4 card-panel offset-s3" >
     <form class="col s12" method="POST" action="/diner/add_to_waiting_list ">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <span> This time slot is already reserved. We can add you to the waiting list for now and let you know if a change comes up</span>
       <div class="row ">
         <div class="col s3">

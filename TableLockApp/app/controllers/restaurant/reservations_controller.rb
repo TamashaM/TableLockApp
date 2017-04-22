@@ -44,8 +44,8 @@ class Restaurant::ReservationsController < ApplicationController
 
   end
   def view_reservations
-    #change to session
-    @id=3
+
+    @id=session[:restaurant_id]
 
     if request.post?
 

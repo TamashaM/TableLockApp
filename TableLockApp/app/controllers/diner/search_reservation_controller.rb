@@ -153,8 +153,9 @@ end
       @entry=Waiting.new
       @entry.time_slot_id=@ts.id
       #change to session
-      @entry.diner_id=1
+      @entry.diner_id=session[:diner_id]
       @entry.save!
+      flash[:success]="You have been added to the waiting list"
       redirect_to '/diner/home'
     else
       @id=params[:id]

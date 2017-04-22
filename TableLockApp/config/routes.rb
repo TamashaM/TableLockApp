@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get '/login' => 'auth/login#login'
   post 'login'=>'auth/login#create'
 
+  get '/logout'=>'auth/login#destroy'
+
   get '/signup_restaurant'=>'auth/signup#signup_restaurant'
   get '/restaurant_requests/add'=>'restaurant/restaurant_requests#create'
 
@@ -72,6 +74,10 @@ Rails.application.routes.draw do
   get '/restaurant/public_profile'=>'restaurant/public_profile#view'
   get '/restaurant/mark_status'=>'restaurant/reservations#mark_status'
   get '/restaurant/reservations/cancel'=>'restaurant/reservations#cancel'
+  get '/restaurant/payments'=>'restaurant/payments#view'
+  post '/restaurant/payments'=>'restaurant/payments#view'
+  get '/restaurant/payments/print_report'=>'restaurant/payments#print_report'
+
 
   post '/reservation/create'=>'reservations#add'
 

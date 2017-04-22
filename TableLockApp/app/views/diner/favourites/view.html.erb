@@ -25,9 +25,11 @@
         <div class="card small">
           <div class="card-image">
             <%= image_tag("rest1.jpg", :align=>"middle") %>
+
+          </div>
+          <div class="card-content">
             <span class="card-title"><%=fav.restaurant.restaurant_name %></span>
           </div>
-
           <div class="card-action">
             <a href="/restaurant/public_profile?restaurant_id=<%= fav.restaurant_id %>">Visit Restaurant</a>
           </div>

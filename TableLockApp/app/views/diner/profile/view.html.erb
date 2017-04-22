@@ -20,7 +20,7 @@
           $('.datepicker').pickadate({
               format: 'mm/dd/yyyy',
               selectMonths: true, // Creates a dropdown to control month
-              selectYears: 15 // Creates a dropdown of 15 years to control year
+              selectYears: 100 // Creates a dropdown of 15 years to control year
           });
       });
 
@@ -43,6 +43,7 @@
 
 <div class="row">
   <form class="col s12 white " method="POST" action="/diner/profile/update">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     <h4 >     My Profile</h4>
     <hr>
     <div class="row">

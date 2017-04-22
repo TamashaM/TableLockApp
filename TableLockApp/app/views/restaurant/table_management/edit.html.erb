@@ -1,5 +1,13 @@
 <head>
-
+  <style>
+    body{
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
   <script>
       var chip = {
           tag: 'chip content',
@@ -56,12 +64,6 @@
   </script>
 </head>
 <%= render :partial=>"restaurant/side_bar" %>
-<% if !flash[:notice].blank? %>
-    <div class="notice">
-      <%= flash[:notice]%>
-      <%= puts flash[:notice] %>
-    </div>
-<% end %>
 
 <form method="get" action="">
   <div class=" col s12 white" >
@@ -190,6 +192,7 @@
   </div>
 </form>
 <form method="post" action="/restaurant/table_management/add">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 <div id="addPeriod" class="modal ">
   <div class="modal-content">
 

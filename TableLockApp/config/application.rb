@@ -12,5 +12,6 @@ module TableLockApp
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.web_console.whitelisted_ips = '173.0.82.126','112.135.6.253','112.135.5.36','61.245.161.11'
+    config.middleware.use "PDFKit::Middleware", :print_media_type => true
   end
 end

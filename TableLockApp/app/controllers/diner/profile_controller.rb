@@ -9,10 +9,14 @@ class Diner::ProfileController < ApplicationController
   end
   def update
     #diner profile update
-    @diner=Diner.find(params[:diner][:id])
+    @diner=Diner.find(session[:diner_id])
     if @diner.update_attributes(diner_params)
-      redirect_to '/diner/reservations'
+      @diner.dob=Date.strptime(params[:diner][:dob],'%m/%d/%Y')
+      @diner.save!
+      flash[:success]="You have successfully updated your profile "
+      redirect_to '/diner/profile'
     else
+      flash[:error]="Error updating profile "
       render('view')
     end
     #find an existing object

@@ -6,12 +6,14 @@ class Restaurant::ProfileController < ApplicationController
 
   end
   def update
-    @restaurant=Restaurant.find(3)
+    @restaurant=Restaurant.find(session[:restaurant_id])
 
       puts @restaurant.attributes
       if @restaurant.update_attributes(restaurant_params)
-        redirect_to '/restaurant/reservations'
+        flash[:success]="Profile updated successfully"
+        redirect_to '/restaurant/profile'
       else
+        flash[:error]="Error updating profile"
         render('view')
       end
   end

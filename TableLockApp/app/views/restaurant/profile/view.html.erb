@@ -22,6 +22,7 @@
 <%= render :partial=>"restaurant/side_bar" %>
 <div class="row">
      <form class="col s12 white " method="post" action="/restaurant/profile/update">
+       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
        <div class="row">
        </div>
       <h4>Profile</h4>

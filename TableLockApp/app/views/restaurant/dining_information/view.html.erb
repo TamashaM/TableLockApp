@@ -8,6 +8,16 @@
     }
 
 
+  body{
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+
+
   </style>
   <script>
       function price1(checkboxElem) {
@@ -39,6 +49,7 @@
 </head>
 <%= render :partial=>"restaurant/side_bar" %>
 <form class="form " method="post" action="/restaurant/dining_information/update">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
   <ul class="collapsible white" data-collapsible="expandable">
     <li>
@@ -95,7 +106,7 @@
 
           <div class="input-field col s6">
             <input id="time" type="number" min="15" max="120" value="<%=@dining_information.time_seating%>" step="15"name="profile[time_seating]" class="validate">
-            <label for="time"class="active">Time per seating</label>
+            <label for="time"class="active">Time per seating(mins)</label>
           </div>
         </div>
         <div class="row">
@@ -200,6 +211,7 @@
 
 </form>
 <form method="post" action="/restaurant/dining_information/add_meal_type">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
   <div id="addMealType" class="modal ">
     <div class="modal-content">
 

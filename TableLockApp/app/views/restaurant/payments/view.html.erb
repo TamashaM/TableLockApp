@@ -1,0 +1,89 @@
+<head>
+    <style>
+      body{
+        background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+    </style>
+    <script>
+    $(document).ready(function() {
+
+        $('select').material_select();
+    });
+    </script>
+</head>
+<%= render :partial=>"restaurant/side_bar" %>
+<form method="post" action="/restaurant/payments">
+  <div class="row">
+    <div class=" col s3" >
+ <select name="month" >
+        <option value="" disabled selected>Search by</option>
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+
+
+
+      </select>
+    </div>
+
+    <div class=" col s3 ">
+
+      <button type="submit" name="action" class="waves-effect waves-light btn">Search </button>
+
+    </div>
+    <div class=" col s3 ">
+    </div>
+    <div class=" col s3 ">
+      <a href="/restaurant/payments/print_report?month=<%=@month%>" type="button" class="waves-effect waves-light btn red">Print Report</a>
+    </div>
+  </div>
+</form>
+
+<form method="get" >
+  <div class=" col s12" >
+    <table class="responsive-table highlight centered white">
+      <thead>
+      <tr>
+        <th data-field="diner_id">Diner Id </th>
+        <th data-field="diner">Diner </th>
+        <th data-field="transaction_id" >Transaction Id</th>
+        <th data-field="payment" >Payment($)</th>
+        <th data-field="paid_at" >Paid At</th>
+
+      </tr>
+      </thead>
+
+      <tbody>
+
+      <% if !@transactions.nil? %>
+
+          <% @transactions.each do |p| %>
+              <tr>
+                <td><%=p.diner.id %></td>
+                <td><%=p.diner.first_name %> &nbsp; <%=p.diner.last_name %></td>
+                <td><%=p.transaction_id %></td>
+                <td><%=p.payment_amount %></td>
+                <td><%=p.purchased_at %></td>
+
+
+              </tr>
+          <%end%>
+      <%end%>
+
+      </tbody>
+    </table>
+  </div>
+</form>

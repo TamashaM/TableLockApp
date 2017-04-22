@@ -16,6 +16,7 @@
 <div id="signup-diner-page" class="row">
   <div class="form col s6 z-depth-4 card-panel offset-s3" >
     <form method="post" action="/users">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <div class="row center">
         <h4>Sign Up</h4>
       </div>

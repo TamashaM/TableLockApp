@@ -18,11 +18,14 @@ class Auth::UsersController < ApplicationController
           @diner.last_name=params[:user][:last_name]
           @diner.telephone=params[:user][:telephone]
           if @diner.save!
-                SignUpMailer.welcome_email(@user).deliver_now
+            #uncomment this
+                #SignUpMailer.welcome_email(@user).deliver_now
                 session[:user_id]=@user.id
                 session[:diner_id]=@diner.id
-                redirect_to '/login'
+                flash[:success]="You have successfully signed in with TableLock "
+                redirect_to '/diner/home'
           else
+                flash[:error]="Error processing the request. Please signup again "
                 redirect_to '/login/signup_diner'
           end
       elsif params[:user][:user_type].to_i==1
@@ -40,6 +43,7 @@ class Auth::UsersController < ApplicationController
         @restaurant.add_line1=params[:user][:add_line1]
         @restaurant.add_line2=params[:user][:add_line2]
         if @restaurant.save!
+          flash[:success]="Your request was submitted successfully "
           session[:user_id]=@user.id
           session[:restaurant_id]=@restaurant.id
           redirect_to controller:'restaurant/restaurant_requests',
@@ -56,7 +60,8 @@ class Auth::UsersController < ApplicationController
                       add_line2:@restaurant.add_line2,
                       email:@user.email
         else
-          redirect_to '/login/signup_diner'
+          flash[:error]="Error submitting the request"
+          redirect_to '/login/signup_restaurant'
         end
       elsif params[:user][:user_type].to_i==2
         @admin=Admin.new
@@ -67,8 +72,10 @@ class Auth::UsersController < ApplicationController
         if @admin.save!
           session[:user_id]=@user.id
           session[:admin_id]=@admin.id
-          redirect_to '/login'
+          flash[:success]="You have successfully signed in with TableLock "
+          redirect_to '/admin/home'
         else
+          flash[:error]="Error processing the request. Please signup again "
           redirect_to '/admin/signup'
 
         end
@@ -76,7 +83,7 @@ class Auth::UsersController < ApplicationController
 
 
     else
-        redirect_to '/login/signup_diner'
+        redirect_to '/login'
 
     end
   end

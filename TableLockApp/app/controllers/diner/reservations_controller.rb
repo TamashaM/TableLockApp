@@ -2,7 +2,7 @@ class Diner::ReservationsController < ApplicationController
   protect_from_forgery
   def reservations
     #change to session
-    @diner_id=1
+    @diner_id=session[:diner_id]
     @past_reservations=[]
 
     @reservations=Reservation.where("diner_id =? and reservation_status=0","#{@diner_id}")
@@ -25,7 +25,7 @@ class Diner::ReservationsController < ApplicationController
 
   def search
     #change to session
-    @diner_id=1
+    @diner_id=session[:diner_id]
     @past_reservations=[]
     if params[:search_by].to_i==1
       @reservations=Reservation.where("diner_id =? and reservation_status=0","#{@diner_id}")

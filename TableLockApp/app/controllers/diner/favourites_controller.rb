@@ -1,7 +1,7 @@
 class Diner::FavouritesController < ApplicationController
   def view
-    #change to session
-    @id=1
+
+    @id=session[:diner_id]
     @favourites=Favourite.where("diner_id = ?", "#{@id}")
 
   end
