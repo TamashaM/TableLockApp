@@ -20,6 +20,7 @@ class Auth::UsersController < ApplicationController
           if @diner.save!
             #uncomment this
                 #SignUpMailer.welcome_email(@user).deliver_now
+
                 session[:user_id]=@user.id
                 session[:diner_id]=@diner.id
                 flash[:success]="You have successfully signed in with TableLock "

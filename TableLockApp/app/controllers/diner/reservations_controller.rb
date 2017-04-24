@@ -74,6 +74,8 @@ class Diner::ReservationsController < ApplicationController
     @notification.message="Reservation cancellation at "+@reservation.time_slot.time.strftime("%H:%M") + " on " + @reservation.time_slot.date.strftime('%d %m %Y')
     @notification.checked=false
     @notification.save!
+    @message="Your reservation for "+ @reservation.restaurant.restaurant_name+ " at "+@reservation.time_slot.time.strftime("%H:%M") + " on " + @reservation.time_slot.date.strftime('%d %m %Y')+" has been cancelled."
+    AgentTexter.alert(@notification.message,@reservation.diner.telephone).deliver
 
     waitings=@reservation.time_slot.waitings
     if !waitings.empty?

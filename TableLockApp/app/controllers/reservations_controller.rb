@@ -13,7 +13,7 @@ class ReservationsController < ApplicationController
     @reservation.time_slot_id=@ts.id
     @reservation.restaurant_id=params[:restaurant_id]
     #change to session
-    @reservation.diner_id=1
+    @reservation.diner_id=session[:diner_id]
     @reservation.packs=params[:packs]
     @reservation.meal_type_id=params[:meal_type]
     @reservation.reservation_status=0
@@ -23,6 +23,10 @@ class ReservationsController < ApplicationController
     @notification.message="You have a new reservation at "+@reservation.time_slot.time.strftime("%H:%M") + " on " + params[:date]
     @notification.checked=false
     @notification.save!
+
+    @message="You have made a reservation for "+ @reservation.restaurant.restaurant_name+" at "+@reservation.time_slot.time.strftime("%H:%M") + " on " + params[:date]
+
+    AgentTexter.alert(@message, @reservation.diner.telephone).deliver
 
     if @reservation.save!
       if params[:reserve_type]=="0"

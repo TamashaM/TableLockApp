@@ -58,3 +58,6 @@ gem 'thinreports'
 gem 'pdfkit'
 gem 'render_anywhere'
 gem 'wkhtmltopdf-binary'
+
+gem 'twilio-ruby'
+gem 'textris'
