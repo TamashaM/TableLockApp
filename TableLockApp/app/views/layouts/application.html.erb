@@ -69,6 +69,7 @@
       $(document).ready(function(){
           $('.parallax').parallax();
       });
+
   </script>
 </head>
 <body >
@@ -82,19 +83,26 @@
           <!--<a href="#" class="brand-logo">Logo</a>-->
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <% count=Notification.where(:user_id=>session[:user_id]).where(:checked =>false).count %>
+            <% if !session[:user_id].nil? %>
+              <% count=Notification.where(:user_id=>session[:user_id]).where(:checked =>false).count %>
 
-            <li><a class="dropdown-button" data-beloworigin=true onclick=getElementById("check").innerHTML=0; data-activates="dropdown2"><span id ="check" class="new badge"><%= count %></span><i class="material-icons right">notifications</i></a></li>
-            <ul id='dropdown2' class='dropdown-content'>
-              <% notifications=Notification.where(:user_id=>session[:user_id]).where(:checked=>false) %>
-              <% notifications.each do |n| %>
+                <% if count > 0 %>
 
-                  <li ><span><%=n.message %></span></li>
-                  <% n.checked=true %>
-                  <% n.save %>
-                  <% end %>
+                <li><a class="dropdown-button" data-beloworigin=true onclick=getElementById("check").innerHTML=0; data-activates="dropdown2"><span id ="check" class="new badge"><%= count %></span><i class="material-icons right">notifications</i></a></li>
+                <% else %>
+                    <li><a class="dropdown-button" data-beloworigin=true onclick=getElementById("check").innerHTML=0; data-activates="dropdown2"><span id ="check" class=" badge"></span><i class="material-icons right">notifications</i></a></li>
+                <% end %>
+              <ul id='dropdown2' class='dropdown-content'>
+                <% notifications=Notification.where(:user_id=>session[:user_id]).where(:checked=>false) %>
+                <% notifications.each do |n| %>
 
-            </ul>
+                    <li ><span><%=n.message %></span></li>
+                    <% n.checked=true %>
+                    <% n.save %>
+                    <% end %>
+
+              </ul>
+            <% end %>
             <% if !session[:user_id].nil? %>
             <% @user=User.find(session[:user_id]) %>
             <% if @user.user_type==0 %>
@@ -109,7 +117,7 @@
 
             <li><a class="dropdown-button" data-beloworigin=true href="#!" data-activates="dropdown1"><%=@name %><i class="material-icons right">arrow_drop_down</i></a></li>
             <% else %>
-                <li><a class="dropdown-button" data-beloworigin=true href="#!" data-activates="dropdown1">User<i class="material-icons right">arrow_drop_down</i></a></li>
+                <!--<li><a class="dropdown-button" data-beloworigin=true href="#!" data-activates="dropdown1">User<i class="material-icons right">arrow_drop_down</i></a></li>-->
             <% end %>
                 <ul id='dropdown1' class='dropdown-content'>
               <li ><a href="/logout">Logout</a></li>

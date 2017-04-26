@@ -15,6 +15,7 @@
 p{
   color: #ff6f00
 }
+
   </style>
   <script>
       $(document).ready(function() {
@@ -27,7 +28,7 @@ p{
 <div id="login-page" class="row">
   <!--<p id="notice"><%= notice %></p>-->
 
-  <div class="col s6 z-depth-4 card-panel offset-s3 transparent  hoverable" >
+  <div class="col s6 z-depth-4 card-panel offset-s2 transparent  hoverable" >
     <form  method="post" action="login" >
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <div class="row">
@@ -45,7 +46,7 @@ p{
         <div class="input-field col s12">
           <i class="mdi-social-person-outline prefix large material-icons prefix">perm_identity</i>
 
-          <input id="email" name="session[email]" type="email" class="validate ">
+          <input id="email" name="session[email]" type="email" class="validate " required>
 
           <label for="email"  >Email</label>
         </div>
@@ -58,25 +59,25 @@ p{
           <label for="password" >Password</label>
         </div>
       </div>
-      <div class="row margin">
-        <div class="input-field col s12 ">
-          <i class="mdi-action-lock-outline prefix material-icons prefix">account_box</i>
-          <select id="user_type" name="session[user_type]">
-            <option value="" disabled selected>Choose your option</option>
-            <option value="0">Diner</option>
-            <option value="1">Restaurant</option>
-            <option value="2">Admin</option>
-          </select>
+      <!--<div class="row margin">-->
+        <!--<div class="input-field col s12 ">-->
+          <!--<i class="mdi-action-lock-outline prefix material-icons prefix">account_box</i>-->
+          <!--&lt;!&ndash;<select id="user_type" name="session[user_type]">&ndash;&gt;-->
+            <!--&lt;!&ndash;<option value="" disabled selected>Choose your option</option>&ndash;&gt;-->
+            <!--&lt;!&ndash;<option value="0">Diner</option>&ndash;&gt;-->
+            <!--&lt;!&ndash;<option value="1">Restaurant</option>&ndash;&gt;-->
+            <!--&lt;!&ndash;<option value="2">Admin</option>&ndash;&gt;-->
+          <!--&lt;!&ndash;</select>&ndash;&gt;-->
 
-          <label for="user_type" class="active" ></label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12 m12 l12  login-text">
-          <input type="checkbox" id="remember-me" />
-          <label for="remember-me" >Remember me</label>
-        </div>
-      </div>
+          <!--<label for="user_type" class="active" ></label>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row">-->
+        <!--<div class="input-field col s12 m12 l12  login-text">-->
+          <!--<input type="checkbox" id="remember-me" />-->
+          <!--<label for="remember-me" >Remember me</label>-->
+        <!--</div>-->
+      <!--</div>-->
       <div class="row center">
         <button class="btn waves-effect waves-light" type="submit" name="action"  >Login
           <i class="material-icons ">send</i>

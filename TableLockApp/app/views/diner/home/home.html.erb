@@ -1,4 +1,12 @@
-<head>
+<head>	<title>jQuery UI Autocomplete - Custom data and display</title>
+  <link rel="stylesheet" href="../../themes/base/jquery.ui.all.css">
+  <script src="../../jquery-1.6.2.js"></script>
+  <script src="../../ui/jquery.ui.core.js"></script>
+  <script src="../../ui/jquery.ui.widget.js"></script>
+  <script src="../../ui/jquery.ui.position.js"></script>
+  <script src="../../ui/jquery.ui.autocomplete.js"></script>
+
+
   <style>
 
     .input-field label {
@@ -19,6 +27,7 @@
 
 
   </style>
+
   <script>
       $( document ).ready(function() {
           $('.datepicker').pickadate({
@@ -26,6 +35,47 @@
               selectMonths: true, // Creates a dropdown to control month
               selectYears: 15 // Creates a dropdown of 15 years to control year
           });
+      });
+//      jQuery(function() {
+//          return $('#location').autocomplete({
+//              source: ['apple', 'apricot', 'avocado']
+//          });
+//      })
+      $(function() {
+
+          // Below is the name of the textfield that will be autocomplete
+          $('#select_origin').autocomplete({
+              // This shows the min length of charcters that must be typed before the autocomplete looks for a match.
+              minLength: 1,
+              // This is the source of the auocomplete suggestions. In this case a list of names from the people controller, in JSON format.
+              source: '<%= '/diner/home' %>',
+
+              // This updates the textfield when you move the updown the suggestions list, with your keyboard. In our case it will reflect the same value that you see in the suggestions which is the person.given_name.
+              focus: function(event, ui) {
+
+                  $('#select_origin').val(ui.item.id);
+                  return false;
+              },
+              // Once a value in the drop down list is selected, do the following:
+              select: function(event, ui) {
+
+
+                  // place the person.given_name value into the textfield called 'select_origin'...
+                  $('#select_origin').val(ui.item.id);
+                  // and place the person.id into the hidden textfield called 'link_origin_id'.
+                  $('#link_origin_id').val(ui.item.id);
+                  return false;
+              }
+          })
+
+          // The below code is straight from the jQuery example. It formats what data is displayed in the dropdown box, and can be customized.
+              .data( "autocomplete" )._renderItem = function( ul, item) {
+              return $( "<li></li>" )
+                  .data( "item.autocomplete", item)
+                  // For now which just want to show the person.given_name in the list.
+                  .append( "<a>" + item.id+ "</a>" )
+                  .appendTo( ul );
+          };
       });
 
 
@@ -50,8 +100,12 @@
       <div class="row margin">
         <div class="input-field col s12">
           <i class="mdi-social-person-outline prefix large material-icons prefix">location_on</i>
-          <input id="location" name="key" type="text" class="validate">
-          <label for="location">Location/Restaurant</label>
+          <input id="select_origin" name="select_origin" type="text">
+          <label for="select_origin">Location/Restaurant</label>
+          <input id="link_origin_id" name="link[origin_id]" type="hidden"/>
+          <%if @restaurants %>
+          <%= puts "found" %>
+              <% end %>
         </div>
       </div>
 

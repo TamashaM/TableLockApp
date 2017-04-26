@@ -15,3 +15,5 @@
 //= require turbolinks
 //= require materialize-sprockets
 //= require_tree .
+//= require jquery-ui
+//= require autocomplete-rails

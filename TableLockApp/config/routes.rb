@@ -58,6 +58,7 @@ Rails.application.routes.draw do
   get 'diner/make_reservation'=>'diner/search_reservation#add'
   get 'diner/add_to_waiting_list'=>'diner/search_reservation#add_to_waiting_list'
   post 'diner/add_to_waiting_list'=>'diner/search_reservation#add_to_waiting_list'
+  get '/search_reservation/index'=> 'diner/search_reservation#index'
 
   get 'restaurant/home'=>'restaurant/home#home'
   get 'restaurant/profile'=>'restaurant/profile#view'

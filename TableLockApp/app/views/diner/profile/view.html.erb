@@ -13,7 +13,7 @@
     }
   </style>
   <script>
-      $(document).ready(function(){
+      $(document).ready(function() {
           Materialize.updateTextFields();
       });
       $( document ).ready(function() {
@@ -50,10 +50,10 @@
     </div>
     <div class="row">
       <div class="input-field col s6">
-<input type="hidden" name="diner[id]" value=<%= @diner.id %>>
+
         <i class="material-icons prefix">person</i>
-        <input  id="first_name" name="diner[first_name]" type="text" class="validate" value="<%=@diner.first_name %>">
-        <label for="first_name" class="active">First Name</label>
+        <input  id="diner[first_name]" name="diner[first_name]" type="text" class="validate" value="<%=@diner.first_name %>">
+        <label for="diner[first_name]" class="active" >First Name</label>
       </div>
       <div class="input-field col s6">
 
@@ -65,7 +65,7 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">email</i>
-        <input id="email" name="diner[email]" type="email" class="validate" value="<%=@user.email %>">
+        <input id="email" name="diner[email]" type="email" class="validate" value="<%=@user.email %>" disabled>
         <label for="email" class="active" data-error="wrong" data-success="right">Email</label>
 
       </div>

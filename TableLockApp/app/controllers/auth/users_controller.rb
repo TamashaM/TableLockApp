@@ -7,7 +7,7 @@ class Auth::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     #create user
-    if @user.save!
+    if @user.save
 
       @user_id=@user.id
       if params[:user][:user_type].to_i==0
@@ -84,7 +84,11 @@ class Auth::UsersController < ApplicationController
 
 
     else
-        redirect_to '/login'
+      @user.errors.full_messages.each do |message|
+        flash[:error]=message
+      end
+
+      redirect_to (:back)
 
     end
   end

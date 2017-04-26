@@ -1,6 +1,9 @@
 <head>
 <script>
     $(document).ready(function() {
+        Materialize.updateTextFields();
+    });
+    $(document).ready(function() {
 
         $('select').material_select();
     });
@@ -14,7 +17,7 @@
 </head>
 <div id="signup-restaurant-page" class="row">
 
-  <div class="col s6 z-depth-4 card-panel offset-s3" >
+  <div class="col s6 z-depth-4 card-panel offset-s2" >
     <form method="post" action="/users" class="col s12">
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <div class="row center">
@@ -24,63 +27,64 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">person</i>
-          <input  id="first_name" name="user[first_name]" type="text" class="validate">
-          <label for="first_name"class="active">First Name</label>
+          <input  id="first_name" name="user[first_name]" type="text" class="validate" autofocus required>
+          <label for="first_name">First Name</label>
         </div>
         <div class="input-field col s6">
 
-          <input id="last_name" name="user[last_name]" type="text" class="validate">
-          <label for="last_name"class="active">Last Name</label>
+          <input id="last_name" name="user[last_name]" type="text" class="validate" required>
+          <label for="last_name">Last Name</label>
         </div>
       </div>
       <div class="row margin">
         <div class="input-field col s12 ">
           <i class="mdi-action-lock-outline prefix material-icons prefix">account_box</i>
-          <select id="position" name="user[position]">
-            <option value="" disabled selected></option>
+          <select id="position" name="user[position]" required>
+            <option value="" disabled selected>Choose your position</option>
             <option value="1">Owner</option>
             <option value="2">Manager</option>
             <option value="3">General Staff</option>
+            <option value="4">Other</option>
           </select>
-          <label for="position" class="active">Choose your position</label>
+
 
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">restaurant </i>
-          <input  id="restaurant_name" name="user[restaurant_name]" type="text" class="validate">
-          <label for="restaurant_name"class="active">Restaurant Name</label>
+          <input  id="restaurant_name" name="user[restaurant_name]" type="text" class="validate" required>
+          <label for="restaurant_name">Restaurant Name</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">email</i>
-          <input id="email" name="user[email]" type="email" class="validate">
-          <label for="email" data-error="wrong" data-success="right"class="active">Email</label>
+          <input id="email" name="user[email]" type="email" class="validate" required>
+          <label for="email" >Email</label>
 
         </div>
       </div>
       <div class="row margin">
         <div class="input-field col s12">
           <i class="mdi-action-lock-outline prefix large material-icons prefix">lock</i>
-          <input id="password" name="user[password]" type="password" class="validate ">
-          <label for="password" class="active">Password</label>
+          <input id="password" name="user[password]" type="password" class="validate " required>
+          <label for="password" >Password</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">phone</i>
-          <input id="telephone" name="user[telephone]" type="tel" class="validate">
-          <label for="icon_telephone"class="active">Telephone</label>
+          <input id="telephone" data-error="invalid" data-success="valid" name="user[telephone]" type="tel" class="validate" required>
+          <label for="icon_telephone">Telephone</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
       <i class="material-icons prefix ">location_on</i>
 
-      <label for="address"class="active" >Address</label>
+      <label for="address" >Address</label>
         </div>
       </div>
       <div class="row">
@@ -88,23 +92,23 @@
       <div class="row">
         <div class="input-field col s6 ">
           <i class="material-icons prefix"></i>
-          <input id="add_line1"  name=user[add_line1] type="text" class="validate" >
-          <label for="add_line1" class="active">Line 1 address</label>
+          <input id="add_line1"  name=user[add_line1] type="text" class="validate" required>
+          <label for="add_line1" >Line 1 address</label>
         </div>
         <div class="input-field col s6">
           <input id="add_line2" name="user[add_line2]" type="text" class="validate" >
-          <label for="add_line2" class="active">Line 2 address</label>
+          <label for="add_line2" >Line 2 address</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix"></i>
-          <input id="city" type="text" name="user[city]" class="validate"  >
-          <label for="city" class="active">City</label>
+          <input id="city" type="text" name="user[city]" class="validate" required >
+          <label for="city" >City</label>
         </div>
         <div class="input-field col s6">
-          <input id="province" type="text" name="user[province]"  class="validate" >
-          <label for="province" class="active">State/Province/Region</label>
+          <input id="province" type="text" name="user[province]"  class="validate" required>
+          <label for="province" >State/Province/Region</label>
         </div>
       </div>
 

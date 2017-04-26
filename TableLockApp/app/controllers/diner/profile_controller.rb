@@ -10,6 +10,7 @@ class Diner::ProfileController < ApplicationController
   def update
     #diner profile update
     @diner=Diner.find(session[:diner_id])
+
     if @diner.update_attributes(diner_params)
       @diner.dob=Date.strptime(params[:diner][:dob],'%m/%d/%Y')
       @diner.save!
@@ -17,7 +18,7 @@ class Diner::ProfileController < ApplicationController
       redirect_to '/diner/profile'
     else
       flash[:error]="Error updating profile "
-      render('view')
+      redirect_to '/diner/profile'
     end
     #find an existing object
 

@@ -61,3 +61,5 @@ gem 'wkhtmltopdf-binary'
 
 gem 'twilio-ruby'
 gem 'textris'
+gem 'jquery-ui-rails'
+gem 'rails-jquery-autocomplete'

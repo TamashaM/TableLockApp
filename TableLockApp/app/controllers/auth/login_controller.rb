@@ -11,7 +11,7 @@ class Auth::LoginController < ApplicationController
     if params[:session][:email].present? && params[:session][:password].present?
       @user=User.find_by_email(params[:session][:email])
 
-      if @user && @user.authenticate(params[:session][:password]) && @user.user_type==params[:session][:user_type].to_i
+      if @user && @user.authenticate(params[:session][:password])
         session[:user_id]=@user.id
         #Materialize.toast("you are now logged in",4000)
         flash[:success]="You are now logged in"

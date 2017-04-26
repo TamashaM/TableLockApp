@@ -165,5 +165,28 @@ end
       @packs=params[:packs]
     end
   end
+  def autocomplete_restaurant_name
+    restaurants=Restaurant.joins("RIGHT OUTER JOIN dining_informations ON restaurants.id = dining_informations.restaurant_id").where("restaurant_name LIKE ? OR city LIKE ? OR province LIKE ?","%#{@key}%","%#{@key}%","%#{@key}%")
+
+    render :json => restaurants.map { |rest| {:id => rest.id, :label => rest.restaurant_name, :value => rest.restaurant_name} }
+  end
+  def index
+
+    if params[:term]
+      @restaurants=Restaurant.joins("RIGHT OUTER JOIN dining_informations ON restaurants.id = dining_informations.restaurant_id").where("restaurant_name LIKE ? OR city LIKE ? OR province LIKE ?","%#{params[:term]}%","%#{params[:term]}%","%#{params[:term]}%")
+
+
+    else
+      @restaurants=Restaurant.all
+    end
+
+    respond_to do |format|
+      puts "here"
+      format.html # index.html.erb
+# Here is where you can specify how to handle the request for "/people.json"
+      puts @restaurants.to_json
+      format.json { render :json => @restaurants.to_json }
+    end
+  end
 
 end
