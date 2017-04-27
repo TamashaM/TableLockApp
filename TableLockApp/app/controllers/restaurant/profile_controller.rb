@@ -13,8 +13,11 @@ class Restaurant::ProfileController < ApplicationController
         flash[:success]="Profile updated successfully"
         redirect_to '/restaurant/profile'
       else
-        flash[:error]="Error updating profile"
-        render('view')
+        @restaurant.errors.full_messages.each do |message|
+          flash[:error]=message
+        end
+        # flash[:error]="Error updating profile"
+        redirect_to '/restaurant/profile'
       end
   end
 

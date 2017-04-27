@@ -8,7 +8,6 @@ class Auth::UsersController < ApplicationController
     @user = User.new(user_params)
     #create user
     if @user.save
-
       @user_id=@user.id
       if params[:user][:user_type].to_i==0
           #create diner
@@ -17,7 +16,7 @@ class Auth::UsersController < ApplicationController
           @diner.first_name=params[:user][:first_name]
           @diner.last_name=params[:user][:last_name]
           @diner.telephone=params[:user][:telephone]
-          if @diner.save!
+          if @diner.save
             #uncomment this
                 #SignUpMailer.welcome_email(@user).deliver_now
 
@@ -26,8 +25,11 @@ class Auth::UsersController < ApplicationController
                 flash[:success]="You have successfully signed in with TableLock "
                 redirect_to '/diner/home'
           else
-                flash[:error]="Error processing the request. Please signup again "
-                redirect_to '/login/signup_diner'
+            @diner.errors.full_messages.each do |message|
+              flash[:error]=message
+            end
+            # flash[:error]="Error processing the request. Please signup again "
+            redirect_to '/login/signup_diner'
           end
       elsif params[:user][:user_type].to_i==1
         #creating  restaurant request object and sending them rr controller
@@ -61,7 +63,11 @@ class Auth::UsersController < ApplicationController
                       add_line2:@restaurant.add_line2,
                       email:@user.email
         else
-          flash[:error]="Error submitting the request"
+          #flash[:error]="Error submitting the request"
+          @restaurant.errors.full_messages.each do |message|
+            flash[:error]=message
+          end
+
           redirect_to '/login/signup_restaurant'
         end
       elsif params[:user][:user_type].to_i==2

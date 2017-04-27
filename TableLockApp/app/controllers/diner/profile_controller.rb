@@ -13,11 +13,20 @@ class Diner::ProfileController < ApplicationController
 
     if @diner.update_attributes(diner_params)
       @diner.dob=Date.strptime(params[:diner][:dob],'%m/%d/%Y')
-      @diner.save!
-      flash[:success]="You have successfully updated your profile "
-      redirect_to '/diner/profile'
+      if @diner.save
+        flash[:success]="You have successfully updated your profile "
+        redirect_to '/diner/profile'
+      else
+        @diner.errors.full_messages.each do |message|
+          flash[:error]=message
+        end
+      end
+
     else
-      flash[:error]="Error updating profile "
+      @diner.errors.full_messages.each do |message|
+        flash[:error]=message
+      end
+      #flash[:error]="Error updating profile "
       redirect_to '/diner/profile'
     end
     #find an existing object

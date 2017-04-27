@@ -29,12 +29,17 @@
   </style>
 
   <script>
-      $( document ).ready(function() {
-          $('.datepicker').pickadate({
+      $( document ).on('turbolinks:load', function() {
+          var $input =$('.datepicker').pickadate({
               format: 'mm/dd/yyyy',
+
               selectMonths: true, // Creates a dropdown to control month
-              selectYears: 15 // Creates a dropdown of 15 years to control year
+              selectYears: 15,// Creates a dropdown of 15 years to control year
+
           });
+          var picker = $input.pickadate('picker');
+          picker.set('min', Date.now())
+
       });
 //      jQuery(function() {
 //          return $('#location').autocomplete({

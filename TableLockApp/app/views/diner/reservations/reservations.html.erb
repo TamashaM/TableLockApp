@@ -1,8 +1,8 @@
 <head>
   <style>
 
-    select{  font-size:20px;
-      color: black}
+    option{  font-size:20px;
+      color: white}
 
     body{
       background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
@@ -13,12 +13,17 @@
     }
     p {font-size:18px;
       color: black}
+      span{
+        color: white
+      }
+
+
 
 
   </style>
 
   <script>
-      $(document).ready(function() {
+      $(document).on('turbolinks:load', function(){
 
           $('select').material_select();
       });
@@ -32,13 +37,22 @@
               document.getElementById("restaurant_search").style.display = "none";
           }
       }
-      $( document ).ready(function() {
-          $('.datepicker').pickadate({
+
+      $( document ).on('turbolinks:load', function() {
+          var $input =$('.datepicker').pickadate({
               format: 'mm/dd/yyyy',
+
               selectMonths: true, // Creates a dropdown to control month
-              selectYears: 100 // Creates a dropdown of 15 years to control year
+              selectYears: 15,// Creates a dropdown of 15 years to control year
+
           });
+          var picker = $input.pickadate('picker');
+          picker.set('min', Date.now())
+
       });
+
+
+
   </script>
 </head>
 
@@ -47,8 +61,8 @@
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 <div class="row">
   <div class=" col s3" >
-    <select name="search_by" onchange="optionCheck(this);">
-      <option value="" disabled selected>Search by</option>
+    <select name="search_by" onchange="optionCheck(this);" required>
+      <option value="" disabled selected >Search by</option>
       <option value="1">Restaurant</option>
       <option value="2">Date</option>
 
@@ -69,28 +83,34 @@
   </div>
 </div>
 </form>
+
 <div class="col s12 m7">
-  <% @past_reservations.each  do |fr|%>
+  <% if !@past_reservations.nil? && @set==1%>
+      <span >No results found</span>
+  <% end %>
 
-  <div class="card horizontal">
-    <div class="card-image">
-      <img src=<%= asset_path 'logo.jpg' %> width="60" height="220">
-    </div>
-    <div class="card-stacked">
-      <div class="card-content">
-        <p>Restaurant:&nbsp;<%= fr.restaurant.restaurant_name %></p>
-        <p>Date:&nbsp;<%= fr.time_slot.date %></p>
-        <p>Time:&nbsp;<%=fr.time_slot.time.strftime("%H:%M") %></p>
-        <p>Number of packs:&nbsp;<%= fr.packs %></p>
+    <% @past_reservations.each  do |fr|%>
+
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src=<%= asset_path 'logo.jpg' %> width="60" height="220">
       </div>
-      <div class="card-action">
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>Restaurant:&nbsp;<%= fr.restaurant.restaurant_name %></p>
+          <p>Date:&nbsp;<%= fr.time_slot.date %></p>
+          <p>Time:&nbsp;<%=fr.time_slot.time.strftime("%H:%M") %></p>
+          <p>Number of packs:&nbsp;<%= fr.packs %></p>
+        </div>
+        <div class="card-action">
 
-        <a href="/diner/reservations/cancel?id=<%=fr.id %>" class="waves-effect waves-light btn-medium">Cancel</a>
+          <a href="/diner/reservations/cancel?id=<%=fr.id %>" class="waves-effect waves-light btn-medium">Cancel</a>
+
+        </div>
 
       </div>
-
     </div>
-  </div>
-      <% end %>
+        <% end %>
+
 </div>
 

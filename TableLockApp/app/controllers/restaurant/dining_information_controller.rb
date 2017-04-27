@@ -16,24 +16,33 @@ class Restaurant::DiningInformationController < ApplicationController
   def update
     @restaurant=Restaurant.find(session[:restaurant_id])
     @restaurant.about=params[:profile][:about]
-    @restaurant.save
-    if @restaurant.dining_information
-      if @restaurant.dining_information.update_attributes(profile_params)
-        flash[:success]="Data updated sucessfully"
-        redirect_to (:back)
-      else
-        flash[:error]="Error updating data"
-        render('view')
-      end
+    if @restaurant.save
+      if @restaurant.dining_information
+        if @restaurant.dining_information.update_attributes(profile_params)
+          flash[:success]="Data updated sucessfully"
+           redirect_to '/restaurant/dining_information'
+        else
+          @restaurant.dining_information.errors.full_messages.each do |message|
+            flash[:error]=message
+          end
+          redirect_to (:back)
+        end
 
-    else
-      @dining_info=DiningInformation.new(profile_params)
-      if @restaurant.dining_information=@dining_info
-        redirect_to (:back)
       else
-        render('view')
+        @dining_info=DiningInformation.new(profile_params)
+        if @restaurant.dining_information=@dining_info
+          redirect_to 'restaurant/dining_information'
+        else
+          redirect_to (:back)
+        end
       end
+    else
+      @restaurant.errors.full_messages.each do |message|
+        flash[:error]=message
+      end
+      redirect_to (:back)
     end
+
 
 
   end

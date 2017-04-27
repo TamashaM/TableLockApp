@@ -24,10 +24,10 @@
 </head>
 <%= render :partial=> "diner/search_bar" %>
 <%= render :partial=> "diner/side_bar" %>
-<% if @restaurants.empty? %>
+<% if @restaurants.nil? %>
 
     <span >No results found</span>
-<% end %>
+<% else %>
 
 <% @restaurants.each do |rest| %>
     <% if @tss[rest.id].nil? %>
@@ -60,4 +60,6 @@
       </div>
     </div>
     <% end %>
+
+<% end %>
 

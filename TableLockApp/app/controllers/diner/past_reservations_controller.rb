@@ -4,6 +4,7 @@ class Diner::PastReservationsController < ApplicationController
       #change to session
       @diner_id=session[:diner_id]
       @past_reservations=[]
+      @set=0
 
       @reservations=Reservation.where("diner_id =? and reservation_status=0","#{@diner_id}")
       @reservations.each do |res|
@@ -30,6 +31,7 @@ class Diner::PastReservationsController < ApplicationController
 
   end
   def search
+    @set=1
 
     @diner_id=session[:diner_id]
     @past_reservations=[]
@@ -54,8 +56,13 @@ class Diner::PastReservationsController < ApplicationController
       @reservations=Reservation.where("diner_id =? and reservation_status=0","#{@diner_id}")
       @reservations.each do |res|
         @ts=res.time_slot
+        if params[:date_search]!=""
+          d=Date.strptime(params[:date_search],'%m/%d/%Y')
+        else
+          d=Date.today
+        end
 
-        if @ts.date<= Date.today &&@ts.date== Date.strptime(params[:date_search],'%m/%d/%Y')
+        if @ts.date<= Date.today &&@ts.date== d
           if @ts.date==Date.today && @ts.time.strftime("%H:%M:%S")>=Time.now.strftime("%H:%M:%S")
             next
           else

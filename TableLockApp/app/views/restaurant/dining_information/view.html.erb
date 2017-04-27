@@ -81,16 +81,21 @@
 
         </div>
         <div class="row">
-          <div class="input-field col s6">
-            <input id="operation_hours"  name=profile[operation_hours] type="text" class="validate">
-            <label for="operation_hours">Hours of Operation</label>
-          </div>
+          <!--<div class="input-field col s6">-->
+            <!--<input id="operation_hours"  name=profile[operation_hours] type="text" class="validate">-->
+            <!--<label for="operation_hours">Hours of Operation</label>-->
+          <!--</div>-->
+
 
 
           <div class="input-field col s6">
             <input id="dress_code"  name=profile[dress_code] type="text" value="<%=@dining_information.dress_code%>" class="validate">
             <label for="dress_code"class="active">Dress Code</label>
           </div>
+          <div class="input-field col s6">
+            <input id="add_info" type="text" name=profile[add_info] value="<%=@dining_information.add_info%>" class="validate">
+            <label for="add_info"class="active">Additional</label>
+          </div>
 
         </div>
 
@@ -99,23 +104,17 @@
         <div class="row">
 
           <div class="input-field col s6">
-            <input id="capacity" name="profile[capacity_seating]" value="<%=@dining_information.capacity_seating%>" min="0" type="number" class="validate">
+            <input id="capacity" name="profile[capacity_seating]" value="<%=@dining_information.capacity_seating%>" min="0" type="number" class="validate" required>
             <label for="capacity"class="active">Capacity per seating</label>
           </div>
 
 
           <div class="input-field col s6">
-            <input id="time" type="number" min="15" max="120" value="<%=@dining_information.time_seating%>" step="15"name="profile[time_seating]" class="validate">
+            <input id="time" type="number" min="15" max="120" value="<%=@dining_information.time_seating%>" step="15"name="profile[time_seating]" class="validate" required>
             <label for="time"class="active">Time per seating(mins)</label>
           </div>
         </div>
-        <div class="row">
 
-          <div class="input-field col s6">
-            <input id="add_info" type="text" name=profile[add_info] value="<%=@dining_information.add_info%>" class="validate">
-            <label for="add_info"class="active">Additional</label>
-          </div>
-        </div>
 
 
 

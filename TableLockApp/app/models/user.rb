@@ -12,8 +12,9 @@ class User < ApplicationRecord
       message: "email address is already taken"
   }
 
-  validates :email, format:{with:/\A[\w+\-.]+[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i,
-  message:"should be a valid email address"}
+  validates :email, format:{with:/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i  ,
+
+                            message:"should be a valid email address"}
 
 
 

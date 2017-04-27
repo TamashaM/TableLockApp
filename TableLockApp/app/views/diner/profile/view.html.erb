@@ -13,9 +13,7 @@
     }
   </style>
   <script>
-      $(document).ready(function() {
-          Materialize.updateTextFields();
-      });
+
       $( document ).ready(function() {
           $('.datepicker').pickadate({
               format: 'mm/dd/yyyy',
@@ -23,7 +21,6 @@
               selectYears: 100 // Creates a dropdown of 15 years to control year
           });
       });
-
         $( document ).ready(function() {
             $('.timepicker').pickatime({
                 default: 'now',
@@ -52,12 +49,12 @@
       <div class="input-field col s6">
 
         <i class="material-icons prefix">person</i>
-        <input  id="diner[first_name]" name="diner[first_name]" type="text" class="validate" value="<%=@diner.first_name %>">
+        <input  id="diner[first_name]" name="diner[first_name]" type="text" class="validate" value="<%=@diner.first_name %>" required>
         <label for="diner[first_name]" class="active" >First Name</label>
       </div>
       <div class="input-field col s6">
 
-        <input id="last_name" name="diner[last_name]" type="text" class="validate" value="<%=@diner.last_name %>">
+        <input id="last_name" name="diner[last_name]" type="text" class="validate" value="<%=@diner.last_name %>"required>
         <label for="last_name" class="active">Last Name</label>
       </div>
     </div>
@@ -73,7 +70,12 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">today</i>
-        <input id="dob" name="diner[dob]" type="date" class="datepicker" value="<%=@diner.dob %>">
+        <% if !@diner.dob.nil? %>
+        <input id="dob" name="diner[dob]"  class="datepicker" value="<%=@diner.dob.strftime("%m/%d/%Y") %>">
+        <%else %>
+            <input id="dob" name="diner[dob]"  class="datepicker" >
+
+      <%end %>
         <label for="dob" class="active">Date of Birth</label>
       </div>
     </div>
@@ -83,7 +85,7 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">phone</i>
-          <input id="telephone" name="diner[telephone]" type="tel" class="validate" value="<%=@diner.telephone %>">
+          <input id="telephone" name="diner[telephone]" type="tel" class="validate" value="<%=@diner.telephone %>" required>
           <label for="telephone" class="active">Mobile</label>
         </div>
 
@@ -103,7 +105,7 @@
       <div class="row">
         <div class="input-field col s6 ">
           <i class="material-icons prefix"></i>
-          <input id="add_line1"  name=diner[add_line1] type="text" class="validate" value="<%=@diner.add_line1 %>">
+          <input id="add_line1"  name=diner[add_line1] type="text" class="validate" value="<%=@diner.add_line1 %>" >
           <label for="add_line1" class="active">Line 1 address</label>
         </div>
         <div class="input-field col s6">

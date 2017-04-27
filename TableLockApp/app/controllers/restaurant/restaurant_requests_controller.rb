@@ -12,10 +12,13 @@ class Restaurant::RestaurantRequestsController < ApplicationController
     @restaurant_request.add_line1=params[:add_line1]
     @restaurant_request.add_line2=params[:add_line2]
     @restaurant_request.restaurant_id=params[:restaurant_id]
-    if @restaurant_request.save!
+    if @restaurant_request.save
 
       redirect_to '/login'
     else
+      @restaurant_request.errors.full_messages.each do |message|
+        flash[:error]=message
+      end
       redirect_to '/signup_restaurant'
     end
   end

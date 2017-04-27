@@ -2,6 +2,7 @@ class Diner::ReservationsController < ApplicationController
   protect_from_forgery
   def reservations
     #change to session
+    @set=0
     @diner_id=session[:diner_id]
     @past_reservations=[]
 
@@ -26,11 +27,13 @@ class Diner::ReservationsController < ApplicationController
   def search
     #change to session
     @diner_id=session[:diner_id]
+    @set=1
     @past_reservations=[]
     if params[:search_by].to_i==1
       @reservations=Reservation.where("diner_id =? and reservation_status=0","#{@diner_id}")
       @reservations.each do |res|
         @ts=res.time_slot
+        puts "here"
 
         if @ts.date>= Date.today && res.restaurant.restaurant_name.downcase.include?(params[:restaurant_search].downcase)
           puts "here"
@@ -48,8 +51,13 @@ class Diner::ReservationsController < ApplicationController
       @reservations=Reservation.where("diner_id =? and reservation_status=0","#{@diner_id}")
       @reservations.each do |res|
         @ts=res.time_slot
-
-        if @ts.date>= Date.today &&@ts.date== Date.strptime(params[:date_search],'%m/%d/%Y')
+        puts params[:date_search]
+        if params[:date_search]!=""
+          d=Date.strptime(params[:date_search],'%m/%d/%Y')
+        else
+          d=Date.today
+        end
+        if @ts.date>= Date.today &&@ts.date== d
           if @ts.date==Date.today && @ts.time< Time.now
             next
           else

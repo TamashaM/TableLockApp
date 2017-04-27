@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
 #when you have a model
-  get 'login/signup_diner'  => 'admin/users#new'
+  get 'login/signup_diner'  => 'auth/signup#signup_diner'
 
   get '/users'=>'auth/login#login'
   post '/users'=>'auth/users#create'

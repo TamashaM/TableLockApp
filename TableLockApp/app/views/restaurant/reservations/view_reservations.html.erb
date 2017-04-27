@@ -16,7 +16,20 @@
               selectYears: 100 // Creates a dropdown of 15 years to control year
           });
       });
+      $( document ).on('turbolinks:load', function() {
+          var $input =$('.datepicker').pickadate({
+              format: 'mm/dd/yyyy',
 
+              selectMonths: true, // Creates a dropdown to control month
+              selectYears: 15,// Creates a dropdown of 15 years to control year
+
+          });
+          var picker = $input.pickadate('picker');
+
+          picker.set('select', Date.now())
+
+
+      });
 
   </script>
 </head>

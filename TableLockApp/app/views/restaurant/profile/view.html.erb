@@ -33,7 +33,7 @@
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">restaurant </i>
-          <input  id="restaurant_name" name="restaurant[restaurant_name]"  value="<%=@restaurant.restaurant_name %>" type="text" class="validate">
+          <input  id="restaurant_name" name="restaurant[restaurant_name]"  value="<%=@restaurant.restaurant_name %>" type="text" class="validate" required>
           <label for="restaurant_name" class="active">Restaurant Name</label>
         </div>
       </div>
@@ -41,7 +41,7 @@
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">phone</i>
-          <input id="telephone" name="restaurant[telephone]"  value="<%=@restaurant.telephone %>" type="tel" class="validate">
+          <input id="telephone" name="restaurant[telephone]"  value="<%=@restaurant.telephone %>" type="tel" class="validate" required>
           <label for="icon_telephone" class="active">Telephone</label>
         </div>
       </div>
@@ -57,7 +57,7 @@
       <div class="row">
         <div class="input-field col s6 ">
           <i class="material-icons prefix"></i>
-          <input id="add_line1"  name=restaurant[add_line1]  value="<%=@restaurant.add_line1%>" type="text" class="validate" >
+          <input id="add_line1"  name=restaurant[add_line1]  value="<%=@restaurant.add_line1%>" type="text" class="validate" required >
           <label for="add_line1" class="active" >Line 1 address</label>
         </div>
         <div class="input-field col s6">
@@ -68,11 +68,11 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix"></i>
-          <input id="city" type="text" name="restaurant[city]"  value="<%=@restaurant.city %>" class="validate"  >
+          <input id="city" type="text" name="restaurant[city]"  value="<%=@restaurant.city %>" class="validate" required >
           <label for="city" class="active" >City</label>
         </div>
         <div class="input-field col s6">
-          <input id="province" type="text" name="restaurant[province]" value="<%=@restaurant.province %>"  class="validate" >
+          <input id="province" type="text" name="restaurant[province]" value="<%=@restaurant.province %>"  class="validate" required>
           <label for="province" class="active" >State/Province/Region</label>
         </div>
       </div>
