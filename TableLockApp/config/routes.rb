@@ -38,6 +38,10 @@ Rails.application.routes.draw do
   post '/admin/search'=>'admin/home#search'
   get '/admin/payments'=>'admin/payments#view'
   post '/admin/payments'=>'admin/payments#view'
+  get '/admin/request_view'=>'admin/restaurant_requests#view'
+  get 'admin/payments/print_report'=>'admin/payments#print_report'
+  get '/admin/profile/change_pic'=>'admin/profile#change_pic'
+  post '/admin/profile/change_pic'=>'admin/profile#change_pic'
 
   get 'diner/home'=>'diner/home#home'
   get 'diner/profile'=>'diner/profile#view'
@@ -58,6 +62,9 @@ Rails.application.routes.draw do
   get 'diner/make_reservation'=>'diner/search_reservation#add'
   get 'diner/add_to_waiting_list'=>'diner/search_reservation#add_to_waiting_list'
   post 'diner/add_to_waiting_list'=>'diner/search_reservation#add_to_waiting_list'
+  get '/diner/profile/change_pic'=>'diner/profile#change_pic'
+  post '/diner/profile/change_pic'=>'diner/profile#change_pic'
+
   get '/search_reservation/index'=> 'diner/search_reservation#index'
 
   get 'restaurant/home'=>'restaurant/home#home'
@@ -66,9 +73,11 @@ Rails.application.routes.draw do
   get 'restaurant/dining_information'=>'restaurant/dining_information#view'
   post 'restaurant/dining_information/add_meal_type'=>'restaurant/dining_information#add_meal_type'
   get 'restaurant/dining_information/remove_meal_type'=>'restaurant/dining_information#remove_meal_type'
+  get 'restaurant/offers/remove'=>'restaurant/offers#remove'
   get 'restaurant/reservations/search'=>'restaurant/reservations#view_reservations'
   post 'restaurant/reservations/search'=>'restaurant/reservations#view_reservations'
   get 'restaurant/table_management/edit'=>'restaurant/table_management#edit'
+  get 'restaurant/table_management/remove'=>'restaurant/table_management#remove'
   post 'restaurant/table_management/add'=>'restaurant/table_management#add'
   get 'restaurant/holidays/view'=>'restaurant/holidays#view'
   post 'restaurant/holidays/add'=>'restaurant/holidays#add'
@@ -78,6 +87,8 @@ Rails.application.routes.draw do
   get '/restaurant/payments'=>'restaurant/payments#view'
   post '/restaurant/payments'=>'restaurant/payments#view'
   get '/restaurant/payments/print_report'=>'restaurant/payments#print_report'
+  get '/restaurant/profile/change_pic'=>'restaurant/profile#change_pic'
+  post '/restaurant/profile/change_pic'=>'restaurant/profile#change_pic'
 
 
   post '/reservation/create'=>'reservations#add'

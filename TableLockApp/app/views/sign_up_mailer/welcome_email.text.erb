@@ -1,5 +1,9 @@
 
-Welcome to example.com, <%= @diner.first_name %>
+<% if @user.user_type==0 %>
+    Welcome to TableLock, <%= @diner.first_name %>
+<% else %>
+    Welcome to TableLock, <%= @admin.first_name %>
+<% end %>
 ===============================================
 
 You have successfully signed up to TableLock.com,

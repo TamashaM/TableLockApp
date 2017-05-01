@@ -1,5 +1,5 @@
 class Diner::ProfileController < ApplicationController
-
+  before_action :require_diner, only:[:view ,:update]
   protect_from_forgery
 
   def view
@@ -33,10 +33,24 @@ class Diner::ProfileController < ApplicationController
 
 
   end
+  def change_pic
+    if request.post?
+
+      @diner=Diner.find(session[:diner_id])
+      @diner.update_attributes(pic_params)
+      flash[:success]="Profile picture updated successfully"
+    end
+
+
+  end
   private
 
   def diner_params
     params.require(:diner).permit(:first_name, :last_name, :telephone,:dob,:add_line1,:add_line2, :city,:province,:postal_code)
+  end
+
+  def pic_params
+    params.permit(:avatar)
   end
 
 end

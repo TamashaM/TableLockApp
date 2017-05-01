@@ -216,24 +216,24 @@
 
       <div class="row">
         <label>Title </label>
-        <input type='text' name="mt[title]"  />
+        <input type='text' name="mt[title]" required />
 
       </div>
       <div class="row">
         <label>Price($)</label>
-        <input type='number' name="mt[price]" min='0'   step='0.01' />
+        <input type='number' name="mt[price]" min='0'   step='0.01' required/>
 
       </div>
 
 
       <div class="row">
         <label>From </label>
-        <input type='time' name="mt[start_time]" min='00:00' max='24:00'  step='1800' />
+        <input type='time' name="mt[start_time]" min='00:00' max='24:00'  step='1800' required/>
 
       </div>
       <div class="row">
         <label>To</label>
-        <input type='time' name="mt[end_time]" min='00:00' max='24:00'  step='1800' />
+        <input type='time' name="mt[end_time]" min='00:00' max='24:00'  step='1800' required />
       </div>
     </div>
     <div class="modal-footer">

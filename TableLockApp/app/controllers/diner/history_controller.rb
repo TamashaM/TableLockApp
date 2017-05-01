@@ -1,4 +1,5 @@
 class Diner::HistoryController < ApplicationController
+  before_action :require_diner
   def view
     #should be replaced by session id
     @diner=Diner.find(session[:diner_id])

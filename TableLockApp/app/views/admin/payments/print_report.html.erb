@@ -1,0 +1,55 @@
+
+
+<head>
+  <style>
+    div.navbar-fixed{display:none;}
+    body {
+
+      background-image: none !important;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      text-align: center;
+    }
+  </style>
+</head>
+<div class=" col s12" >
+  <h4>Transactions for the month  <%=h monthname(@month.to_i) %></h4>
+  <table style="width:100%" >
+    <thead>
+    <tr>
+      <div class="col s4">
+      <th data-field="rest_id">Restaurant ID </th>
+      </div>
+      <th data-field="restaurant">Restaurant </th>
+      <th data-field="payment" >Payment($)</th>
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <% if !@restaurants.nil? %>
+        <% @restaurants.each do |rest| %>
+            <tr>
+              <div class="col s4">
+              <td><%=Restaurant.find(rest).id %></td>
+              </div>
+              <div class="col s4">
+              <td><%=Restaurant.find(rest).restaurant_name %></td>
+              </div>
+              <div class="col s4">
+              <td>
+                <%= @records[rest] %>
+              </td>
+              </div>
+            </tr>
+        <%end%>
+    <%end%>
+
+    </tbody>
+  </table>
+</div>
+
+

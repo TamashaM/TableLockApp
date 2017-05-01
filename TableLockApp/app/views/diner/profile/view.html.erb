@@ -39,12 +39,14 @@
 <%= render :partial=> "diner/side_bar" %>
 
 <div class="row">
-  <form class="col s12 white " method="POST" action="/diner/profile/update">
+  <form class="col s12 white " method="POST" action="/diner/profile/update"  enctype="multipart/form-data">
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     <h4 >     My Profile</h4>
     <hr>
-    <div class="row">
-    </div>
+
+
+
+
     <div class="row">
       <div class="input-field col s6">
 
@@ -132,6 +134,7 @@
 
         </div>
       </div>
+
 
 
     <div class="row center">

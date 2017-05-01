@@ -19,7 +19,8 @@
         <th data-field="name">Name</th>
         <th data-field="description" >Description</th>
         <th data-field="from">From</th>
-        <th data-field="from">To</th>
+        <th data-field="to">To</th>
+        <th >Action</th>
       </tr>
       </thead>
 
@@ -30,6 +31,7 @@
             <td><%= off.description %></td>
             <td><%= off.start_date %><p>  </p> <%= off.start_time.strftime("%H:%M")%> </td>
             <td><%= off.end_date %><p>  </p> <%= off.end_time.strftime("%H:%M")%> </td>
+            <td> <a type="button" href="/restaurant/offers/remove?id= <%=off.id %>">Remove</a></td>
           </tr>
       <%end%>
 

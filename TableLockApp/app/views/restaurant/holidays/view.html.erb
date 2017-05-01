@@ -9,13 +9,20 @@
     }
   </style>
   <script>
-      $( document ).ready(function() {
-          $('.datepicker').pickadate({
+      $( document ).on('turbolinks:load', function() {
+          var $input =$('.datepicker').pickadate({
               format: 'mm/dd/yyyy',
+
               selectMonths: true, // Creates a dropdown to control month
-              selectYears: 100 // Creates a dropdown of 15 years to control year
+              selectYears: 15,// Creates a dropdown of 15 years to control year
+
           });
+          var picker = $input.pickadate('picker');
+          picker.set('min', Date.now())
+//          picker.set('select',Date.now())
+
       });
+
       $(document).ready(function(){
           // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
           $('.modal').modal();
@@ -56,7 +63,7 @@
   <div class="modal-content">
 
     <p>Please select a date you want to add as a holiday </p>
-    <input id="holiday" name="holiday" type="date" class="datepicker" >
+    <input id="holiday" name="holiday" type="date" class="datepicker" required >
   </div>
     <div class="modal-footer">
       <button class="btn waves-effect modal-close waves-light" type="submit" name="action">Save

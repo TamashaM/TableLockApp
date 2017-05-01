@@ -1,4 +1,5 @@
 class Diner::SearchReservationController < ApplicationController
+  before_action :require_diner
   protect_from_forgery
 def view
 

@@ -34,25 +34,33 @@
     <div class="  card-panel offset-s3 " >
 
       <form class="col s12  " >
-        <div class="row">
-
-        </div>
         <h4><%=@restaurant.restaurant_name%> &nbsp; </h4>
         <hr>
+        <div class="row">
 
-        <h5> About</h5>
-        <span><%=@restaurant.about%></span>
 
-        <br>
-        <br>
+        </div>
+
+        <div class="col s12 m7">
+
+          <div class="card horizontal">
+            <div class="card-image">
+              <%= image_tag @restaurant.avatar.url(:medium) %>
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+
+                <h5> About</h5>
+                <span><%=@restaurant.about%></span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
         <hr>
 
-        <h5> Restaurant Photos</h5>
-        <span></span>
 
-        <br>
-        <br>
-        <hr>
         <h5> Dining Information</h5>
         <div class="row">
           <div class="col s6">

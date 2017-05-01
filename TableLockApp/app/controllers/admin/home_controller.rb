@@ -1,4 +1,6 @@
 class Admin::HomeController < ApplicationController
+
+  before_action :require_admin
   protect_from_forgery
   def home
 

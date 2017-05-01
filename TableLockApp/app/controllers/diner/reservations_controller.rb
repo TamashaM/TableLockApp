@@ -57,7 +57,7 @@ class Diner::ReservationsController < ApplicationController
         else
           d=Date.today
         end
-        if @ts.date>= Date.today &&@ts.date== d
+        if @ts.date>= Date.today && @ts.date== d
           if @ts.date==Date.today && @ts.time< Time.now
             next
           else

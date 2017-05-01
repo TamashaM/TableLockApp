@@ -1,4 +1,5 @@
 class Diner::FavouritesController < ApplicationController
+  before_action :require_diner
   def view
 
     @id=session[:diner_id]

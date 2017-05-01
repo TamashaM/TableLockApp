@@ -18,7 +18,7 @@ class Auth::UsersController < ApplicationController
           @diner.telephone=params[:user][:telephone]
           if @diner.save
             #uncomment this
-                #SignUpMailer.welcome_email(@user).deliver_now
+                SignUpMailer.welcome_email(@user).deliver_now
 
                 session[:user_id]=@user.id
                 session[:diner_id]=@diner.id
@@ -45,7 +45,8 @@ class Auth::UsersController < ApplicationController
         @restaurant.position=params[:user][:position]
         @restaurant.add_line1=params[:user][:add_line1]
         @restaurant.add_line2=params[:user][:add_line2]
-        if @restaurant.save!
+        if @restaurant.save
+          SignUpMailer.request_email(@user).deliver_now
           flash[:success]="Your request was submitted successfully "
           session[:user_id]=@user.id
           session[:restaurant_id]=@restaurant.id
@@ -76,13 +77,16 @@ class Auth::UsersController < ApplicationController
         @admin.first_name=params[:user][:first_name]
         @admin.last_name=params[:user][:last_name]
         @admin.telephone=params[:user][:telephone]
-        if @admin.save!
+        if @admin.save
           session[:user_id]=@user.id
           session[:admin_id]=@admin.id
           flash[:success]="You have successfully signed in with TableLock "
           redirect_to '/admin/home'
         else
-          flash[:error]="Error processing the request. Please signup again "
+          @admin.errors.full_messages.each do |message|
+            flash[:error]=message
+          end
+          # flash[:error]="Error processing the request. Please signup again "
           redirect_to '/admin/signup'
 
         end

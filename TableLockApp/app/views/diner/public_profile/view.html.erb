@@ -1,6 +1,6 @@
 <head>
   <style>
-    h4 {
+    h5 {
       color: #4db6ac;
 
     }
@@ -23,25 +23,38 @@
   <div class="col s6  card-panel offset-s3 " >
 
 <form class="col s12  " >
-  <div class="row">
 
-  </div>
-  <h4><%=@diner.first_name%> &nbsp; <%=@diner.last_name%></h4>
-  <hr>
-  <br>
-
-<span>Contact Number : <%=@diner.telephone%></span>
-  <br>
-  <br>
-  <br>
-  <span>  Email : <%=@user.email%></span>
-
- <br>
-  <br>
-  <br>
-  <span>  Date of Birth : <%=@diner.dob%></span>
 
 </span>
+
+  <div class="col s12 m7">
+    <div class="card horizontal">
+      <div class="card-image">
+        <%= image_tag @diner.avatar.url(:medium) %>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+
+          <h5 class="header"><%=@diner.first_name%> &nbsp; <%=@diner.last_name%></h5>
+
+          <hr>
+          <br>
+
+          <span>Contact Number : <%=@diner.telephone%></span>
+          <br>
+          <br>
+          <br>
+          <span>  Email : <%=@user.email%></span>
+
+          <br>
+          <br>
+          <br>
+          <span>  Date of Birth : <%=@diner.dob%></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
 </form>

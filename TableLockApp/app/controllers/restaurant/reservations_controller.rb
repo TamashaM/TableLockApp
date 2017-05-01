@@ -1,4 +1,5 @@
 class Restaurant::ReservationsController < ApplicationController
+  before_action :require_restaurant
   protect_from_forgery
   def mark_status
     @reservation=Reservation.find(params[:id])

@@ -37,8 +37,8 @@ class Auth::LoginController < ApplicationController
             session[:status]=1
 
             session[:restaurant_id]=@restaurant.id
-            redirect_to controller:'/restaurant/home',
-                        action:'home'
+            redirect_to controller:'/restaurant/reservations',
+                        action:'view_reservations'
           else
             #restaurant req rejected
             session[:status]=2

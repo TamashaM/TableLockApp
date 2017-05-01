@@ -5,7 +5,11 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<h1>Welcome to TableLock, <%= @diner.first_name %></h1>
+<% if @user.user_type==0 %>
+    <h1>Welcome to TableLock, <%= @diner.first_name %></h1>
+<% else %>
+    <h1>Welcome to TableLock, <%= @admin.first_name %></h1>
+<% end %>
 <p>
   You have successfully signed up to TableLock.com,
 

@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Hey <%= @restaurant.first_name %>!</h1>
+<p>
+  Your request for <%= @restaurant.restaurant_name %> has been rejected by TableLock. Please contact us for more details.
+</p>
+<p>To resubmit the request, just follow this link: <%= @url %>.</p>
+<p>Sorry for the inconvenience caused and have a great day!</p>
+
+</body>
+</html>

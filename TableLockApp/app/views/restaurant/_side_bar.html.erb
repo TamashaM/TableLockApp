@@ -1,12 +1,36 @@
+
+<head>
+
+  <style>.circle {
+    line-height: 0;		/* remove line-height */
+    display: inline-block;	/* circle wraps image */
+    margin: 5px;
+    border-radius: 50%;	/* relative value */
+    box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
+    transition: linear 0.25s;
+  }
+  .circle img {
+    border-radius: 50%;	/* relative value for
+				   adjustable image size */
+  }
+  .circle:hover {
+    transition: ease-out 0.3s;
+    transform: scale(0.8) rotate(20deg);
+  }
+
+  </style>
+</head>
 <header>
   <ul id= "slide-out"  style="width:240px; margin-top:69px;" class="side-nav fixed">
     <li><div class="userView">
       <div class="background">
-        <img src="http://materializecss.com/images/office.jpg">
+       <img src= "<%= asset_path 'rest4.jpg' %>" >
       </div>
-      <a href="#!user"><img class="circle" src="https://expertbeacon.com/sites/default/files/advice_for_men_on_selecting_your_online_dating_profile_photo.jpg"></a>
-      <a href="#!name"><span class="white-text name">Grand Beijing</span></a>
-      <a href="#!email"><span class="white-text email">shaeid@gb.com</span></a>
+      <% r=Restaurant.find(session[:restaurant_id])%>
+      <a class="circle" href="/restaurant/profile/change_pic"><%= image_tag r.avatar.url(:thumb) %></a>
+
+      <a href="#!name"><span class="white-text name"><%= r.restaurant_name%></span></a>
+      <a href="#!email"><span class="white-text email"><%= r.user.email %></span></a>
     </div></li>
     <li><a href="/restaurant/reservations/search">Home</a></li>
     <li><a href="/restaurant/profile">Profile</a></li>

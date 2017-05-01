@@ -76,13 +76,11 @@
       <thead>
       <tr>
         <th data-field="day">Day</th>
-        <th data-field="tp1">Time Periods
+        <th data-field="tp1">Time Periods</th>
+        <th>
+          <button data-target="addPeriod" class="btn right">Add Period</button>
+        </th>
 
-
-          </th>
-      <th>
-        <button data-target="addPeriod" class="btn right">Add Period</button>
-      </th>
       </tr>
       </thead>
 
@@ -101,6 +99,8 @@
 
             <% end%>
             </td>
+            <td> <a  data-target="editPeriodM">Edit</a></td>
+
 
           <tr>
             <td>Tuesday</td>
@@ -114,6 +114,7 @@
 
               <% end%>
             </td>
+            <td> <a  data-target="editPeriodT">Edit</a></td>
           </tr>
           <tr>
             <td>Wednesday</td>
@@ -127,6 +128,7 @@
 
               <% end%>
             </td>
+            <td> <a  data-target="editPeriodW">Edit</a></td>
 
           </tr><tr>
             <td>Thursday</td>
@@ -140,7 +142,7 @@
 
               <% end%>
             </td>
-
+            <td> <a  data-target="editPeriodThu">Edit</a></td>
           </tr>
           <tr>
             <td>Friday</td>
@@ -155,6 +157,7 @@
 
               <% end%>
             </td>
+            <td> <a  data-target="editPeriodF">Edit</a></td>
           </tr>
           <tr>
             <td>Saturday</td>
@@ -169,7 +172,7 @@
               <% end%>
             </td>
 
-
+            <td> <a  data-target="editPeriodS">Edit</a></td>
           </tr>
           <tr>
             <td>Sunday</td>
@@ -183,7 +186,7 @@
 
               <% end%>
             </td>
-
+            <td> <a  data-target="editPeriodSun">Edit</a></td>
 
           </tr>
 
@@ -192,6 +195,7 @@
   </div>
 </form>
 <form method="post" action="/restaurant/table_management/add">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
 <div id="addPeriod" class="modal ">
   <div class="modal-content">
@@ -199,19 +203,19 @@
     <p>Please select a time period </p>
 
 
-    <select multiple id="days" name="days[]">
-
+    <select multiple id="days" name="days[]" required>
+      <option value="" disabled> Select Dates</option>
       <%= options_from_collection_for_select(@weekdays, :id, :day) %>
     </select>
 
 <div class="row">
   <label>From </label>
-    <input type='time' name="tp[start_time]" min='00:00' max='24:00'  step='1800' />
+    <input type='time' name="tp[start_time]" min='00:00' max='24:00'  step='1800' required />
 
 </div>
     <div class="row">
       <label>To</label>
-    <input type='time' name="tp[end_time]" min='00:00' max='24:00'  step='1800' />
+    <input type='time' name="tp[end_time]" min='00:00' max='24:00'  step='1800' required/>
     </div>
   </div>
   <div class="modal-footer">
@@ -221,3 +225,186 @@
   </div>
 </div>
 </form>
+
+<div id="editPeriodM" class="modal ">
+  <div class="modal-content">
+
+    <p>Monday Time Periods</p>
+    <table>
+      <thead>
+      <th>Time Period</th>
+      <th>Action</th>
+      </thead>
+      <tbody>
+        <% @monday.each do |tp| %>
+          <tr>
+              <td> <span>From</span>
+                  <%=tp.start_time.strftime("%H:%M") %>
+                  <span>To</span>
+                  <%=tp.end_time.strftime("%H:%M") %>
+                  <span>    &nbsp;               </span>
+              </td>
+              <td> <a type="button" href="/restaurant/table_management/remove?id= <%=tp.id %>">Remove</a></td>
+          </tr>
+        <% end%>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<div id="editPeriodT" class="modal ">
+  <div class="modal-content">
+
+    <p>Tuesday Time Periods</p>
+    <table>
+      <thead>
+      <th>Time Period</th>
+      <th>Action</th>
+      </thead>
+      <tbody>
+      <% @tuesday.each do |tp| %>
+          <tr>
+            <td> <span>From</span>
+              <%=tp.start_time.strftime("%H:%M") %>
+              <span>To</span>
+              <%=tp.end_time.strftime("%H:%M") %>
+              <span>    &nbsp;               </span>
+            </td>
+            <td> <a type="button" href="/restaurant/table_management/remove?id= <%=tp.id %>">Remove</a></td>
+          </tr>
+      <% end%>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<div id="editPeriodW" class="modal ">
+  <div class="modal-content">
+
+    <p>Wednesday Time Periods</p>
+    <table>
+      <thead>
+      <th>Time Period</th>
+      <th>Action</th>
+      </thead>
+      <tbody>
+      <% @wednesday.each do |tp| %>
+          <tr>
+            <td> <span>From</span>
+              <%=tp.start_time.strftime("%H:%M") %>
+              <span>To</span>
+              <%=tp.end_time.strftime("%H:%M") %>
+              <span>    &nbsp;               </span>
+            </td>
+            <td> <a type="button" href="/restaurant/table_management/remove?id= <%=tp.id %>">Remove</a></td>
+          </tr>
+      <% end%>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<div id="editPeriodThu" class="modal ">
+  <div class="modal-content">
+
+    <p>Thursday Time Periods</p>
+    <table>
+      <thead>
+      <th>Time Period</th>
+      <th>Action</th>
+      </thead>
+      <tbody>
+      <% @thursday.each do |tp| %>
+          <tr>
+            <td> <span>From</span>
+              <%=tp.start_time.strftime("%H:%M") %>
+              <span>To</span>
+              <%=tp.end_time.strftime("%H:%M") %>
+              <span>    &nbsp;               </span>
+            </td>
+            <td> <a type="button" href="/restaurant/table_management/remove?id= <%=tp.id %>">Remove</a></td>
+          </tr>
+      <% end%>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<div id="editPeriodF" class="modal ">
+  <div class="modal-content">
+
+    <p>Friday Time Periods</p>
+    <table>
+      <thead>
+      <th>Time Period</th>
+      <th>Action</th>
+      </thead>
+      <tbody>
+      <% @friday.each do |tp| %>
+          <tr>
+            <td> <span>From</span>
+              <%=tp.start_time.strftime("%H:%M") %>
+              <span>To</span>
+              <%=tp.end_time.strftime("%H:%M") %>
+              <span>    &nbsp;               </span>
+            </td>
+            <td> <a type="button" href="/restaurant/table_management/remove?id= <%=tp.id %>">Remove</a></td>
+          </tr>
+      <% end%>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<div id="editPeriodS" class="modal ">
+  <div class="modal-content">
+
+    <p>Saturday Time Periods</p>
+    <table>
+      <thead>
+      <th>Time Period</th>
+      <th>Action</th>
+      </thead>
+      <tbody>
+      <% @saturday.each do |tp| %>
+          <tr>
+            <td> <span>From</span>
+              <%=tp.start_time.strftime("%H:%M") %>
+              <span>To</span>
+              <%=tp.end_time.strftime("%H:%M") %>
+              <span>    &nbsp;               </span>
+            </td>
+            <td> <a type="button" href="/restaurant/table_management/remove?id= <%=tp.id %>">Remove</a></td>
+          </tr>
+      <% end%>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<div id="editPeriodSun" class="modal ">
+  <div class="modal-content">
+
+    <p>Sunday Time Periods</p>
+    <table>
+      <thead>
+      <th>Time Period</th>
+      <th>Action</th>
+      </thead>
+      <tbody>
+      <% @sunday.each do |tp| %>
+          <tr>
+            <td> <span>From</span>
+              <%=tp.start_time.strftime("%H:%M") %>
+              <span>To</span>
+              <%=tp.end_time.strftime("%H:%M") %>
+              <span>    &nbsp;               </span>
+            </td>
+            <td> <a type="button" href="/restaurant/table_management/remove?id= <%=tp.id %>">Remove</a></td>
+          </tr>
+      <% end%>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -1,4 +1,5 @@
 class Restaurant::RestaurantRequestsController < ApplicationController
+  before_action :require_restaurant
   protect_from_forgery
   def create
     @restaurant_request=RestaurantRequest.new

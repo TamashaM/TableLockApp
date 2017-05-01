@@ -9,7 +9,7 @@
     }
   </style>
   <script>
-      $(document).ready(function() {
+      $(document).on('turbolinks:load', function() {
 
           $('select').material_select();
       });
@@ -49,6 +49,11 @@
 
       <button type="submit" name="action" class="waves-effect waves-light btn">Search </button>
 
+    </div>
+    <div class=" col s3 ">
+    </div>
+    <div class=" col s3 ">
+      <a href="/admin/payments/print_report?month=<%=@month%>" type="button" class="waves-effect waves-light btn red">Download Report</a>
     </div>
   </div>
 </form>

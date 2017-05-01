@@ -1,4 +1,5 @@
 class Diner::PastReservationsController < ApplicationController
+  before_action :require_diner
   protect_from_forgery
   def past_reservations
       #change to session

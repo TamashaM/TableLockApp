@@ -1,4 +1,5 @@
 class Restaurant::PaymentsController < ApplicationController
+  before_action :require_restaurant
   protect_from_forgery
   def view
 
@@ -44,9 +45,9 @@ class Restaurant::PaymentsController < ApplicationController
     @kit  = PDFKit.new(html)
 
     @kit.to_file("hello.pdf")
-    send_data @kit.to_pdf, :filename => "whatever.pdf",
+    send_data @kit.to_pdf, :filename => "payments.pdf",
               :type => "application/pdf",
-              :disposition  => "inline" # either "inline" or "attachment"
+              :disposition  => "attachment" # either "inline" or "attachment"
 
     return
   end

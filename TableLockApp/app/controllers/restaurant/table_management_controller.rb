@@ -1,4 +1,6 @@
 class Restaurant::TableManagementController < ApplicationController
+
+  before_action :require_restaurant
   protect_from_forgery
   def edit
     @weekdays=WeekDay.all()
@@ -62,6 +64,11 @@ class Restaurant::TableManagementController < ApplicationController
       redirect_to '/restaurant/table_management/edit'
 
 
+  end
+  def remove
+    TimePeriod.find(params[:id]).destroy
+    flash[:success]="Time Period removed successfully"
+    redirect_to '/restaurant/table_management/edit'
   end
 
 end

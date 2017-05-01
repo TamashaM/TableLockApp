@@ -1,4 +1,5 @@
 class Diner::HomeController < ApplicationController
+  before_action :require_diner
   def index
 
 

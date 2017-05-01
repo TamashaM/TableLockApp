@@ -1,4 +1,5 @@
 class Restaurant::DiningInformationController < ApplicationController
+  before_action :require_restaurant
   protect_from_forgery
   def view
 

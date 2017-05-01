@@ -13,13 +13,18 @@
 
 
   <script>
-    $( document ).ready(function() {
-    $('.datepicker').pickadate({
-    format: 'mm/dd/yyyy',
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
-    });
-    });
+      $( document ).on('turbolinks:load', function() {
+          var $input =$('.datepicker').pickadate({
+              format: 'mm/dd/yyyy',
+
+              selectMonths: true, // Creates a dropdown to control month
+              selectYears: 15,// Creates a dropdown of 15 years to control year
+
+          });
+          var picker = $input.pickadate('picker');
+          picker.set('min', Date.now())
+
+      });
   </script>
 </head>
 <%= render :partial=>"restaurant/side_bar" %>
@@ -41,7 +46,7 @@
         <div class="input-field col s12">
           <i class="mdi-social-person-outline prefix large material-icons prefix">local_offer</i>
 
-          <input id="name" name="offer[name]" type="text" class="validate ">
+          <input id="name" name="offer[name]" type="text" class="validate " required>
 
           <label for="name" >Name</label>
         </div>
@@ -50,19 +55,19 @@
       <div class="row margin">
         <div class="input-field col s12">
           <i class="mdi-action-lock-outline prefix large material-icons prefix">description</i>
-          <input id="description" name="offer[description]" type="text" class="validate ">
+          <input id="description" name="offer[description]" type="text" class="validate "required>
           <label for="description" >Description</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">today</i>
-          <input id="start_date" name="offer[start_date]" type="date" class="datepicker" >
+          <input id="start_date" name="offer[start_date]" type="date" class="datepicker" required >
           <label for="start_date" >From</label>
         </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">query_builder</i>
-          <input type='time' class="active" name="offer[start_time]" min='00:00' max='24:00'  step='1800' />
+          <input type='time' class="active" name="offer[start_time]" min='00:00' max='24:00'  step='1800' required/>
 
           <label for="start_time"></label>
         </div>
@@ -70,12 +75,12 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">today</i>
-          <input id="end_date" name="offer[end_date]" type="date" class="datepicker" >
+          <input id="end_date" name="offer[end_date]" type="date" class="datepicker" required >
           <label for="end_date" >To</label>
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">query_builder</i>
-          <input type='time' class="active" name="offer[end_time]" min='00:00' max='24:00'  step='1800' />
+          <input type='time' class="active" name="offer[end_time]" min='00:00' max='24:00'  step='1800' required />
 
           <label for="end_time"></label>
         </div>

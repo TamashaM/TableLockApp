@@ -65,4 +65,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.textris_delivery_method = :twilio
 
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+
 end
