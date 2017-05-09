@@ -57,7 +57,20 @@
       $(document).ready(function() {
           $('select').material_select();
       });
+      $( document ).on('turbolinks:load', function() {
 
+          $('#timepicker').pickatime({
+              autoclose: false,
+              twelvehour: false
+          });
+      });
+      $( document ).on('turbolinks:load', function() {
+
+          $('#timepicker2').pickatime({
+              autoclose: false,
+              twelvehour: false
+          });
+      });
 
 
 
@@ -208,14 +221,14 @@
       <%= options_from_collection_for_select(@weekdays, :id, :day) %>
     </select>
 
-<div class="row">
-  <label>From </label>
-    <input type='time' name="tp[start_time]" min='00:00' max='24:00'  step='1800' required />
-
-</div>
     <div class="row">
-      <label>To</label>
-    <input type='time' name="tp[end_time]" min='00:00' max='24:00'  step='1800' required/>
+      <label for="timepicker">From </label>
+      <input id="timepicker" name="tp[start_time]" class="timepicker" type="time">
+    </div>
+
+    <div class="row">
+      <label for="timepicker2">To</label>
+      <input id="timepicker2" name="tp[end_time]" class="timepicker" type="time">
     </div>
   </div>
   <div class="modal-footer">

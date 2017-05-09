@@ -82,6 +82,7 @@ class Diner::PastReservationsController < ApplicationController
 
     @id=session[:diner_id]
     Favourite.where(diner_id: @id, restaurant_id: params[:id]).first_or_create
+    flash[:success]="Sucessfully added to favourites"
     redirect_to '/diner/favourites'
   end
 end

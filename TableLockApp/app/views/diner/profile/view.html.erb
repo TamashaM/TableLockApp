@@ -1,5 +1,7 @@
 <head>
+
   <style>
+
     h4 {
       color: #4db6ac;
 
@@ -13,6 +15,8 @@
     }
   </style>
   <script>
+
+
 
       $( document ).ready(function() {
           $('.datepicker').pickadate({
@@ -45,8 +49,6 @@
     <hr>
 
 
-
-
     <div class="row">
       <div class="input-field col s6">
 
@@ -64,8 +66,8 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">email</i>
-        <input id="email" name="diner[email]" type="email" class="validate" value="<%=@user.email %>" disabled>
-        <label for="email" class="active" data-error="wrong" data-success="right">Email</label>
+        <input id="email" name="diner[email]" type="email" class="validate" value="<%=@user.email %>" readonly>
+        <label for="email" class="active">Email</label>
 
       </div>
     </div>

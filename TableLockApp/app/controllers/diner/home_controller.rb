@@ -15,14 +15,17 @@ class Diner::HomeController < ApplicationController
     @diner=Diner.find_by_user_id(session[:user_id])
     @array=[]
     @restaurants.each do |r|
-      @array<<r.restaurant_name
+      @array<<{r:r.restaurant_name,c:r.city}
     end
     respond_to do |format|
       puts "here"
       format.html # index.html.erb
 # Here is where you can specify how to handle the request for "/people.json"
-      puts @restaurants.to_json
-      format.json { render :json => @restaurants.to_json}
+      puts @restaurants.map { |rest| {:id => rest.id, :label =>  rest.restaurant_name+" "+ rest.city, :value => rest.restaurant_name+" "+ rest.city }}
+      # format.json { render :json =>@array.to_json
+      # }
+      format.json{render :json => @restaurants.map { |rest| {:id => rest.id, :label =>  rest.restaurant_name+" "+ rest.city, :value => rest.restaurant_name+" "+ rest.city, :category=>"restaurant"} }
+      }
     end
 
   end

@@ -66,6 +66,15 @@
           $('.parallax').parallax();
       });
 
+      $( document ).on('turbolinks:load', function() {
+
+          $('#timepicker').pickatime({
+              autoclose: false,
+              twelvehour: false
+          });
+      });
+
+
   </script>
 </head>
 <body >

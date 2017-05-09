@@ -25,6 +25,20 @@
           picker.set('min', Date.now())
 
       });
+      $( document ).on('turbolinks:load', function() {
+
+          $('#timepicker').pickatime({
+              autoclose: false,
+              twelvehour: false
+          });
+      });
+      $( document ).on('turbolinks:load', function() {
+
+          $('#timepicker2').pickatime({
+              autoclose: false,
+              twelvehour: false
+          });
+      });
   </script>
 </head>
 <%= render :partial=>"restaurant/side_bar" %>
@@ -67,7 +81,8 @@
         </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">query_builder</i>
-          <input type='time' class="active" name="offer[start_time]" min='00:00' max='24:00'  step='1800' required/>
+            <input id="timepicker" name="offer[start_time]" class="timepicker" type="time">
+
 
           <label for="start_time"></label>
         </div>
@@ -80,7 +95,7 @@
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">query_builder</i>
-          <input type='time' class="active" name="offer[end_time]" min='00:00' max='24:00'  step='1800' required />
+          <input id="timepicker2" name="offer[end_time]" class="timepicker" type="time">
 
           <label for="end_time"></label>
         </div>

@@ -4,11 +4,8 @@
       color: #4db6ac;
 
     }
-    span{
-      color:white
-    }
     body{
-      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+      background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url(<%= asset_path 'rest4.jpg' %>);
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -24,42 +21,48 @@
 </head>
 <%= render :partial=> "diner/search_bar" %>
 <%= render :partial=> "diner/side_bar" %>
-<% if @restaurants.nil? %>
+<% if @category=="restaurant" %>
+    <%= render :partial=>"diner/search_reservation/time_slots" %>
+    <%= render :template=>"restaurant/public_profile/view"  %>
+
+<% else %>
+    <% if @restaurants.nil? %>
 
     <span >No results found</span>
-<% else %>
+  <% else %>
 
-<% @restaurants.each do |rest| %>
-    <% if @tss[rest.id].nil? %>
-        <% next %>
-    <% end %>
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src=<%= asset_path 'logo.jpg' %> width="60" height="200">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <h6><a href="/restaurant/public_profile?restaurant_id=<%=rest.id %>"><%=rest.restaurant_name%></a> </h6>
-          <span><%=rest.dining_information.cuisines %></span><br>
-          <span><%=rest.add_line1%></span>&nbsp;
-          <span><%=rest.add_line2%></span>&nbsp;
-          <span><%=rest.city%></span>&nbsp;
-          <span><%=rest.province%></span>
+  <% @restaurants.each do |rest| %>
+      <% if @tss[rest.id].nil? %>
+          <% next %>
+      <% end %>
+      <div class="card horizontal">
+        <div class="card-image">
+
+          <%= image_tag rest.avatar.url(:medium) %>
         </div>
-        <div class="card-action">
-          <% @tss[rest.id].each do |ts| %>
-              <%  if ts[1]==0 %>
-                <a class="waves-effect waves-light btn " href="/diner/make_reservation?id=<%=rest.id%>&ts=<%=ts[0]%>&date=<%=@date%>&packs=<%=@packs%>"><%=ts[0]%></a>
-              <%  elsif ts[1]==1  %>
-                  <a class=" black waves-effect waves-light btn " href="/diner/add_to_waiting_list?id=<%=rest.id%>&ts=<%=ts[0]%>&date=<%=@date%>&packs=<%=@packs%>"><%=ts[0]%></a>
-              <% end %>
-          <% end %>
+        <div class="card-stacked">
+          <div class="card-content">
+            <h6><a href="/restaurant/public_profile?restaurant_id=<%=rest.id %>"><%=rest.restaurant_name%></a> </h6>
+            <span><%=rest.dining_information.cuisines %></span><br>
+            <span><%=rest.add_line1%></span>&nbsp;
+            <span><%=rest.add_line2%></span>&nbsp;
+            <span><%=rest.city%></span>&nbsp;
+          </div>
+          <div class="card-action">
+            <% @tss[rest.id].each do |ts| %>
+                <%  if ts[1]==0 %>
+                  <a class="waves-effect waves-light btn " href="/diner/make_reservation?id=<%=rest.id%>&ts=<%=ts[0]%>&date=<%=@date%>&packs=<%=@packs%>"><%=ts[0]%></a>
+                <%  elsif ts[1]==1  %>
+                    <a class=" black waves-effect waves-light btn " href="/diner/add_to_waiting_list?id=<%=rest.id%>&ts=<%=ts[0]%>&date=<%=@date%>&packs=<%=@packs%>"><%=ts[0]%></a>
+                <% end %>
+            <% end %>
+
+          </div>
 
         </div>
-
       </div>
-    </div>
-    <% end %>
+      <% end %>
 
+  <% end %>
 <% end %>
 

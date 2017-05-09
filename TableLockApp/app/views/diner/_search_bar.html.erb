@@ -12,8 +12,14 @@
           });
           var picker = $input.pickadate('picker');
           picker.set('min', Date.now())
+          picker.set('select', <%=@date %>, {format: 'yyyy-mm-dd'});
+
+
+
+
 
       });
+ ;
 
 
   </script>
@@ -27,27 +33,48 @@
       <div class="row margin">
         <div class="input-field col s3">
           <i class="mdi-social-person-outline prefix large material-icons prefix">location_on</i>
-          <input id="location" name="key" type="text" class="validate" required>
-          <label for="location" class="active">Location</label>
+          <% if params[:key]!=nil %>
+          <input id="location" name="key" type="text" class="validate" value="<%=params[:key] %>"required>
+          <% else %>
+              <input id="location" name="key" type="text" class="validate" required>
+          <% end %>
+              <label for="location" class="active">Location</label>
         </div>
         <div class="input-field col s2">
           <i class="material-icons prefix">today</i>
+          <% if params[:date]!=nil %>
+              <input id="date" name ="date" type="date" class="datepicker" value="<%=params[:date] %>"required>
+          <% else %>
+              <input id="date" name ="date" type="date" class="datepicker" required>
+          <% end %>
 
-          <input id="date" name ="date" type="date" class="datepicker" required>
-          <label for="date" class="active">Date</label>
+              <label for="date" class="active">Date</label>
         </div>
 
         <div class="input-field col s2">
           <i class="material-icons prefix">access_time</i>
-          <input type='time' name="time" min='00:00' max='24:00'  step='1800' required/>
-          <label for="time" class="active">Time</label>
+          <% if params[:time]!=nil %>
+
+
+                <input id="timepicker" name="time"  data-default="<%=params[:time]%>" class="timepicker" type="time">
+
+          <% else %>
+
+                <input id="timepicker" name="time" class="timepicker" type="time">
+
+          <% end %>
+          <label for="timepicker" class="active">Time</label>
 
         </div>
 
         <div class="input-field col s2">
           <i class="mdi-action-lock-outline prefix material-icons prefix">people</i>
-          <input id="packs" name="packs" type="number" class="validate" required>
-          <label for="packs" class="active">Adult</label>
+          <% if params[:packs]!=nil %>
+              <input id="packs" name="packs" type="number" class="validate" value="<%=params[:packs]%>"required>
+          <% else %>
+              <input id="packs" name="packs" type="number" class="validate" required>
+          <% end %>
+          <label for="packs" class="active">Packs</label>
 
         </div>
 

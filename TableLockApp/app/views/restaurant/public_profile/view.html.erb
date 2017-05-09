@@ -192,7 +192,9 @@
         </div>
         <div class="col s6">
           <span>Phone Number:</span> &nbsp;<span><%=@restaurant.telephone%></span><br>
-          <span>Email:</span> &nbsp;<span><%=@restaurant.email%></span>
+          <% if !@restaurant.email.nil? %>
+            <span>Email:</span> &nbsp;<span><%=@restaurant.email%></span>
+          <% end %>
         </div>
         </div>
       </form>
