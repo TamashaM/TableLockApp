@@ -67,5 +67,10 @@ gem 'phony_rails'
 
 gem 'rails-perftest'
 gem 'ruby-prof'
+gem  'selenium-webdriver','~> 2.53.4'
+gem 'cucumber'
+gem 'rspec'
+gem 'capybara'
+
 
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
