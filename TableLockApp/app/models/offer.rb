@@ -1,4 +1,4 @@
 class Offer < ApplicationRecord
   belongs_to :restaurant
-  validates :name, presence: true
+  validates :restaurant_id, :name, presence: true
 end

@@ -72,5 +72,6 @@ gem 'cucumber'
 gem 'rspec'
 gem 'capybara'
 
+gem 'ruby-jmeter'
 
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"

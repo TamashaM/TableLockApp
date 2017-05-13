@@ -16,7 +16,6 @@
 
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
-      $( document ).on('turbolinks:load', function() {
 
       function drawChart() {
 
@@ -37,7 +36,7 @@
           var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
           chart.draw(data, options);
-      }});
+      }
   </script>
 </head>
 

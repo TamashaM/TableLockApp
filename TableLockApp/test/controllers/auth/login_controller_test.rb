@@ -7,6 +7,6 @@ class Auth::LoginControllerTest < ActionDispatch::IntegrationTest
   test "should get login" do
     get :'/login'
     assert_response :success
-    assert_not_nil assigns(:session)
+    !assert_not_nil assigns(:session)
   end
 end

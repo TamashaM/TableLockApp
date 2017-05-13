@@ -13,6 +13,8 @@ module TableLockApp
     # -- all .rb files in that directory are automatically loaded.
     #uncomment this
     #config.web_console.whitelisted_ips = '173.0.82.126','112.135.6.253','112.135.5.36','61.245.161.11'
-    config.middleware.use "PDFKit::Middleware", :print_media_type => true
+    #config.middleware.use "PDFKit::Middleware", :print_media_type => true
+    config.active_record.time_zone_aware_types = [:datetime, :time]
+
   end
 end

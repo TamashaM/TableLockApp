@@ -2,7 +2,6 @@ class Diner::SearchReservationController < ApplicationController
   before_action :require_diner
   protect_from_forgery
   def view
-
     @key=params[:key]
     if params[:date]
       @date=Date.strptime(params[:date],'%m/%d/%Y')
