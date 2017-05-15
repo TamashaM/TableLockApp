@@ -8,6 +8,8 @@ class Restaurant::DiningInformationController < ApplicationController
       @dining_information=@restaurant.dining_information
     else
       @di=DiningInformation.new
+      @di.capacity_seating=0
+      @di.time_seating=30
       @di.restaurant_id=session[:restaurant_id]
       @di.save!
     end

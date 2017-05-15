@@ -3,15 +3,28 @@ class Diner::SearchReservationController < ApplicationController
   protect_from_forgery
   def view
     @key=params[:key]
-    if params[:date]
+    if params[:date]!=""
       @date=Date.strptime(params[:date],'%m/%d/%Y')
+    else
+
+      @date=Date.today
+
     end
 
     puts @date
-    @time=params[:time]
+    if params[:time]!=""
+
+      @time=params[:time]
+    else
+
+      @time=Time.now.strftime("%H:%M")
+
+    end
     @packs=params[:packs]
     @category=params[:restaurant_category]
     if @category=="restaurant"
+      puts "here22"
+      @restaurant_id=params[:restaurant_id]
       @restaurant=Restaurant.find(params[:restaurant_id])
       @restts=[[],[]]
       # puts r.restaurant_name

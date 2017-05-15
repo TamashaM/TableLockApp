@@ -48,8 +48,7 @@ class Auth::UsersController < ApplicationController
         if @restaurant.save
           SignUpMailer.request_email(@user).deliver_now
           flash[:success]="Your request was submitted successfully "
-          session[:user_id]=@user.id
-          session[:restaurant_id]=@restaurant.id
+
           redirect_to controller:'restaurant/restaurant_requests',
                       action:'create',
                       first_name: @restaurant.first_name,

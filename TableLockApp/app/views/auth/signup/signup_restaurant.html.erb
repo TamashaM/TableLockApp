@@ -3,18 +3,28 @@
     $(document).ready(function() {
         Materialize.updateTextFields();
     });
-    $(document).ready(function() {
+    $( document ).on('turbolinks:load',function() {
 
         $('select').material_select();
     });
 </script>
   <style>
+
+    body{
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<%= asset_path 'rest4.jpg' %>);
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
   h4 {
   color: #4db6ac;
 
   }
   </style>
 </head>
+
 <div id="signup-restaurant-page" class="row">
 
   <div class="col s6 z-depth-4 card-panel offset-s2" >
@@ -76,7 +86,7 @@
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">phone</i>
-          <input id="telephone" data-error="invalid" data-success="valid" name="user[telephone]" type="tel" class="validate" placeholder="+94xxxxxxxxx" required>
+          <input id="telephone" data-error="invalid" data-success="valid" name="user[telephone]" type="tel" class="validate"value="+94" required>
           <label for="icon_telephone">Telephone</label>
         </div>
       </div>

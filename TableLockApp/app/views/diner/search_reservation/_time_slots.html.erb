@@ -5,10 +5,16 @@
       <div class="card-stacked">
         <div class="card-content">
           <h6>Time Slots Available</h6>
+          <% if @restts==[[],[]] %>
+              <span>No Time Slots Found</span>
+          <% end %>
+
 
         </div>
 
         <div class="card-action">
+
+
           <% @restts.each do |ts| %>
               <%  if ts[1]==0 %>
                   <a class="waves-effect waves-light btn " href="/diner/make_reservation?id=<%=@restaurant.id%>&ts=<%=ts[0]%>&date=<%=@date%>&packs=<%=@packs%>"><%=ts[0]%></a>

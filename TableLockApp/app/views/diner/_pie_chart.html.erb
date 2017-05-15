@@ -12,12 +12,13 @@
   </style>
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
+  <script >
+      $( document ).on('turbolinks:load', function() {
 
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
+          $( document ).on('turbolinks:load', function drawChart() {
 
           var data = google.visualization.arrayToDataTable([
               ['Arrival', 'Count'],
@@ -36,7 +37,7 @@
           var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
           chart.draw(data, options);
-      }
+      })});
   </script>
 </head>
 

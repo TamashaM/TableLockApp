@@ -10,7 +10,9 @@
     }
   </style>
   <script>
-      $("div.id_100 select").val(<%=@restaurant_request.position %>);
+      $( document ).on('turbolinks:load',function() {
+          $("div.id_100 select").val(<%=@restaurant_request.position %>);
+      });
   </script>
 </head>
 <%= render :partial=>"admin/side_bar" %>

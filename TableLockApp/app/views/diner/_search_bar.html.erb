@@ -2,6 +2,7 @@
 
 
   <script>
+
       $( document ).on('turbolinks:load', function() {
           var $input =$('.datepicker').pickadate({
               format: 'mm/dd/yyyy',
@@ -13,10 +14,6 @@
           var picker = $input.pickadate('picker');
           picker.set('min', Date.now())
           picker.set('select', <%=@date %>, {format: 'yyyy-mm-dd'});
-
-
-
-
 
       });
  ;
@@ -33,18 +30,21 @@
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <div class="row margin">
         <div class="input-field col s3">
+          <input id="restaurant_id" name="restaurant_id" value="<%=@restaurant_id %>" type="hidden"/>
+          <input id="restaurant_category" name="restaurant_category" value="<%=@category %>"type="hidden"/>
+
           <i class="mdi-social-person-outline prefix large material-icons prefix">location_on</i>
           <% if params[:key]!=nil %>
-          <input id="location" name="key" type="text" class="validate" value="<%=params[:key] %>"required>
+          <input id="select_origin" name="key" type="text" value="<%=@key%>" class="validate"required>
           <% else %>
-              <input id="location" name="key" type="text" class="validate" required>
+              <input id="select_origin" name="key" type="text" class="validate" required>
           <% end %>
-              <label for="location" class="active">Location</label>
+              <label for="select_origin" class="active">Location</label>
         </div>
         <div class="input-field col s2">
           <i class="material-icons prefix">today</i>
           <% if params[:date]!=nil %>
-              <input id="date" name ="date" type="date" class="datepicker" value="<%=params[:date] %>"required>
+              <input id="date" name ="date" type="date" class="datepicker" required>
           <% else %>
               <input id="date" name ="date" type="date" class="datepicker" required>
           <% end %>
@@ -55,12 +55,8 @@
         <div class="input-field col s2">
           <i class="material-icons prefix">access_time</i>
           <% if params[:time]!=nil %>
-
-
-                <input id="timepicker" name="time"  data-default="<%=params[:time]%>" class="timepicker" type="time">
-
+                <input id="timepicker" name="time"  data-default="<%=@time%>" class="timepicker" type="time">
           <% else %>
-
                 <input id="timepicker" name="time" class="timepicker" type="time">
 
           <% end %>
@@ -71,7 +67,7 @@
         <div class="input-field col s2">
           <i class="mdi-action-lock-outline prefix material-icons prefix">people</i>
           <% if params[:packs]!=nil %>
-              <input id="packs" name="packs" type="number" class="validate" value="<%=params[:packs]%>"required>
+              <input id="packs" name="packs" type="number" class="validate" value="<%=@packs%>"required>
           <% else %>
               <input id="packs" name="packs" type="number" class="validate" required>
           <% end %>

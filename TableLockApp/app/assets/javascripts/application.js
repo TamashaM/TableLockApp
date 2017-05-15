@@ -19,6 +19,7 @@
 //= require autocomplete-rails
 
 
+
 ;(function(){
     var $ = window.jQuery,
         $win = $(window),

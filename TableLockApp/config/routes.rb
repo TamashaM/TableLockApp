@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 
   get 'diner/home'=>'diner/home#home'
   get 'diner/profile'=>'diner/profile#view'
+  get 'diner/profile/restaurants'=>'diner/profile#profile'
   get 'diner/reservation_history'=>'diner/past_reservations#past_reservations'
   get 'diner/reservation_history/search'=>'diner/past_reservations#past_reservations'
   post 'diner/reservation_history/search'=>'diner/past_reservations#search'
