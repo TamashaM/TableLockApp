@@ -20,6 +20,20 @@
 
   </style>
   <script>
+      $( document ).on('turbolinks:load', function() {
+
+          $('#timepicker1').pickatime({
+              autoclose: false,
+              twelvehour: false
+          });
+      });
+      $( document ).on('turbolinks:load', function() {
+
+          $('#timepicker2').pickatime({
+              autoclose: false,
+              twelvehour: false
+          });
+      });
       function price1(checkboxElem) {
           if (checkboxElem.checked) {
 
@@ -228,12 +242,12 @@
 
       <div class="row">
         <label>From </label>
-        <input type='time' name="mt[start_time]" min='00:00' max='24:00'  step='1800' required/>
+        <input id="timepicker1" type='time' name="mt[start_time]" class="timepicker" required/>
 
       </div>
       <div class="row">
         <label>To</label>
-        <input type='time' name="mt[end_time]" min='00:00' max='24:00'  step='1800' required />
+        <input id="timepicker2" type='time' name="mt[end_time]" class="timepicker" required />
       </div>
     </div>
     <div class="modal-footer">

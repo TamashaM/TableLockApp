@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   get '/admin/profile/change_pic'=>'admin/profile#change_pic'
   post '/admin/profile/change_pic'=>'admin/profile#change_pic'
 
-  get 'diner/home'=>'diner/home#home'
+  get '/diner/home'=>'diner/home#home'
   get 'diner/profile'=>'diner/profile#view'
   get 'diner/profile/restaurants'=>'diner/profile#profile'
   get 'diner/reservation_history'=>'diner/past_reservations#past_reservations'

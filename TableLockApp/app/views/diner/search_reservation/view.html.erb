@@ -61,16 +61,30 @@
           // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
           $('.modal').modal();
       });
-      $( document ).ready(function() {
-          $('.datepicker').pickadate({
+
+
+
+      $( document ).on('turbolinks:load', function() {
+          var $input =$('.datepicker').pickadate({
               format: 'mm/dd/yyyy',
+              default: <%=params[:date] %>,
               selectMonths: true, // Creates a dropdown to control month
-              selectYears: 100 // Creates a dropdown of 15 years to control year
+              selectYears: 15,// Creates a dropdown of 15 years to control year
+
           });
+          var picker = $input.pickadate('picker');
+          picker.set('min', Date.now())
+          //picker.set('select', "<%=params[:date] %>",{format: 'mm/dd/yyyy'})
+          ;
+
       });
+ ;
+
+
+
       $( document ).ready(function() {
           $('.timepicker').pickatime({
-              default: 'now',
+              default: <%=params[:time] %>,
               twelvehour: false, // change to 12 hour AM/PM clock from 24 hour
               donetext: 'OK',
               autoclose: false,

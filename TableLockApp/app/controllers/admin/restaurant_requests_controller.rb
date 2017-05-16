@@ -1,7 +1,7 @@
 class Admin::RestaurantRequestsController < ApplicationController
   before_action :require_admin
   def view_requests
-      @restaurant_request=RestaurantRequest.all
+      @restaurant_request=RestaurantRequest.where("status = 2 or status is null")
 
 
   end

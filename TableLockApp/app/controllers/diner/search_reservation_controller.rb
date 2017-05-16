@@ -2,6 +2,7 @@ class Diner::SearchReservationController < ApplicationController
   before_action :require_diner
   protect_from_forgery
   def view
+    if request.post?
     @key=params[:key]
     if params[:date]!=""
       @date=Date.strptime(params[:date],'%m/%d/%Y')
@@ -123,6 +124,7 @@ class Diner::SearchReservationController < ApplicationController
                puts "found a holiday"
                next
              end
+
              @day=@date.wday
              puts @day
             # @restaurants.reject!{ |r| r.dining_information.nil? }
@@ -220,6 +222,7 @@ class Diner::SearchReservationController < ApplicationController
           end
         end
       end
+      end
     render 'view'
     end
 
@@ -231,7 +234,7 @@ class Diner::SearchReservationController < ApplicationController
     @restaurant=Restaurant.find(@id)
     @time_slot=params[:ts]
     @date=params[:date]
-    @packs=params[:packs]
+    @packs=params[:packs].to_i
     meal_types=@restaurant.meal_types
     if !meal_types.nil?
       puts "here1"

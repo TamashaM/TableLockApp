@@ -13,7 +13,7 @@
           });
           var picker = $input.pickadate('picker');
           picker.set('min', Date.now())
-          picker.set('select', <%=@date %>, {format: 'yyyy-mm-dd'});
+          picker.set('select', <%=params[:date] %>, {format: 'mm/dd/yyyy'});
 
       });
  ;
@@ -35,7 +35,7 @@
 
           <i class="mdi-social-person-outline prefix large material-icons prefix">location_on</i>
           <% if params[:key]!=nil %>
-          <input id="select_origin" name="key" type="text" value="<%=@key%>" class="validate"required>
+          <input id="select_origin" name="key" type="text" value="<%=params[:key]%>" class="validate"required>
           <% else %>
               <input id="select_origin" name="key" type="text" class="validate" required>
           <% end %>
@@ -44,9 +44,10 @@
         <div class="input-field col s2">
           <i class="material-icons prefix">today</i>
           <% if params[:date]!=nil %>
-              <input id="date" name ="date" type="date" class="datepicker" required>
+              <%= puts "date" +params[:date] %>
+              <input id="date" name ="date" type="date" class="datepicker" data-default="<%=params[:date] %>"required>
           <% else %>
-              <input id="date" name ="date" type="date" class="datepicker" required>
+              <input id="date" name ="date" type="date" class="datepicker"  data-default="<%=params[:date] %>"required>
           <% end %>
 
               <label for="date" class="active">Date</label>
@@ -55,9 +56,9 @@
         <div class="input-field col s2">
           <i class="material-icons prefix">access_time</i>
           <% if params[:time]!=nil %>
-                <input id="timepicker" name="time"  data-default="<%=@time%>" class="timepicker" type="time">
+                <input id="timepicker" name="time"   class="timepicker" data-default="<%=params[:time] %>" type="time">
           <% else %>
-                <input id="timepicker" name="time" class="timepicker" type="time">
+                <input id="timepicker" name="time" class="timepicker" data-default="<%=params[:time] %>" type="time">
 
           <% end %>
           <label for="timepicker" class="active">Time</label>

@@ -10,11 +10,14 @@
 
   </style>
   <script>
-      $(document).ready(function() {
+      if (window.location.href.indexOf('reload')==-1) {
+          window.location.replace(window.location.href+'?reload');
+      }
+      $(document).on('turbolinks:load', function(){
 
           $('select').material_select();
       });
-      function showDiv(){
+      $(document).on('turbolinks:load',function showDiv(){
           var sel = document.getElementById('meal_type');
           var selected = sel.options[sel.selectedIndex];
           var price = selected.getAttribute('data-price');
@@ -28,7 +31,7 @@
 
               document.getElementById('pay_reserve').style.display = "none";
           }
-      }
+      })
   </script>
 </head>
 <%= render :partial=> "diner/side_bar" %>
