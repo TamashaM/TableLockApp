@@ -9,7 +9,7 @@ class LoginClass < Test::Unit::TestCase
 
 
 
-    @driver.navigate.to "localhost:3000/login"
+    @driver.navigate.to "https://sleepy-lowlands-18893.herokuapp.com/login"
 
     @driver.manage.window.maximize
   end
@@ -24,8 +24,8 @@ class LoginClass < Test::Unit::TestCase
     @driver.find_element(:id, "email").send_keys "tam@gmail.com"
     @driver.find_element(:id, "password").send_keys "password"
     @driver.find_element(:name, "action").click
-    sleep 0.3
-    assert(@driver.find_element(:tag_name => "body").text.include?("You are now logged in"),"Page contains the text")
+
+    assert(@driver.find_element(:tag_name => "body").text.include?("Home"),"Page contains the text")
     sleep 0.3
     @driver.find_element(:id, "log").click
     #@driver.findElement(By.xpath("//select[@id='groupSelect']/option[@value='data' and . = 'First value']")

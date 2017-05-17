@@ -3,69 +3,72 @@
   <title>jQuery UI Autocomplete - Custom data and display</title>
 
   <style>
+      tam{
+          background-color: black;
+          opacity: 0.7;
+      }
 
 
 
+      .input-field label {
+          color: #ff6f00;
+          font-weight: bold;
+          font-size: larger;
+      }
+      /* label focus color */
+      .input-field input[type=text]:focus + label {
+          color: #ff6f00;
+          font-weight: bold;
+          font-size: larger;
+      }
 
-    .input-field label {
-      color: #ff6f00;
-      font-weight: bold;
-      font-size: larger;
-    }
-    /* label focus color */
-    .input-field input[type=text]:focus + label {
-      color: #ff6f00;
-      font-weight: bold;
-      font-size: larger;
-    }
+      p {font-size:20px;
+          color: #ff6f00}
 
-    p {font-size:20px;
-      color: #ff6f00}
+      body .ui-autocomplete {
+          /* font-family to all */
+          margin-top: 2px;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          border-radius: 4px;
 
-    body .ui-autocomplete {
-      /* font-family to all */
-      margin-top: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          z-index: 1000;
+          display: none;
+          float: left;
+          min-width: 160px;
+          padding: 4px 0;
+          margin: 1px 0 0;
+          list-style: none;
+          background-color: white;
+          border: 1px solid #CCC;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
+          -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          -webkit-background-clip: padding-box;
+          -moz-background-clip: padding;
+          background-clip: padding-box;
 
-      position: absolute;
-      top: 100%;
-      left: 0;
-      z-index: 1000;
-      display: none;
-      float: left;
-      min-width: 160px;
-      padding: 4px 0;
-      margin: 1px 0 0;
-      list-style: none;
-      background-color: white;
-      border: 1px solid #CCC;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      border-radius: 5px;
-      -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-      -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-      -webkit-background-clip: padding-box;
-      -moz-background-clip: padding;
-      background-clip: padding-box;
-
-    }
+      }
 
 
-    body .ui-autocomplete .ui-menu-item.ui-corner-all {
-      /* all <a> */
-      background:red;
-      height:10px;
-      font-size:8px;
-    }
+      body .ui-autocomplete .ui-menu-item.ui-corner-all {
+          /* all <a> */
+          background:red;
+          height:10px;
+          font-size:8px;
+      }
 
-    .ui-state-active {
-      background-color: #4db6ac;
-      font-weight: bold;
-    }
+      .ui-state-active {
+          background-color: #4db6ac;
+          font-weight: bold;
+      }
 
 
 
@@ -92,7 +95,7 @@
       $(function() {
 
 
-              //Init stuff here
+          //Init stuff here
 
 
           // Below is the name of the textfield that will be autocomplete
@@ -841,14 +844,14 @@
                       console.log(this.hours, this.minutes, this.amOrPm);
                   }
               }
-            /*!
-             * ClockPicker v0.0.7 (http://weareoutman.github.io/clockpicker/)
-             * Copyright 2014 Wang Shenwei.
-             * Licensed under MIT (https://github.com/weareoutman/clockpicker/blob/gh-pages/LICENSE)
-             *
-             * Further modified
-             * Copyright 2015 Ching Yaw Hao.
-             */
+              /*!
+               * ClockPicker v0.0.7 (http://weareoutman.github.io/clockpicker/)
+               * Copyright 2014 Wang Shenwei.
+               * Licensed under MIT (https://github.com/weareoutman/clockpicker/blob/gh-pages/LICENSE)
+               *
+               * Further modified
+               * Copyright 2015 Ching Yaw Hao.
+               */
 
               ;(function(){
                   var $ = window.jQuery,
@@ -1685,7 +1688,7 @@
 
 
 <div id="welcome-page" class="row">
-  <div class="col s6 z-depth-4 card-panel offset-s3 transparent" >
+  <div class="col s6 z-depth-4 card-panel offset-s3 transparent" style="background-color: rgba(0,0,0,0.6) !important;">
 
     <form class="login-form " method="post" action="/diner/search_reservations" >
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -1705,8 +1708,8 @@
           <input id="restaurant_category" name="restaurant_category" type="hidden"/>
 
           <%if @restaurants %>
-          <%= puts "found" %>
-              <% end %>
+              <%= puts "found" %>
+          <% end %>
         </div>
       </div>
 
@@ -1721,7 +1724,7 @@
           <i class="material-icons prefix">access_time</i>
 
 
-            <input id="timepicker" name="time" class="timepicker" type="time">
+          <input id="timepicker" name="time" class="timepicker" type="time">
 
           <label for="timepicker">Time</label>
         </div>

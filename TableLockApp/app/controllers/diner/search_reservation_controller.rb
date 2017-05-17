@@ -21,17 +21,22 @@ class Diner::SearchReservationController < ApplicationController
       @time=Time.now.strftime("%H:%M")
 
     end
+
     @packs=params[:packs]
     @category=params[:restaurant_category]
     if @category=="restaurant"
       puts "here22"
       @restaurant_id=params[:restaurant_id]
       @restaurant=Restaurant.find(params[:restaurant_id])
+      @offers=@restaurant.offers
+      @meal_types=@restaurant.meal_types
       @restts=[[],[]]
       # puts r.restaurant_name
       @time_slots = Array.new(20)
       if @restaurant.holidays.any? {|h| h.date == @date}
         puts "found a holiday"
+
+
 
       else
         @day=@date.wday
@@ -80,15 +85,24 @@ class Diner::SearchReservationController < ApplicationController
               if @db_ts.empty?
                 if @restaurant.dining_information.capacity_seating>=@packs.to_i
                   puts @time_slots[j].strftime("%H:%M")
+                  if @date ==Date.today && Time.strptime(@time,'%H:%M')<= Time.now
+                    next
+                  end
                   @restts.push([@time_slots[j].strftime("%H:%M"),0])
                 end
               else
                 @count=@db_ts.first.reservation_count + @packs.to_i
                 if @count<=@restaurant.dining_information.capacity_seating
                   puts @time_slots[j].strftime("%H:%M")
+                  if @date ==Date.today && Time.strptime(@time,'%H:%M')<= Time.now
+                    next
+                  end
                   @restts.push([@time_slots[j].strftime("%H:%M"),0])
                 else
                   puts @time_slots[j].strftime("%H:%M")
+                  if @date ==Date.today && Time.strptime(@time,'%H:%M')<= Time.now
+                    next
+                  end
                   @restts.push([@time_slots[j].strftime("%H:%M"),1])
                 end
               end
@@ -196,6 +210,9 @@ class Diner::SearchReservationController < ApplicationController
                   if @db_ts.empty?
                     if r.dining_information.capacity_seating>=@packs.to_i
                       puts @time_slots[j].strftime("%H:%M")
+                      if @date ==Date.today && Time.strptime(@time,'%H:%M')<= Time.now
+                        next
+                      end
                       @restts.push([@time_slots[j].strftime("%H:%M"),0])
                     end
                   else
@@ -203,9 +220,15 @@ class Diner::SearchReservationController < ApplicationController
 
                     if @count<=r.dining_information.capacity_seating
                       puts @time_slots[j].strftime("%H:%M")
+                      if @date ==Date.today && Time.strptime(@time,'%H:%M')<= Time.now
+                        next
+                      end
                       @restts.push([@time_slots[j].strftime("%H:%M"),0])
                     else
                       puts @time_slots[j].strftime("%H:%M")
+                      if @date ==Date.today && Time.strptime(@time,'%H:%M')<= Time.now
+                        next
+                      end
                       @restts.push([@time_slots[j].strftime("%H:%M"),1])
 
                     end

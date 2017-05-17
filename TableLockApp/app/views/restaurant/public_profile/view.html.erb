@@ -185,6 +185,10 @@
         <br>
         <hr>
         <h5> Offers</h5>
+
+        <% if @offers.nil? %>
+            <span>No Offers To Display</span>
+        <% else %>
         <table class="  centered">
           <thead>
           <tr>
@@ -197,6 +201,8 @@
           </thead>
 
           <tbody>
+
+
           <% @offers.each do |off| %>
               <tr>
                 <td><%= off.name %></td>
@@ -207,11 +213,14 @@
               </tr>
           <%end%>
 
+
           </tbody>
         </table>
+        <% end %>
         <br>
         <hr>
         <h5> Meals</h5>
+        <% if !@meal_types.nil? %>
         <table class="  centered">
           <thead>
           <tr>
@@ -222,7 +231,6 @@
           </tr>
           </thead>
           <tbody>
-          <% if !@meal_types.empty? %>
               <% @meal_types.each do |m| %>
                   <tr>
                     <td><%= m.title %></td>
@@ -234,8 +242,11 @@
                   </tr>
                   </tbody>
               <% end %>
-          <% end %>
+
           </table>
+          <% else %>
+              <span> No Meals To Display</span>
+          <% end %>
         <br>
         <hr>
         <h5> Contact</h5>
@@ -264,4 +275,3 @@
   </div>
 
 
-</body>
